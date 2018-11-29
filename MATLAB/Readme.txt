@@ -1,0 +1,4 @@
+- First, run the file Init_project.m
+- To quickly test the external C# GUI, run the file Test_Script.m
+- To test the ParkingMeterLowLevel() main function, run the file Test_ParkingMeterLowLevel.m
+- To generate and build C code, run the file Codegen_Build.m

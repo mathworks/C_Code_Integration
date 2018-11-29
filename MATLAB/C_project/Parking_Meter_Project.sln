@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Parking_Meter_Project", "Parking_Meter_Project\Parking_Meter_Project.vcxproj", "{03D82B5A-0D47-4A39-8DF6-8AF59ED8475D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03D82B5A-0D47-4A39-8DF6-8AF59ED8475D}.Debug|x64.ActiveCfg = Debug|x64
+		{03D82B5A-0D47-4A39-8DF6-8AF59ED8475D}.Debug|x64.Build.0 = Debug|x64
+		{03D82B5A-0D47-4A39-8DF6-8AF59ED8475D}.Debug|x86.ActiveCfg = Debug|Win32
+		{03D82B5A-0D47-4A39-8DF6-8AF59ED8475D}.Debug|x86.Build.0 = Debug|Win32
+		{03D82B5A-0D47-4A39-8DF6-8AF59ED8475D}.Release|x64.ActiveCfg = Release|x64
+		{03D82B5A-0D47-4A39-8DF6-8AF59ED8475D}.Release|x64.Build.0 = Release|x64
+		{03D82B5A-0D47-4A39-8DF6-8AF59ED8475D}.Release|x86.ActiveCfg = Release|Win32
+		{03D82B5A-0D47-4A39-8DF6-8AF59ED8475D}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7199559E-0D0E-4A45-97CF-1450C16B205D}
+	EndGlobalSection
+EndGlobal
