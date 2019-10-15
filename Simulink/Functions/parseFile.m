@@ -1,12 +1,12 @@
 function [] = parseFile(file_name)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Function parseFile()
-% Goal  : Automatically modify the generated C file.
-% IN    : - file_name: name of the C file to modify to support multiple instances
-% IN/OUT: -
-% OUT   : -
+% Function: parseFile()
+% Goal    : Automatically modify the generated C file.
+% IN      : - file_name: name of the C file to modify to support multiple instances
+% IN/OUT  : -
+% OUT     : -
 %
-% Copyright 2018 The MathWorks, Inc.
+% Author  : Sebastien Dupertuis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % Custom code to add to support multiple execution instances
   CODE_TO_ADD = {'/* Function added to have the model running in normal mode */'

@@ -1,18 +1,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Script  : shutdown
-% Goal    : Clean up the environment for the current project. This script
-%           undoes the settings applied at the project's setup. It should
-%           be called by a shutdown shortcut linked to its Simulink Project
+% Script : shutdown
+% Goal   : Clean up the environment for the current project. This script
+%          undoes the settings applied at the project's setup. It should
+%          be called by a shutdown shortcut linked to its Simulink Project
 %
-% Copyright 2018 The MathWorks, Inc.
+% Author : Sebastien Dupertuis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 disp('Begin the termination of the project...');
+% Close all opened models
+bdclose('all');
 % Use Simulink Project API to get the current project
-p = slproject.getCurrentProject;
-projectRoot = p.RootFolder;
-
-% Reset the location of slprj.
+project = simulinkproject;
+% Move to the root folder of the project
+try
+  cd(project.RootFolder)
+catch
+  disp('Root folder has not been found.');
+end
+% Reset the location of the project
 Simulink.fileGenControl('reset');
-cd ..
 disp('Project closed.');
 clear variables; clc;

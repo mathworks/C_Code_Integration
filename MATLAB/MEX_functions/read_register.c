@@ -6,9 +6,10 @@
 *            communicate with the C console program.
 *            The header file must be included in the C console program to have
 *            the full system working properly: #include "ParkingMeterMemory.h"
-* MEX Build: Run this command to build the MEX: >> mex read_register.c
+* MEX Build: Run this command to build the MEX:
+* >> mex '..\MEX_functions\read_register.c' -outdir '..\MEX_functions'
 *
-* Copyright 2018 The MathWorks, Inc.
+* Author : Sebastien Dupertuis
 *******************************************************************************/
 
 /* Packages to include */

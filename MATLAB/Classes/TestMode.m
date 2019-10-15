@@ -6,13 +6,13 @@ classdef TestMode < Constants
 %         Once an object has been created out of the superclass, it must then be
 %         passed has an input argument to all the functions of the application.
 %
-% Copyright 2018 The MathWorks, Inc.
+% Author: Sebastien Dupertuis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %#codegen
   % The following constants will be added to the superclass "Constants"
   properties (Constant = true)
     NB_REGISTERS = 7;
-    NB_VALUES = 12;
+    NB_VALUES    = 12;
     MILLISECONDS = 1000;
     WAIT_TIME = 100;
     REGISTERS = [Constants.DISPLAY_REGISTER_1,...
@@ -22,12 +22,12 @@ classdef TestMode < Constants
                  Constants.BUTTONS_REGISTER,...
                  Constants.INSERTED_COINS_REGISTER,...
                  Constants.AVAILABLE_COINS_REGISTER];
-    DISPLAYS_VALUES = [Constants.SEGMENTS_DIGIT_0, Constants.SEGMENTS_DIGIT_1,...
-                       Constants.SEGMENTS_DIGIT_2, Constants.SEGMENTS_DIGIT_3,...
-                       Constants.SEGMENTS_DIGIT_4, Constants.SEGMENTS_DIGIT_5,...
-                       Constants.SEGMENTS_DIGIT_6, Constants.SEGMENTS_DIGIT_7,...
-                       Constants.SEGMENTS_DIGIT_8, Constants.SEGMENTS_DIGIT_9,...
-                       Constants.SEGMENTS_DIGIT_M, Constants.SEGMENTS_DIGIT_P];
+    DISPLAYS_VALUES = [Constants.SEGMENTS_DIGIT_0,Constants.SEGMENTS_DIGIT_1,...
+                       Constants.SEGMENTS_DIGIT_2,Constants.SEGMENTS_DIGIT_3,...
+                       Constants.SEGMENTS_DIGIT_4,Constants.SEGMENTS_DIGIT_5,...
+                       Constants.SEGMENTS_DIGIT_6,Constants.SEGMENTS_DIGIT_7,...
+                       Constants.SEGMENTS_DIGIT_8,Constants.SEGMENTS_DIGIT_9,...
+                       Constants.SEGMENTS_DIGIT_M,Constants.SEGMENTS_DIGIT_P];
     % Char separator to split sections
     TEXT_SEPARATOR = ['---------------------------------------'...
                       '----------------------------------------'];
@@ -44,7 +44,7 @@ classdef TestMode < Constants
     % IN/OUT: -
     % OUT   : - integer value to get from the console interface
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    function [data] = check_get_data(promp_text, min_data, max_data)
+    function [data] = check_get_data(promp_text,min_data,max_data)
       % Function that is not translated into C code
       coder.extrinsic('input');
       
@@ -57,7 +57,7 @@ classdef TestMode < Constants
       while (is_right_value == false)
         if (coder.target('MATLAB') || coder.target('MEX'))
         % Get input data using the MATLAB API
-        data_text = input(promp_text, 's');
+        data_text = input(promp_text,'s');
         data_double = str2double(data_text);
         % Check if the value is an integer number
         if (~isnan(data_double) && (fix(data_double) == data_double))
@@ -68,36 +68,36 @@ classdef TestMode < Constants
             is_right_value = true;
           else
             fprintf('The value provided must be between %d and %d!\n',...
-                    min_data, max_data);
+                    int32(min_data),int32(max_data));
           end
         else
           fprintf('The value to provide must be an integer between %d and %d!\n',...
-                  min_data, max_data);
+                  int32(min_data),int32(max_data));
         end
         elseif coder.target('Rtw')
         % Get input data using the Windows C API
         nb_input_types = int32(0);
         terminator = ' ';
-        fprintf('%s', promp_text);
+        fprintf('%s',promp_text);
         % Force the string format definition in the generated C code for scanf_s
         format = coder.opaque('char *','"%d%c"');
-        nb_input_types = coder.ceval('scanf_s', format, coder.ref(data),...
-                                     coder.ref(terminator), int32(1));
+        nb_input_types = coder.ceval('scanf_s',format,coder.ref(data),...
+                                     coder.ref(terminator),int32(1));
         % Check if the provided data is an integer number
-        if (nb_input_types == 2 && strcmp(terminator, TestMode.NEW_LINE))
+        if (nb_input_types == 2 && strcmp(terminator,TestMode.NEW_LINE))
           % Check if the value is within the allowed range
           if ((data >= min_data) && (data <= max_data))
             is_right_value = true;
           else
             fprintf('The value provided must be between %d and %d!\n',...
-                    min_data, max_data);
+                    int32(min_data),int32(max_data));
           end
         else
           fprintf('The value provided is not of the right data type!\n');
           % Force the string regular expression in the generated C code for scanf_s
           CLEAR_STDIN = coder.opaque('char *','"%*[^\n]%*1[\n]"');
           % Clear the input buffer
-          coder.ceval('scanf_s', CLEAR_STDIN);
+          coder.ceval('scanf_s',CLEAR_STDIN);
         end
         else % coder.target
         fprintf('No supported coder target has been specified.\n');
@@ -113,14 +113,14 @@ classdef TestMode < Constants
     % IN/OUT: -
     % OUT   : -
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    function [] = write_register(const_obj, f_api)
+    function [] = write_register(const_obj,f_api)
       % Function that is not translated into C code
       coder.extrinsic('input');
       
       % Text constants declaration
       TEXT_INTRO  = ['Enter the address of the register to access in '...
                      'hexadecimal within the following range [0xA000-0xA003]'...
-                     'or [0xA010-0xA012]: '];
+                     ' or [0xA010-0xA012]: '];
       TEXT_INPUT  = 'Enter the integer data to write at the selected register: ';
       TEXT_RESULT = ['The desired value has been successfully '...
                      'written in the selected register.'];
@@ -129,25 +129,20 @@ classdef TestMode < Constants
       register_address = uint16(0);
       data = int32(0);
       is_right_value = false;
-      if coder.target('MEX')
-      coder.varsize('register_text');
-      register_text = '0x0000';
-      end
 
       % Split sections 
-      fprintf('%s\n', const_obj.TEXT_SEPARATOR);
+      fprintf('%s\n',const_obj.TEXT_SEPARATOR);
 
       % Get the address of the register to access 
       while (is_right_value == false)
         if (coder.target('MATLAB') || coder.target('MEX'))
-        register_text = input(TEXT_INTRO, 's');
-        register_address = char2dec(register_text);
+        register_address = input(TEXT_INTRO);
         elseif coder.target('Rtw')
         register_text = int32(0);
-        fprintf('%s', TEXT_INTRO);
+        fprintf('%s',TEXT_INTRO);
         % Force the string format definition in the generated C code for scanf_s
         format = coder.opaque('char *','"%x"');
-        coder.ceval('scanf_s', format, coder.wref(register_text), int32(1));
+        coder.ceval('scanf_s',format,coder.wref(register_text));
         register_address = uint16(register_text);
         else
         fprintf('No supported coder target has been specified.\n');
@@ -167,18 +162,18 @@ classdef TestMode < Constants
           % Force the string regular expression in the generated C code for scanf_s
           CLEAR_STDIN = coder.opaque('char *','"%*[^\n]%*1[\n]"');
           % Clear the input buffer
-          coder.ceval('scanf_s', CLEAR_STDIN);
+          coder.ceval('scanf_s',CLEAR_STDIN);
           end
         end
       end
 
       % Get the data to write in the register 
-      data = const_obj.check_get_data(TEXT_INPUT, int32(0), int32(999));
+      data = const_obj.check_get_data(TEXT_INPUT,int32(0),int32(999));
 
       % Write the user's data to the selected register 
-      f_api.write_interface(register_address, data);
-      fprintf('%s\n\n', TEXT_RESULT);
-      fprintf('%s\n', const_obj.TEXT_SEPARATOR);
+      f_api.write_interface(register_address,data);
+      fprintf('%s\n\n',TEXT_RESULT);
+      fprintf('%s\n',const_obj.TEXT_SEPARATOR);
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -189,7 +184,7 @@ classdef TestMode < Constants
     % IN/OUT: -
     % OUT   : -
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    function [] = display_value(const_obj, f_api)
+    function [] = display_value(const_obj,f_api)
       % Text constants declaration 
       TEXT_INPUT  = ['Enter the hundreds of cents value to '...
                      'print on the 7 segments displays: '];
@@ -200,15 +195,15 @@ classdef TestMode < Constants
       data = int32(0);
 
       % Split sections 
-      fprintf('%s\n', const_obj.TEXT_SEPARATOR);
+      fprintf('%s\n',const_obj.TEXT_SEPARATOR);
 
       % Get the data to write in the register 
-      data = const_obj.check_get_data(TEXT_INPUT, int32(0), int32(999));
+      data = const_obj.check_get_data(TEXT_INPUT,int32(0),int32(999));
 
       % Write the user's data to the 7 segments displays 
-      f_api.display_cents_value(const_obj, data);
-      fprintf('%s\n\n', TEXT_RESULT);
-      fprintf('%s\n', const_obj.TEXT_SEPARATOR);
+      f_api.display_cents_value(const_obj,data);
+      fprintf('%s\n\n',TEXT_RESULT);
+      fprintf('%s\n',const_obj.TEXT_SEPARATOR);
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -219,7 +214,7 @@ classdef TestMode < Constants
     % IN/OUT: -
     % OUT   : -
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    function [] = leds_return_money(const_obj, f_api)
+    function [] = leds_return_money(const_obj,f_api)
       % Text constants declaration 
       TEXT_INPUT  = 'State value of the give back cash LEDs [0-1]: ';
       TEXT_RESULT = ['The desired value has been successfully'...
@@ -229,15 +224,15 @@ classdef TestMode < Constants
       state = int32(0);
 
       % Split sections 
-      fprintf('%s\n', const_obj.TEXT_SEPARATOR);
+      fprintf('%s\n',const_obj.TEXT_SEPARATOR);
 
       % Get the data to write in the register 
-      state = const_obj.check_get_data(TEXT_INPUT, int32(0), int32(1));
+      state = const_obj.check_get_data(TEXT_INPUT,int32(0),int32(1));
 
       % Write the user's data to the 7 segments displays 
-      f_api.switch_leds_on(const_obj, state);
-      fprintf('%s\n\n', TEXT_RESULT);
-      fprintf('%s\n', const_obj.TEXT_SEPARATOR);
+      f_api.switch_leds_on(const_obj,state);
+      fprintf('%s\n\n',TEXT_RESULT);
+      fprintf('%s\n',const_obj.TEXT_SEPARATOR);
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -248,7 +243,7 @@ classdef TestMode < Constants
     % IN/OUT: -
     % OUT   : -
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    function [] = give_back_coin(const_obj, f_api)
+    function [] = give_back_coin(const_obj,f_api)
       % Text constants declaration 
       TEXT_INPUT = ['Enter the menu entry corresponding to '...
                     'the coins value to give back [0-4]: '];
@@ -257,7 +252,7 @@ classdef TestMode < Constants
       coin_choice = int32(1);
 
       % Split sections 
-      fprintf('%s\n', const_obj.TEXT_SEPARATOR);
+      fprintf('%s\n',const_obj.TEXT_SEPARATOR);
 
       % Loop over the menu entries
       while (coin_choice ~= 0)
@@ -270,22 +265,22 @@ classdef TestMode < Constants
         fprintf('>> 4 - Give back a 100 cents coin\n');
         fprintf('\n');
         % Get and check the menu entry provided at the console interface 
-        coin_choice = const_obj.check_get_data(TEXT_INPUT, int32(0), int32(4));
+        coin_choice = const_obj.check_get_data(TEXT_INPUT,int32(0),int32(4));
 
         % Select the specific coin's value to give back 
         switch (coin_choice)
           case const_obj.INT_CASE_ENTRY_0
             % Split sections
-            fprintf('%s\n\n', const_obj.TEXT_SEPARATOR);
+            fprintf('%s\n\n',const_obj.TEXT_SEPARATOR);
             break;
           case const_obj.INT_CASE_ENTRY_1
-            f_api.give_back_coin(const_obj, const_obj.INT_VAL_010_CENTS);
+            f_api.give_back_coin(const_obj,const_obj.INT_VAL_010_CENTS);
           case const_obj.INT_CASE_ENTRY_2
-            f_api.give_back_coin(const_obj, const_obj.INT_VAL_020_CENTS);
+            f_api.give_back_coin(const_obj,const_obj.INT_VAL_020_CENTS);
           case const_obj.INT_CASE_ENTRY_3
-            f_api.give_back_coin(const_obj, const_obj.INT_VAL_050_CENTS);
+            f_api.give_back_coin(const_obj,const_obj.INT_VAL_050_CENTS);
           case const_obj.INT_CASE_ENTRY_4
-            f_api.give_back_coin(const_obj, const_obj.INT_VAL_100_CENTS);
+            f_api.give_back_coin(const_obj,const_obj.INT_VAL_100_CENTS);
           otherwise
             fprintf(['Incorrect menu selection. '...
                      'Please enter a value between 0 and 4.\n']);
@@ -302,7 +297,7 @@ classdef TestMode < Constants
     % IN/OUT: -
     % OUT   : -
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    function [] = coin_flap_position(const_obj, f_api)
+    function [] = coin_flap_position(const_obj,f_api)
       % Text constants declaration 
       TEXT_INPUT = ['Set the position of the coin''s flap '...
                     '[open => ''1'', close => ''0'']: '];
@@ -311,13 +306,13 @@ classdef TestMode < Constants
       flap_position = false;
 
       % Split sections 
-      fprintf('%s\n', const_obj.TEXT_SEPARATOR);
+      fprintf('%s\n',const_obj.TEXT_SEPARATOR);
 
       % Get and check the flap position provided at the console interface 
-      flap_position = logical(const_obj.check_get_data(TEXT_INPUT, int32(0), int32(1)));
+      flap_position = logical(const_obj.check_get_data(TEXT_INPUT,int32(0),int32(1)));
 
       % Update the position of the flap 
-      f_api.set_coin_flap_position(const_obj, flap_position);
+      f_api.set_coin_flap_position(const_obj,flap_position);
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -328,7 +323,7 @@ classdef TestMode < Constants
     % IN/OUT: -
     % OUT   : -
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    function [] = input_registers(const_obj, f_api)
+    function [] = input_registers(const_obj,f_api)
       % Include the header file containing the needed functions declarations
       coder.cinclude('stdlib.h');
       coder.cinclude('ParkingMeterMemory.h');
@@ -337,15 +332,15 @@ classdef TestMode < Constants
                     'registers in seconds [''1''-''100'']: '];
 
       % Split sections 
-      fprintf('%s\n', const_obj.TEXT_SEPARATOR);
+      fprintf('%s\n',const_obj.TEXT_SEPARATOR);
 
       % Get and check the time limit provided at the console interface 
       monitoring_time = (const_obj.MILLISECONDS/const_obj.WAIT_TIME)*...
-                         const_obj.check_get_data(TEXT_INPUT, int32(1), int32(100));
+                         const_obj.check_get_data(TEXT_INPUT,int32(1),int32(100));
 
       % Read the input registers continuously 
       for i=1:1:monitoring_time+1
-        fprintf('%s\n', const_obj.TEXT_SEPARATOR); % Split measurements 
+        fprintf('%s\n',const_obj.TEXT_SEPARATOR); % Split measurements 
         fprintf('Available coins: %x\n',...
                 f_api.read_interface(const_obj.AVAILABLE_COINS_REGISTER));
         fprintf('Inserted coins : %x\n',...
@@ -358,7 +353,7 @@ classdef TestMode < Constants
       end
 
       % Split sections 
-      fprintf('%s\n\n', const_obj.TEXT_SEPARATOR);
+      fprintf('%s\n\n',const_obj.TEXT_SEPARATOR);
     end
   end
 end

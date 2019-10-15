@@ -1,13 +1,13 @@
 function [dec_value] = char2dec(char_sequence)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Function char2dec()
-% Goal  : Convert a number encoded in binary or hexadecimal base to decimal
-% IN    : - char_sequence: char representation of the encoded value with the
+% Function: char2dec()
+% Goal    : Convert a number encoded in binary or hexadecimal base to decimal
+% IN      : - char_sequence: char representation of the encoded value with the
 %           prefix for the encoding format: '0b' = binary and '0x' = hexadecimal
-% IN/OUT: -
-% OUT   : - dec_value: decimal representation of the char sequence
+% IN/OUT  : -
+% OUT     : - dec_value: decimal representation of the char sequence
 %
-% Copyright 2018 The MathWorks, Inc.
+% Author  : Sebastien Dupertuis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %#codegen
   % Local constants declaration

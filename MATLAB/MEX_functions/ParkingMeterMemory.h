@@ -7,7 +7,7 @@
 *          This file must be included in the C console program to have the full
 *          system working properly: #include "ParkingMeterMemory.h"
 *
-* Copyright 2018 The MathWorks, Inc.
+* Author : Sebastien Dupertuis
 *******************************************************************************/
 #ifndef PARKING_METER_MEMORY_H_ /* Include guard */
 #define PARKING_METER_MEMORY_H_

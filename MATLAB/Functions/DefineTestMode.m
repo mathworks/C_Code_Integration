@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Function DefineTestMode()
+% Function defineTestMode()
 % Goal  : contains and sets the only global variable of the project that is used
 %         to toggle the mode of the Parking Meter Low Level program.
 %         TEST_MODE = int32(0) => normal mode of operation will run
@@ -8,9 +8,9 @@
 % IN/OUT: -
 % OUT   : - 
 %
-% Copyright 2018 The MathWorks, Inc.
+% Author: Sebastien Dupertuis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [] = DefineTestMode(test_mode_on)
+function [] = defineTestMode(test_mode_on)
   global TEST_MODE;
   if (nargin ~= 1 || (test_mode_on ~= 0 && test_mode_on ~= 1))
     TEST_MODE = int32(0); % Disable the test mode by default

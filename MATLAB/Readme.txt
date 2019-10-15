@@ -1,4 +1,6 @@
-- First, run the file Init_project.m
-- To quickly test the external C# GUI, run the file Test_Script.m
-- To test the ParkingMeterLowLevel() main function, run the file Test_ParkingMeterLowLevel.m
-- To generate and build C code, run the file Codegen_Build.m
+- First, double click on "ParkingMeter.prj" in MATLAB to load the full project
+- To quickly test the external C# GUI, run the file "QuickTest.m" by clicking on its project shortcut "Quick" in "2-TESTING"
+- To test the parkingMeterLowLevel() main function, run the file "TestParkingMeterLowLevel.m" by clicking on its project shortcut "Low Level" in "2-TESTING"
+- To generate, build and run C code, run the file "CodegenBuild.m" by clicking on its shortcut "Run C Code" in "3-CODEGEN"
+- To run the standalone executables, click on their shortcuts "Debug" or "Release" in "4-STANDALONE"
+- List of tools needed to run the demo: MATLAB, Communication System Toolbox, MATLAB Coder, Embedded Coder

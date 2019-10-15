@@ -26,7 +26,7 @@
  * | See matlabroot/simulink/src/sfuntmpl_doc.c for a more detailed template |
  *  ------------------------------------------------------------------------- 
  *
- * Created: Wed Oct 31 11:59:29 2018
+ * Created: Thu Jun 13 15:38:08 2019
  */
 
 #define S_FUNCTION_LEVEL 2
@@ -112,20 +112,23 @@ static void mdlInitializeSizes(SimStruct *S)
 
     ssSetArrayLayoutForCodeGen(S, SS_COLUMN_MAJOR);
 
-    ssSetSimStateCompliance(S, USE_DEFAULT_SIM_STATE);
+    ssSetOperatingPointCompliance(S, USE_DEFAULT_OPERATING_POINT);
 
     ssSetNumContStates(S, NUM_CONT_STATES);
     ssSetNumDiscStates(S, NUM_DISC_STATES);
 
 
     if (!ssSetNumInputPorts(S, NUM_INPUTS)) return;
+    /* Input Port 0 */
     ssSetInputPortWidth(S, 0, INPUT_0_WIDTH);
     ssSetInputPortDataType(S, 0, SS_UINT16);
     ssSetInputPortComplexSignal(S, 0, INPUT_0_COMPLEX);
     ssSetInputPortDirectFeedThrough(S, 0, INPUT_0_FEEDTHROUGH);
     ssSetInputPortRequiredContiguous(S, 0, 1); /*direct input signal access*/
 
+
     if (!ssSetNumOutputPorts(S, NUM_OUTPUTS)) return;
+    /* Output Port 0 */
     ssSetOutputPortWidth(S, 0, OUTPUT_0_WIDTH);
     ssSetOutputPortDataType(S, 0, SS_UINT8);
     ssSetOutputPortComplexSignal(S, 0, OUTPUT_0_COMPLEX);
@@ -137,7 +140,7 @@ static void mdlInitializeSizes(SimStruct *S)
     ssSetNumModes(S, 0);
     ssSetNumNonsampledZCs(S, 0);
 
-    ssSetSimulinkVersionGeneratedIn(S, "9.2");
+    ssSetSimulinkVersionGeneratedIn(S, "10.0");
 
     /* Take care when specifying exception free code - see sfuntmpl_doc.c */
     ssSetOptions(S, (SS_OPTION_EXCEPTION_FREE_CODE |

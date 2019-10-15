@@ -10,7 +10,7 @@ function write2sldd(file_name,data_section,var_names,var_values)
 % IN/OUT  : -
 % OUT     : - error_flag  : 0 = no error, 1 = odd number of input arguments
 %
-% Copyright 2018 The MathWorks, Inc.
+% Author  : Sebastien Dupertuis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   % Initialization

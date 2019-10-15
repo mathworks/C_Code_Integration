@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MF0 version="1.1" packageUris="http://schema.mathworks.com/mf0/systemcomposer_property/19700101">
+  <systemcomposer.property.UnitQueryClientWrapper type="systemcomposer.property.UnitQueryClientWrapper" uuid="71023cd0-8e59-4ba6-aaed-e1a158d20ca3"/>
+  <systemcomposer.profile.Profile type="systemcomposer.profile.Profile" uuid="d9a2569c-9524-4ea0-8c15-fdf8f56c23c9">
+    <valueTypes type="systemcomposer.property.BooleanType" uuid="9d11da34-68cb-4868-bc8e-f84711b2d08e">
+      <p_Name>boolean</p_Name>
+    </valueTypes>
+    <valueTypes type="systemcomposer.property.FloatType" uuid="8cf5a49e-ebd0-4551-85e9-8056f17c7da2">
+      <max>1.7976931348623157e+308</max>
+      <min>-1.7976931348623157e+308</min>
+      <p_Name>double</p_Name>
+    </valueTypes>
+    <valueTypes type="systemcomposer.property.IntegerType" uuid="e6253dfe-c748-4476-bab0-2e0072f1dedc">
+      <max>32767</max>
+      <min>-32768</min>
+      <p_Name>int16</p_Name>
+    </valueTypes>
+    <valueTypes type="systemcomposer.property.IntegerType" uuid="7886c19d-9ae7-4407-9c26-64b8202bd2fe">
+      <max>2147483647</max>
+      <min>-2147483648</min>
+      <p_Name>int32</p_Name>
+    </valueTypes>
+    <valueTypes type="systemcomposer.property.IntegerType" uuid="39122ec8-8feb-4686-afb1-c15009c30a4a">
+      <max>9223372036854775807</max>
+      <min>-9223372036854775808</min>
+      <p_Name>int64</p_Name>
+    </valueTypes>
+    <valueTypes type="systemcomposer.property.IntegerType" uuid="f8487cfd-ce80-494f-b0cb-638083e28350">
+      <max>127</max>
+      <min>-128</min>
+      <p_Name>int8</p_Name>
+    </valueTypes>
+    <valueTypes type="systemcomposer.property.FloatType" uuid="371f1ce1-6146-40b5-b466-1bf862c45428">
+      <max>3.4028234663852886e+38</max>
+      <min>-3.4028234663852886e+38</min>
+      <p_Name>single</p_Name>
+    </valueTypes>
+    <valueTypes type="systemcomposer.property.StringType" uuid="29e41d94-6d71-4586-b34d-d134bc1b6584">
+      <p_Name>string</p_Name>
+    </valueTypes>
+    <valueTypes type="systemcomposer.property.StringArrayType" uuid="f8e46e4e-4b16-4145-8dd9-2a1dbe2187ae">
+      <p_Name>stringArray</p_Name>
+    </valueTypes>
+    <valueTypes type="systemcomposer.property.IntegerType" uuid="7f68a31f-cf84-43b2-a309-55e18872a61d">
+      <max>65535</max>
+      <min>0</min>
+      <p_Name>uint16</p_Name>
+    </valueTypes>
+    <valueTypes type="systemcomposer.property.IntegerType" uuid="ed352673-1733-40df-8abc-c3045937f8c8">
+      <max>4294967295</max>
+      <min>0</min>
+      <p_Name>uint32</p_Name>
+    </valueTypes>
+    <valueTypes type="systemcomposer.property.IntegerType" uuid="7fefb6a5-da2b-4d80-9f78-89f489dfe0dc">
+      <max>9223372036854775807</max>
+      <min>0</min>
+      <p_Name>uint64</p_Name>
+    </valueTypes>
+    <valueTypes type="systemcomposer.property.IntegerType" uuid="62341c1f-333e-4ae8-a590-c92aa0950be2">
+      <max>255</max>
+      <min>0</min>
+      <p_Name>uint8</p_Name>
+    </valueTypes>
+    <p_Name>ParkingMeterProfile</p_Name>
+    <elemProxy type="systemcomposer.internal.proxy.ProxyTarget" uuid="c0597ef3-8171-47e7-8059-829f098cd416"/>
+  </systemcomposer.profile.Profile>
+  <systemcomposer.internal.ModelIdentifier type="systemcomposer.internal.ModelIdentifier" uuid="0f7fd593-ebdc-4e2f-89fc-8cd767003000">
+    <URI>ParkingMeterProfile</URI>
+    <modelType>PROFILE_MODEL</modelType>
+  </systemcomposer.internal.ModelIdentifier>
+  <systemcomposer.internal.resolver.CurrentModelResolver type="systemcomposer.internal.resolver.CurrentModelResolver" uuid="7b274ff6-58ce-439e-9946-a4482d71acca"/>
+</MF0>

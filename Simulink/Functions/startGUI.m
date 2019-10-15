@@ -1,12 +1,12 @@
 function [] = startGUI()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Function startGUI()
-% Goal  : Launch the Parking Meter C# graphical interface to communicate with
-% IN    : -
-% IN/OUT: -
-% OUT   : -
+% Function: startGUI()
+% Goal    : Launch the Parking Meter C# graphical interface to communicate with
+% IN      : -
+% IN/OUT  : -
+% OUT     : -
 %
-% Copyright 2018 The MathWorks, Inc.
+% Author  : Sebastien Dupertuis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   % Close potential instance of the C# GUI

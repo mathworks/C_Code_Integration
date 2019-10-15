@@ -1,12 +1,12 @@
 function [] = closeGUI()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Function closeGUI()
-% Goal  : Close the Parking Meter C# graphical interface
-% IN    : -
-% IN/OUT: -
-% OUT   : -
+% Function: closeGUI()
+% Goal    : Close the Parking Meter C# graphical interface
+% IN      : -
+% IN/OUT  : -
+% OUT     : -
 %
-% Copyright 2018 The MathWorks, Inc.
+% Author  : Sebastien Dupertuis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   % Close potential instance of the C# GUI

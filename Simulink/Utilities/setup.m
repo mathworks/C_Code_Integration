@@ -7,23 +7,21 @@
 % IN/OUT  : -
 % OUT     : -
 %
-% Copyright 2018 The MathWorks, Inc.
+% Author  : Sebastien Dupertuis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function setup()
   disp('Begin the initialization of the project...');
   % Use Simulink Project API to get the current project
   project = simulinkproject;
-
-  % Set the location of the folder slprj to be the "Work" folder of the
-  % current project
-  cache_folder = fullfile(project.RootFolder,'Work');
-  if ~exist(cache_folder,'dir')
-    mkdir(cache_folder)
-  end
-  Simulink.fileGenControl('set','CacheFolder',cache_folder,...
-                          'CodeGenFolder',cache_folder);
-
+  % Define the default folders for the generated artifacts
+  prefs.myCacheFolder = fullfile(project.RootFolder, 'Cache');
+  prefs.myCodeFolder  = fullfile(project.RootFolder, 'Code');
+  prefs.myWorkFolder  = fullfile(project.RootFolder, 'Work');
+  Simulink.fileGenControl('set',...
+                          'CacheFolder', prefs.myCacheFolder,...
+                          'CodeGenFolder', prefs.myCodeFolder,...
+                          'createDir', true);
   % Go to the working directory
-  cd(cache_folder)
+  cd(prefs.myWorkFolder);
   disp('Initialization of the project done.');
 end

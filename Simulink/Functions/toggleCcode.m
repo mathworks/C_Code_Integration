@@ -8,7 +8,7 @@ function toggleCcode(model,parameter)
 % IN/OUT  : -
 % OUT     : -
 %
-% Copyright 2018 The MathWorks, Inc.
+% Author  : Sebastien Dupertuis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   % Set the Data Dictionary parameters

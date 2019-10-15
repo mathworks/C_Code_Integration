@@ -99,9 +99,10 @@ function ert_make_rtw_hook(hookMethod,modelName,~,~,~,buildArgs)
       % Called after code generation is complete, and just prior to kicking
       % off make process (assuming code generation only is not selected.)  All
       % arguments are valid at this stage.
-      if strcmp(modelName,'ParkingMeterLowLevel')
+      if (strcmp(modelName,'ParkingMeterLowLevel') ||...
+          strcmp(modelName,'ParkingMeterSystem'))
         % Generate and start the standalone executable for WIN64 platforms
-        build_process();
+        build_process(modelName);
       end
 
     case 'after_make'
@@ -118,9 +119,13 @@ function ert_make_rtw_hook(hookMethod,modelName,~,~,~,buildArgs)
       end
       msg = DAStudio.message(msgID,modelName);
       disp(msg);
+      % Start the standalone executable
       if strcmp(modelName,'ParkingMeterLowLevel')
-        % Start the standalone executable
         system('..\ParkingMeterLowLevel.exe&');
+      elseif strcmp(modelName,'ParkingMeterSystem')
+        system('..\ParkingMeterSystem.exe&');
+      else
+        disp('No executable to run...')
       end
   end
 

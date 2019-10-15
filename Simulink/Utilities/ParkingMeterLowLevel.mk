@@ -2,8 +2,8 @@
 ## Makefile generated for Simulink model 'ParkingMeterLowLevel'. 
 ## 
 ## Makefile     : ParkingMeterLowLevel.mk
-## Generated on : Tue Jun 19 16:46:45 2018
-## MATLAB Coder version: 4.0 (R2018a)
+## Generated on : Fri Oct 11 15:31:49 2019
+## MATLAB Coder version: 4.3 (R2019b)
 ## 
 ## Build Info:
 ## 
@@ -20,27 +20,25 @@
 # Macro Descriptions:
 # PRODUCT_NAME            Name of the system to build
 # MAKEFILE                Name of this makefile
-# COMPUTER                Computer type. See the MATLAB "computer" command.
-# MODELREF_LINK_RSPFILE   Include paths for the model reference build
+# MODELREF_LINK_RSPFILE   Linker command listing model reference link objects
+# COMPILER_COMMAND_FILE   Compiler command listing model reference header paths
 # CMD_FILE                Command file
 
 PRODUCT_NAME              = ParkingMeterLowLevel
 MAKEFILE                  = ParkingMeterLowLevel.mk
-COMPUTER                  = PCWIN64
-MATLAB_ROOT               = C:\MATLAB\R2018a
-MATLAB_BIN                = C:\MATLAB\R2018a\bin
+MATLAB_ROOT               = C:\MATLAB\R2019b
+MATLAB_BIN                = C:\MATLAB\R2019b\bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)\win64
 MASTER_ANCHOR_DIR         = 
-START_DIR                 = ..
-ARCH                      = win64
+START_DIR                 = O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code
 SOLVER                    = 
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
 TGT_FCN_LIB               = ISO_C
 MODEL_HAS_DYNAMICALLY_LOADED_SFCNS = 0
-MODELREF_LINK_RSPFILE_NAME = ParkingMeterLowLevel_ref.rsp
 RELATIVE_PATH_TO_ANCHOR   = ..
 MODELREF_LINK_RSPFILE     = ParkingMeterLowLevel_ref.rsp
+COMPILER_COMMAND_FILE     = ParkingMeterLowLevel_comp.rsp
 CMD_FILE                  = ParkingMeterLowLevel.rsp
 C_STANDARD_OPTS           = 
 CPP_STANDARD_OPTS         = 
@@ -50,9 +48,9 @@ NODEBUG                   = 1
 ## TOOLCHAIN SPECIFICATIONS
 ###########################################################################
 
-# Toolchain Name:          Microsoft Visual C++ 2017 v15.0 | nmake (64-bit Windows)
-# Supported Version(s):    15.0
-# ToolchainInfo Version:   R2018a
+# Toolchain Name:          Microsoft Visual C++ 2019 v16.0 | nmake (64-bit Windows)
+# Supported Version(s):    16.0
+# ToolchainInfo Version:   2019b
 # Specification Revision:  1.0
 # 
 #-------------------------------------------
@@ -71,10 +69,8 @@ NODEBUG                   = 1
 # MACROS
 #-----------
 
-MEX_OPTS_FILE       = $(MATLAB_ROOT)\bin\$(ARCH)\mexopts\msvc2017.xml
 MW_EXTERNLIB_DIR    = $(MATLAB_ROOT)\extern\lib\win64\microsoft
 MW_LIB_DIR          = $(MATLAB_ROOT)\lib\win64
-MEX_ARCH            = -win64
 CPU                 = AMD64
 APPVER              = 5.02
 CVARSFLAG           = $(cvarsmt)
@@ -154,31 +150,14 @@ CPP_SHAREDLIB_LDFLAGS  = $(ldebug) $(conflags) $(LIBS_TOOLCHAIN) \
 DOWNLOAD_FLAGS       =
 EXECUTE_FLAGS        =
 LDFLAGS              = $(ldebug) $(conflags) $(LIBS_TOOLCHAIN)
-MEX_CPPFLAGS         = -R2018a $(MEX_ARCH) OPTIMFLAGS="/Od /Oy- $(MDFLAG) $(DEFINES)" $(MEX_OPTS_FLAG)
+MEX_CPPFLAGS         =
 MEX_CPPLDFLAGS       =
-MEX_CFLAGS           = -R2018a $(MEX_ARCH) OPTIMFLAGS="/Od /Oy- $(MDFLAG) $(DEFINES)" $(MEX_OPTS_FLAG)
-MEX_LDFLAGS          = LDFLAGS=='$$LDFLAGS'
+MEX_CFLAGS           =
+MEX_LDFLAGS          =
 MAKE_FLAGS           = -f $(MAKEFILE)
 SHAREDLIB_LDFLAGS    = $(ldebug) $(conflags) $(LIBS_TOOLCHAIN) \
                        -dll -def:$(DEF_FILE)
 
-#--------------------
-# File extensions
-#--------------------
-
-H_EXT               = .h
-OBJ_EXT             = .obj
-C_EXT               = .c
-EXE_EXT             = .exe
-SHAREDLIB_EXT       = .dll
-HPP_EXT             = .hpp
-OBJ_EXT             = .obj
-CPP_EXT             = .cpp
-EXE_EXT             = .exe
-SHAREDLIB_EXT       = .dll
-STATICLIB_EXT       = .lib
-MEX_EXT             = .mexw64
-MAKE_EXT            = .mk
 
 
 ###########################################################################
@@ -193,7 +172,7 @@ BUILD_TYPE = "Top-Level Standalone Executable"
 ## INCLUDE PATHS
 ###########################################################################
 
-INCLUDES_BUILDINFO = .\referenced_model_includes;$(START_DIR);$(START_DIR)\ParkingMeterLowLevel_ert_rtw;$(MATLAB_ROOT)\extern\include;$(MATLAB_ROOT)\simulink\include;$(MATLAB_ROOT)\rtw\c\src;$(MATLAB_ROOT)\rtw\c\src\ext_mode\common;$(MATLAB_ROOT)\rtw\c\ert;$(START_DIR)\slprj\ert\_sharedutils
+INCLUDES_BUILDINFO = 
 
 INCLUDES = $(INCLUDES_BUILDINFO)
 
@@ -202,16 +181,17 @@ INCLUDES = $(INCLUDES_BUILDINFO)
 ###########################################################################
 
 DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0
+DEFINES_CUSTOM = 
 DEFINES_IMPLIED = -DTID01EQ=0
 DEFINES_STANDARD = -DMODEL=ParkingMeterLowLevel -DNUMST=1 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
 
-DEFINES = $(DEFINES_BUILD_ARGS) $(DEFINES_IMPLIED) $(DEFINES_STANDARD)
+DEFINES = $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_IMPLIED) $(DEFINES_STANDARD)
 
 ###########################################################################
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = $(START_DIR)\ParkingMeterLowLevel_ert_rtw\ParkingMeterLowLevel.c $(START_DIR)\ParkingMeterLowLevel_ert_rtw\ParkingMeterLowLevel_data.c
+SRCS = $(START_DIR)\ParkingMeterLowLevel_ert_rtw\ParkingMeterLowLevel.c
 
 MAIN_SRC = $(START_DIR)\ParkingMeterLowLevel_ert_rtw\ert_main.c
 
@@ -221,7 +201,7 @@ ALL_SRCS = $(SRCS) $(MAIN_SRC)
 ## OBJECTS
 ###########################################################################
 
-OBJS = ParkingMeterLowLevel.obj ParkingMeterLowLevel_data.obj
+OBJS = ParkingMeterLowLevel.obj
 
 MAIN_OBJ = ert_main.obj
 
@@ -237,9 +217,9 @@ PREBUILT_OBJS =
 ## LIBRARIES
 ###########################################################################
 
-MODELREF_LIBS = .\ReadRegister_rtwlib.lib .\WriteRegister_rtwlib.lib .\WriteRegisterTriggered_rtwlib.lib
+MODELREF_LIBS = O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\AvailableCoins\AvailableCoins_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\Buttons\Buttons_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\Flap\Flap_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\GeneratePulse\GeneratePulse_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\WriteRegister\WriteRegister_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\InsertedCoins\InsertedCoins_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\ReadRegister\ReadRegister_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\SegmentsDisplays\SegmentsDisplays_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\WriteRegisterTriggered\WriteRegisterTriggered_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\Terminate\Terminate_rtwlib.lib
 
-LIBS = 
+LIBS = $(START_DIR)\slprj\ert\_sharedutils\rtwshared.lib
 
 ###########################################################################
 ## SYSTEM LIBRARIES
@@ -255,7 +235,7 @@ SYSTEM_LIBS =
 # C Compiler
 #---------------
 
-CFLAGS_BASIC = $(DEFINES) 
+CFLAGS_BASIC = $(DEFINES) @$(COMPILER_COMMAND_FILE)
 
 CFLAGS = $(CFLAGS) $(CFLAGS_BASIC)
 
@@ -263,7 +243,7 @@ CFLAGS = $(CFLAGS) $(CFLAGS_BASIC)
 # C++ Compiler
 #-----------------
 
-CPPFLAGS_BASIC = $(DEFINES) 
+CPPFLAGS_BASIC = $(DEFINES) @$(COMPILER_COMMAND_FILE)
 
 CPPFLAGS = $(CPPFLAGS) $(CPPFLAGS_BASIC)
 
@@ -289,14 +269,14 @@ all : build
 build : set_environment_variables prebuild $(PRODUCT)
 
 
-buildobj : set_environment_variables prebuild $(OBJS) $(PREBUILT_OBJS) $(MODELREF_LIBS)
+buildobj : set_environment_variables prebuild $(OBJS) $(PREBUILT_OBJS) $(LIBS)
 	@cmd /C "@echo ### Successfully generated all binary outputs."
 
 
 prebuild : 
 
 
-download : build
+download : $(PRODUCT)
 
 
 execute : download
@@ -318,9 +298,9 @@ set_environment_variables :
 # Create a standalone executable            
 #-------------------------------------------
 
-$(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MODELREF_LIBS) $(MAIN_OBJ)
+$(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MODELREF_LIBS) $(LIBS) $(MAIN_OBJ)
 	@cmd /C "@echo ### Creating standalone executable "$(PRODUCT)" ..."
-	$(LD) $(LDFLAGS) -out:$(PRODUCT) @$(CMD_FILE) @$(MODELREF_LINK_RSPFILE) $(SYSTEM_LIBS) $(TOOLCHAIN_LIBS)
+	$(LD) $(LDFLAGS) -out:$(PRODUCT) @$(CMD_FILE) @$(MODELREF_LINK_RSPFILE) $(LIBS) $(SYSTEM_LIBS) $(TOOLCHAIN_LIBS)
 	@cmd /C "@echo ### Created: $(PRODUCT)"
 
 
@@ -345,14 +325,6 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MODELREF_LIBS) $(MAIN_OBJ)
 
 
 {$(RELATIVE_PATH_TO_ANCHOR)}.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
-
-
-{C:\Users\sdupertu\Data\Projects\Demos\branches\Sebastien_Dupertuis\Demo_development\Parking_Meter\Simulink\Interface_C_files}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
-
-
-{C:\Users\sdupertu\Data\Projects\Demos\branches\Sebastien_Dupertuis\Demo_development\Parking_Meter\Simulink\Interface_C_files}.cpp.obj :
 	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
 
 
@@ -388,11 +360,19 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MODELREF_LIBS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
 
 
+{$(START_DIR)\ParkingMeterLowLevel_ert_rtw}.c.obj :
+	$(CC) $(CFLAGS) -Fo"$@" "$<"
+
+
+{$(START_DIR)\ParkingMeterLowLevel_ert_rtw}.c.obj :
+	$(CC) $(CFLAGS) -Fo"$@" "$<"
+
+
 ###########################################################################
 ## DEPENDENCIES
 ###########################################################################
 
-$(ALL_OBJS) : $(MAKEFILE) rtw_proj.tmw
+$(ALL_OBJS) : rtw_proj.tmw $(COMPILER_COMMAND_FILE) $(MAKEFILE)
 
 
 ###########################################################################

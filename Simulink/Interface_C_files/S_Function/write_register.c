@@ -26,7 +26,7 @@
  * | See matlabroot/simulink/src/sfuntmpl_doc.c for a more detailed template |
  *  ------------------------------------------------------------------------- 
  *
- * Created: Wed Oct 31 12:00:17 2018
+ * Created: Thu Jun 13 15:38:44 2019
  */
 
 #define S_FUNCTION_LEVEL 2
@@ -113,7 +113,7 @@ static void mdlInitializeSizes(SimStruct *S)
 
     ssSetArrayLayoutForCodeGen(S, SS_COLUMN_MAJOR);
 
-    ssSetSimStateCompliance(S, USE_DEFAULT_SIM_STATE);
+    ssSetOperatingPointCompliance(S, USE_DEFAULT_OPERATING_POINT);
 
     ssSetNumContStates(S, NUM_CONT_STATES);
     ssSetNumDiscStates(S, NUM_DISC_STATES);
@@ -144,7 +144,7 @@ static void mdlInitializeSizes(SimStruct *S)
     ssSetNumModes(S, 0);
     ssSetNumNonsampledZCs(S, 0);
 
-    ssSetSimulinkVersionGeneratedIn(S, "9.2");
+    ssSetSimulinkVersionGeneratedIn(S, "10.0");
 
     /* Take care when specifying exception free code - see sfuntmpl_doc.c */
     ssSetOptions(S, (SS_OPTION_EXCEPTION_FREE_CODE |
