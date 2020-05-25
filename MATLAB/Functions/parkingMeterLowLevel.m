@@ -608,8 +608,14 @@ end
 % OUT   : - register_value: value stored in the register as an unsigned 8 bit
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [register_value] = read_interface(register_address)
+  global APP_DESIGNER;
+
   if coder.target('MATLAB')
-  register_value = read_register(register_address);
+    if (APP_DESIGNER)
+      register_value = read_app_designer(register_address);
+    else
+      register_value = read_register(register_address);
+    end
   else
   coder.updateBuildInfo('addSourceFiles','read_register.c');
   register_value = uint8(0);
@@ -626,8 +632,14 @@ end
 % OUT   : -
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [] = write_interface(register_address,new_value)
+  global APP_DESIGNER;
+
   if coder.target('MATLAB')
-  write_register(register_address,new_value);
+    if (APP_DESIGNER)
+      write_app_designer(register_address,new_value);
+    else
+      write_register(register_address,new_value);
+    end
   else
   coder.updateBuildInfo('addSourceFiles','write_register.c');
   coder.ceval('write_register',register_address,new_value);
