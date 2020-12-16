@@ -1,8 +1,10 @@
 /*
+ * Prerelease License - for engineering feedback and testing purposes
+ * only. Not for sale.
  * File: parkingMeterLowLevel_types.h
  *
- * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 14-Oct-2019 18:07:56
+ * MATLAB Coder version            : 5.2
+ * C/C++ source code generated on  : 16-Dec-2020 09:18:10
  */
 
 #ifndef PARKINGMETERLOWLEVEL_TYPES_H
@@ -10,8 +12,8 @@
 
 /* Include Files */
 #include "rtwtypes.h"
-#endif
 
+#endif
 /*
  * File trailer for parkingMeterLowLevel_types.h
  *

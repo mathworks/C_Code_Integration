@@ -27,7 +27,7 @@ if (APP_DESIGNER) % No MEX of the low-level interface possible here
   parkingMeterLowLevel();
 else
   % Close potential instance of the C# GUI
-  if (system('taskkill -f -im ParkingMeterGUI.exe') ~= 0)
+  if (system('taskkill -f -im ParkingMeterGUI.exe') ~= 0) %#ok<*UNRCH>
     fprintf(repmat('\b',1,54)); % Remove the useless console error message
     fprintf('No running instance of the C# GUI has been detected.\n');
   end
