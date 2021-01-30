@@ -1,7 +1,12 @@
 %% Clean session
 
 clear variables; clc;
-stop(timerfind); delete(timerfind);
+try
+  stop(timerfind);
+  delete(timerfind);
+catch
+  disp('No timers are running.');
+end
 
 %% Parking meter system initialization
 
@@ -15,7 +20,7 @@ end
 % Call the low-level MATLAB code of the application in a separate process
 fprintf('Starting the low-level application instance...\n');
 system('..\\Component\\UnitTesting\\ParkingMeterProject.exe&');
-pause(2);
+pause(3);
 
 %% Call the unit testing framework
 
