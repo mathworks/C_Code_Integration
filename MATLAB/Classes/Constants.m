@@ -71,7 +71,7 @@ classdef Constants
     % Parking meter system constants 
     MINUS_VALUE     = Constants.INT_CASE_ENTRY_M; % Must be identical 
     TICKET_FEE      = uint16(120);
-    PULSE_DURATION  = 0.1;
+    PULSE_DURATION  = 0.25;
     REFRESHING_TIME = 0.01;
     % Addresses of the registers accessed by the 7segments displays
     DISPLAY_REGISTER_1 = 0xA000;

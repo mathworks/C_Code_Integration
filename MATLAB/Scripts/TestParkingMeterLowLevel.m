@@ -9,7 +9,7 @@ global APP_DESIGNER; % To set low-level driver functions properly %#ok<*UNRCH>
 % Initialization
 APP_DESIGNER = true; % 'true' => App Designer implementation, 'false' => C# App
 TEST_MEX = false;  % 'true' => Generate and test the MEX file, 'false' => No MEX
-defineTestMode(1); % '1' => test mode, '0' => normal operation mode
+defineTestMode(0); % '1' => test mode, '0' => normal operation mode
 
 % Text constants declaration
 TEXT_RUN = 'The interface to the parking meter has been activated.';

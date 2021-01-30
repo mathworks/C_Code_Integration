@@ -2,7 +2,7 @@
  * File: parkingMeterLowLevel.c
  *
  * MATLAB Coder version            : 5.1
- * C/C++ source code generated on  : 28-Jan-2021 15:18:26
+ * C/C++ source code generated on  : 30-Jan-2021 17:11:56
  */
 
 /* Include Files */
@@ -869,7 +869,7 @@ static void give_back_coin(unsigned short amount)
     /*  IN/OUT: - */
     /*  OUT   : - */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-    Sleep(100);
+    Sleep(250);
 
     /*  Sleep asks milliseconds as input */
     /*  Reset the selected bit only and write the new value to the register */
@@ -890,7 +890,7 @@ static void give_back_coin(unsigned short amount)
     /*  IN/OUT: - */
     /*  OUT   : - */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-    Sleep(100);
+    Sleep(250);
 
     /*  Sleep asks milliseconds as input */
     break;
@@ -935,7 +935,7 @@ static void give_back_coin(unsigned short amount)
     /*  IN/OUT: - */
     /*  OUT   : - */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-    Sleep(100);
+    Sleep(250);
 
     /*  Sleep asks milliseconds as input */
     /*  Reset the selected bit only and write the new value to the register */
@@ -956,7 +956,7 @@ static void give_back_coin(unsigned short amount)
     /*  IN/OUT: - */
     /*  OUT   : - */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-    Sleep(100);
+    Sleep(250);
 
     /*  Sleep asks milliseconds as input */
     break;
@@ -1001,7 +1001,7 @@ static void give_back_coin(unsigned short amount)
     /*  IN/OUT: - */
     /*  OUT   : - */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-    Sleep(100);
+    Sleep(250);
 
     /*  Sleep asks milliseconds as input */
     /*  Reset the selected bit only and write the new value to the register */
@@ -1022,7 +1022,7 @@ static void give_back_coin(unsigned short amount)
     /*  IN/OUT: - */
     /*  OUT   : - */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-    Sleep(100);
+    Sleep(250);
 
     /*  Sleep asks milliseconds as input */
     break;
@@ -1067,7 +1067,7 @@ static void give_back_coin(unsigned short amount)
     /*  IN/OUT: - */
     /*  OUT   : - */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-    Sleep(100);
+    Sleep(250);
 
     /*  Sleep asks milliseconds as input */
     /*  Reset the selected bit only and write the new value to the register */
@@ -1088,7 +1088,7 @@ static void give_back_coin(unsigned short amount)
     /*  IN/OUT: - */
     /*  OUT   : - */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-    Sleep(100);
+    Sleep(250);
 
     /*  Sleep asks milliseconds as input */
     break;
@@ -1684,7 +1684,7 @@ static void standard_operation_mode(void)
           /*  IN/OUT: - */
           /*  OUT   : - */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-          Sleep(100);
+          Sleep(250);
 
           /*  Sleep asks milliseconds as input */
           /*  Reset the selected bit only and write the new value to the register */
@@ -1705,7 +1705,7 @@ static void standard_operation_mode(void)
           /*  IN/OUT: - */
           /*  OUT   : - */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-          Sleep(100);
+          Sleep(250);
 
           /*  Sleep asks milliseconds as input */
           /*  Give back coin's change */
@@ -2111,7 +2111,7 @@ void parkingMeterLowLevel(void)
           /*  IN/OUT: - */
           /*  OUT   : - */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-          Sleep(100);
+          Sleep(250);
 
           /*  Sleep asks milliseconds as input */
           /*  Reset the selected bit only and write the new value to the register */
@@ -2132,7 +2132,7 @@ void parkingMeterLowLevel(void)
           /*  IN/OUT: - */
           /*  OUT   : - */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-          Sleep(100);
+          Sleep(250);
 
           /*  Sleep asks milliseconds as input */
           printf("%s\n\n",

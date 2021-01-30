@@ -1,10 +1,4 @@
-%% Clear session
-try
-  stop(timerfind);
-  delete(timerfind);
-catch
-  % No timer exists
-end
+%% Clean session
 clear variables; clc;
 
 global app;
@@ -22,8 +16,8 @@ waitfor(app,'Running','on');
 pause(2);
 fprintf('%s\n',TEXT_INTERFACE);
 % Close potential instance of the C# GUI
-if (system('taskkill -f -im ParkingMeterProject.exe') ~= 0)
-  fprintf(repmat('\b',1,57)); % Remove the useless console error message
+if (system('taskkill /F /im ParkingMeterProject.exe /im cmd.exe &') ~= 0)
+%   fprintf(repmat('\b',1,57)); % Remove the useless console error message
   fprintf('No running instance of the low-level application has been detected.\n');
 end
 % Call the low-level MATLAB code of the application in a separate process
@@ -31,4 +25,5 @@ system('..\\Component\\UnitTesting\\ParkingMeterProject.exe&');
 
 %% Call the unit testing framework
 
-% results = runtests('..\Component\UnitTesting\TestApp.m');
+results = runtests('..\Component\UnitTesting\TestApp.m');
+system('taskkill /F /im ParkingMeterProject.exe /im cmd.exe &');
