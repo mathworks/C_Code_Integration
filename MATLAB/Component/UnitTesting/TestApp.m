@@ -1,72 +1,113 @@
 classdef TestApp < matlab.uitest.TestCase
-  %TESTAPP Summary of this class goes here
   % Call the test execution like this:
   % results = runtests('..\Component\UnitTesting\TestApp.m');
   
   properties
     App
-    WaitTime = 2;
+    WaitTime = 3;
+    Separator= ['------------------------------------------------------------'...
+                '------------------------------------------------------------\n'];
   end
 
   methods (TestMethodSetup)
     function launchApp(testCase)
-      global app;
-      testCase.App = app;
+      % Instanciate the App Designer GUI
+      testCase.App = ParkingMeterGUI;
+      % Temporisation to be sure the App is up and running
+      waitfor(testCase.App,'Running','on');
+      pause(testCase.WaitTime);
       testCase.addTeardown(@delete,testCase.App);
     end
   end
 
   methods (Test)
     function testCase_1_StraightTicketPurchase(testCase)
-      disp('Test case #1 starting...');
+      fprintf('.Test case #1 => | ');
+      pause(testCase.WaitTime);
       % Press the green button to start the purchase process
+      fprintf('PRESS GREEN BUTTON | ');
       testCase.press(testCase.App.ButtonGreen);
-      % Wait for the next event
       pause(testCase.WaitTime);      
       % Insert a coin of 200 cents in the App
+      fprintf('INSERT 200 CENTS | ');
       testCase.press(testCase.App.ImageCoin_200);
-      % Wait for the next event
       pause(testCase.WaitTime);      
       % Take back the ticket from the App
+      fprintf('GRAB PARKING TICKET | ');
       testCase.press(testCase.App.ImageTicket);
-      % Wait for the next event
       pause(testCase.WaitTime);
       % Take back the change from the App
+      fprintf('GRAB CHANGE      | ');
       testCase.press(testCase.App.ImageCoinSlot_1);
-      % Wait for the next event
       pause(testCase.WaitTime);
       % Pause the App execution
-      stop(timerfind);
+      fprintf('END OF SEQUENCE |\n');
+      fprintf(testCase.Separator);
+      % Kill the running timer of the App
+      evalin('base','stop(timerfind); delete(timerfind);');
     end
 
     function testCase_2_CancelTicketPurchase(testCase)
       % Resume the App execution
-      start(timerfind);
-      disp('Test case #2 starting...');
+      fprintf('Test case #2 => | ');
+      pause(testCase.WaitTime);
       % Press the green button to start the purchase process
+      fprintf('PRESS GREEN BUTTON | ');
       testCase.press(testCase.App.ButtonGreen);
-      % Wait for the next event
       pause(testCase.WaitTime);      
       % Insert a coin of 100 cents in the App
+      fprintf('INSERT 100 CENTS | ');
       testCase.press(testCase.App.ImageCoin_100);
-      % Wait for the next event
-      pause(testCase.WaitTime);      
+      pause(testCase.WaitTime);
       % Cancel the purchase process
+      fprintf('PRESS RED BUTTON    | ');
       testCase.press(testCase.App.ButtonRed);
-      % Wait for the next event
       pause(testCase.WaitTime);
       % Take back the return coins from the App
+      fprintf('GRAB CHANGE      | ');
       testCase.press(testCase.App.ImageCoinSlot_1);
-      % Wait for the next event
       pause(testCase.WaitTime);
       % Switch off the App
       testCase.press(testCase.App.SwitchMaster);
+      fprintf('END OF SEQUENCE |\n');
+      fprintf(testCase.Separator);
       % Kill the running timer of the App
-      stop(timerfind);
-      delete(timerfind);
-      % Verify Data Tab is selected
+      evalin('base','stop(timerfind); delete(timerfind);');
 %       testCase.verifyEqual(testCase.App.TabGroup.SelectedTab.Title,'Data')
-    end 
+    end
+    
+    function testCase_3_BiggestChangeOnTicketPurchase(testCase)
+      fprintf('Test case #3 => | ');
+      pause(testCase.WaitTime);
+      % Press the green button to start the purchase process
+      fprintf('PRESS GREEN BUTTON | ');
+      testCase.press(testCase.App.ButtonGreen);
+      pause(testCase.WaitTime);      
+      % Insert a coin of 100 cents in the App
+      fprintf('INSERT 100 CENTS | ');
+      testCase.press(testCase.App.ImageCoin_100);
+      pause(testCase.WaitTime);      
+      % Insert a coin of 10 cents in the App
+      fprintf('INSERT 10 CENTS    | ');
+      testCase.press(testCase.App.ImageCoin_010);
+      pause(testCase.WaitTime);      
+      % Insert a coin of 200 cents in the App
+      fprintf('INSERT 200 CENTS | ');
+      testCase.press(testCase.App.ImageCoin_200);
+      pause(testCase.WaitTime);      
+      % Take back the ticket from the App
+      fprintf('GRAB PARKING TICKET | ');
+      testCase.press(testCase.App.ImageTicket);
+      pause(testCase.WaitTime);
+      % Take back the change from the App
+      fprintf('GRAB CHANGE | ');
+      testCase.press(testCase.App.ImageCoinSlot_1);
+      pause(testCase.WaitTime);
+      % Pause the App execution
+      fprintf('END OF SEQUENCE |\n');
+      fprintf(testCase.Separator);
+      % Kill the running timer of the App
+      evalin('base','stop(timerfind); delete(timerfind);');
+    end
   end
 end
-

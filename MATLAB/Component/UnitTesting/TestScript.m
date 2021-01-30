@@ -1,27 +1,21 @@
 %% Clean session
-clear variables; clc;
 
-global app;
-% Text constants declaration
-TEXT_INTERFACE = 'The parking meter interface has been activated.';
-TEXT_LOW_LEVEL = 'The low-level application is up and running.';
+clear variables; clc;
+stop(timerfind); delete(timerfind);
 
 %% Parking meter system initialization
 
-fprintf('%s\n','Instanciation of the App Designer object...');
-% Launch the App Designer GUI
-app = ParkingMeterGUI;
-% Temporisation to be sure the App is up and running
-waitfor(app,'Running','on');
-pause(2);
-fprintf('%s\n',TEXT_INTERFACE);
-% Close potential instance of the C# GUI
+global unitTest;
+% Set to true if the MATLAB unit testing API is used, otherwise always false
+unitTest = true;
+% Close any potential running instance of the low-level application
 if (system('taskkill /F /im ParkingMeterProject.exe /im cmd.exe &') ~= 0)
-%   fprintf(repmat('\b',1,57)); % Remove the useless console error message
   fprintf('No running instance of the low-level application has been detected.\n');
 end
 % Call the low-level MATLAB code of the application in a separate process
+fprintf('Starting the low-level application instance...\n');
 system('..\\Component\\UnitTesting\\ParkingMeterProject.exe&');
+pause(2);
 
 %% Call the unit testing framework
 
