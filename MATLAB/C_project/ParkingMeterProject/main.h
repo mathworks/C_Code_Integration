@@ -1,10 +1,8 @@
 /*
- * Prerelease License - for engineering feedback and testing purposes
- * only. Not for sale.
  * File: main.h
  *
- * MATLAB Coder version            : 5.2
- * C/C++ source code generated on  : 16-Dec-2020 09:18:10
+ * MATLAB Coder version            : 5.1
+ * C/C++ source code generated on  : 28-Jan-2021 15:18:26
  */
 
 /*************************************************************************/
@@ -31,7 +29,6 @@
 /* otherwise use them as required by your application.                   */
 /*                                                                       */
 /*************************************************************************/
-
 #ifndef MAIN_H
 #define MAIN_H
 
@@ -39,19 +36,21 @@
 #include "rtwtypes.h"
 #include <stddef.h>
 #include <stdlib.h>
-
 #ifdef __cplusplus
+
 extern "C" {
+
 #endif
 
-/* Function Declarations */
-extern int main(int argc, char **argv);
+  /* Function Declarations */
+  extern int main(int argc, const char * const argv[]);
 
 #ifdef __cplusplus
+
 }
 #endif
-
 #endif
+
 /*
  * File trailer for main.h
  *

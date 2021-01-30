@@ -1,10 +1,8 @@
 /*
- * Prerelease License - for engineering feedback and testing purposes
- * only. Not for sale.
  * File: parkingMeterLowLevel.h
  *
- * MATLAB Coder version            : 5.2
- * C/C++ source code generated on  : 16-Dec-2020 09:18:10
+ * MATLAB Coder version            : 5.1
+ * C/C++ source code generated on  : 28-Jan-2021 15:18:26
  */
 
 #ifndef PARKINGMETERLOWLEVEL_H
@@ -19,21 +17,22 @@
 extern int TEST_MODE;
 
 #ifdef __cplusplus
+
 extern "C" {
+
 #endif
 
-/* Function Declarations */
-extern void parkingMeterLowLevel(void);
-
-extern void parkingMeterLowLevel_initialize(void);
-
-extern void parkingMeterLowLevel_terminate(void);
+  /* Function Declarations */
+  extern void parkingMeterLowLevel(void);
+  extern void parkingMeterLowLevel_initialize(void);
+  extern void parkingMeterLowLevel_terminate(void);
 
 #ifdef __cplusplus
+
 }
 #endif
-
 #endif
+
 /*
  * File trailer for parkingMeterLowLevel.h
  *
