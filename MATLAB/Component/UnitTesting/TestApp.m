@@ -9,6 +9,21 @@ classdef TestApp < matlab.uitest.TestCase
                 '------------------------------------------------------------\n'];
   end
 
+  methods (Access = private)
+    function outputsVerification(testCase,reference)
+      % Kill the running timer of the App
+      evalin('base','stop(timerfind); delete(timerfind);');
+      fprintf('Reference output => | ')
+      % Output sequence to expect for the correct behaviour
+      for k=1:numel(reference)
+        fprintf('%s | ',reference{k});
+      end
+      fprintf('\n');
+      % Verification of the produced output sequence against the reference
+      testCase.verifyEqual(testCase.App.AutoTestingTrace,reference);
+    end
+  end
+
   methods (TestMethodSetup)
     function launchApp(testCase)
       % Instanciate the App Designer GUI
@@ -42,9 +57,10 @@ classdef TestApp < matlab.uitest.TestCase
       testCase.press(testCase.App.ImageCoinSlot_1);
       pause(testCase.WaitTime);
       fprintf('END OF SEQUENCE    |\n');
+      % Output sequence to expect for the correct behaviour
+      baselineTrace = {'---';'1.20';'---'};
+      testCase.outputsVerification(baselineTrace);
       fprintf(testCase.Separator);
-      % Kill the running timer of the App
-      evalin('base','stop(timerfind); delete(timerfind);');
     end
 
     function testCase_2_CancelTicketPurchase(testCase)
@@ -67,11 +83,12 @@ classdef TestApp < matlab.uitest.TestCase
       testCase.press(testCase.App.ImageCoinSlot_1);
       pause(testCase.WaitTime);
       fprintf('END OF SEQUENCE    |\n');
+      % Output sequence to expect for the correct behaviour
+      baselineTrace = {'---';'1.20';'0.20';'---'};
+      testCase.outputsVerification(baselineTrace);
       fprintf(testCase.Separator);
-      % Kill the running timer of the App
-      evalin('base','stop(timerfind); delete(timerfind);');
     end
-    
+
     function testCase_3_BiggestChangeOnTicketPurchase(testCase)
       fprintf('Test case #3 => | ');
       pause(testCase.WaitTime);
@@ -101,10 +118,10 @@ classdef TestApp < matlab.uitest.TestCase
       testCase.press(testCase.App.ImageCoinSlot_1);
       pause(testCase.WaitTime);
       fprintf('END OF SEQUENCE  |\n');
+      % Output sequence to expect for the correct behaviour
+      baselineTrace = {'---';'1.20';'0.20';'0.10';'---'};
+      testCase.outputsVerification(baselineTrace);
       fprintf(testCase.Separator);
-      % Kill the running timer of the App
-      evalin('base','stop(timerfind); delete(timerfind);');
-%       testCase.verifyEqual(testCase.App.TabGroup.SelectedTab.Title,'Data')
     end
   end
 end
