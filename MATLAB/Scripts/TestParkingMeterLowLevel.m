@@ -3,17 +3,25 @@
 %         Press the "Run" button to execute
 % Author: Sebastien Dupertuis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 clear variables; clc;
 global APP_DESIGNER; % To set low-level driver functions properly %#ok<*UNRCH>
+global UNIT_TESTING; % To set the automated unit testing of the App to false
 
-% Initialization
-APP_DESIGNER = true; % 'true' => App Designer implementation, 'false' => C# App
+%% Initialization
+
+APP_DESIGNER = true;  % 'true' => App Designer implementation, 'false' => C# App
+UNIT_TESTING = false; % 'false' => Manual testing, 'true' => Automated testing.
+                      % Here it MUST always be set to false, otherwise the App
+                      % will be locked as no test cases are defined in the script
 TEST_MEX = false;  % 'true' => Generate and test the MEX file, 'false' => No MEX
-defineTestMode(0); % '1' => test mode, '0' => normal operation mode
+defineTestMode(1); % '1' => test mode, '0' => normal operation mode
 
 % Text constants declaration
 TEXT_RUN = 'The interface to the parking meter has been activated.';
 CODEGEN_FOLDER = '..\MEX_functions\codegen';
+
+%% Start the system to do manual testing
 
 if (APP_DESIGNER) % No MEX of the low-level interface possible here
   % Close potential instance of the App Designer GUI

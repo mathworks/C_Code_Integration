@@ -1,4 +1,8 @@
-%% Clean session
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Goal  : Unit testing of the graphical App of the Parking Meter system.
+%         Press the "Run" button to execute
+% Author: Sebastien Dupertuis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 clear variables; clc;
 try
@@ -10,9 +14,9 @@ end
 
 %% Parking meter system initialization
 
-global unitTest;
+global UNIT_TESTING;
 % Set to true if the MATLAB unit testing API is used, otherwise always false
-unitTest = true;
+UNIT_TESTING = true;
 % Close any potential running instance of the low-level application
 if (system('taskkill /F /im ParkingMeterProject.exe /im cmd.exe &') ~= 0)
   fprintf('No running instance of the low-level application has been detected.\n');
@@ -22,7 +26,7 @@ fprintf('Starting the low-level application instance...\n');
 system('..\\Component\\UnitTesting\\ParkingMeterProject.exe&');
 pause(3);
 
-%% Call the unit testing framework
+%% Call the unit testing framework for automated testing
 
 results = runtests('..\Component\UnitTesting\TestApp.m');
 system('taskkill /F /im ParkingMeterProject.exe /im cmd.exe &');

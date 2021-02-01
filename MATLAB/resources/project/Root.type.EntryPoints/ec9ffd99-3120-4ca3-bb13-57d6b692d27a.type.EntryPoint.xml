@@ -1,2 +1,2 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<Info Type="Basic" GroupUUID="e954f59c-0ff3-4a0b-98a8-490f44123e57" Visible="1" Icon="" File="Component/UnitTesting/TestScript.m" Name="Unit Testing" />
+<Info Type="Basic" GroupUUID="e954f59c-0ff3-4a0b-98a8-490f44123e57" Visible="1" Icon="" File="Component/UnitTesting/UnitTestScript.m" Name="Unit Testing" />

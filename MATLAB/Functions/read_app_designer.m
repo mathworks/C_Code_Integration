@@ -11,13 +11,13 @@ function [value] = read_app_designer(register_address) %#ok<*INUSD>
   
   switch (register_address)
     case const.BUTTONS_REGISTER
-      value = evalin('base','app.BUTTONS_REGISTER');
+      value = evalin('base','app.NEW_BUTTONS_REGISTER');
     case const.INSERTED_COINS_REGISTER
-      value = evalin('base','app.INSERTED_COINS_REGISTER');
+      value = evalin('base','app.NEW_INSERTED_COINS_REGISTER');
     case const.AVAILABLE_COINS_REGISTER
-      value = evalin('base','app.AVAILABLE_COINS_REGISTER');
+      value = evalin('base','app.NEW_AVAILABLE_COINS_REGISTER');
     case const.PERIPHERALS_REGISTER
-      value = evalin('base','app.PERIPHERALS_REGISTER');
+      value = evalin('base','app.NEW_PERIPHERALS_REGISTER');
     otherwise
       % Do nothing as the provided address does not match any register
   end

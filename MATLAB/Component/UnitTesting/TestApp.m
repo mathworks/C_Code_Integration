@@ -22,6 +22,7 @@ classdef TestApp < matlab.uitest.TestCase
 
   methods (Test)
     function testCase_1_StraightTicketPurchase(testCase)
+      fprintf(testCase.Separator);
       fprintf('.Test case #1 => | ');
       pause(testCase.WaitTime);
       % Press the green button to start the purchase process
@@ -96,7 +97,7 @@ classdef TestApp < matlab.uitest.TestCase
       testCase.press(testCase.App.ImageTicket);
       pause(testCase.WaitTime);
       % Take back the change from the App
-      fprintf('GRAB CHANGE       | ');
+      fprintf('GRAB CHANGE        | ');
       testCase.press(testCase.App.ImageCoinSlot_1);
       pause(testCase.WaitTime);
       fprintf('END OF SEQUENCE  |\n');
