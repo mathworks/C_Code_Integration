@@ -2,7 +2,7 @@
  * File: parkingMeterLowLevel.c
  *
  * MATLAB Coder version            : 5.1
- * C/C++ source code generated on  : 30-Jan-2021 17:11:56
+ * C/C++ source code generated on  : 02-Feb-2021 09:25:13
  */
 
 /* Include Files */
@@ -1780,6 +1780,16 @@ void parkingMeterLowLevel(void)
   /*  Initialization */
   if (TEST_MODE == 0) {
     /*  Instantiate all constants for the normal application */
+    /*  Force the master switch register value to 'on' to avoid direct shutdown */
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+    /*  Function write_interface() */
+    /*  Goal  : Define the interface layer writing data to external HW registers */
+    /*  IN    : - register_address: address of the register in unsigned 16 bit */
+    /*          - new_value: value to store in the register as an unsigned 8 bit */
+    /*  IN/OUT: - */
+    /*  OUT   : - */
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+    write_register(40976, 4);
     printf("The normal mode of operation of the parking meter has been activated.\n");
     fflush(stdout);
     printf("Feel free to purchase tickets.\n");

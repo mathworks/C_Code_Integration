@@ -4,7 +4,7 @@
 % Author: Sebastien Dupertuis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-clear variables; clc;
+clear variables; close all; clc;
 try
   stop(timerfind);
   delete(timerfind);
@@ -30,3 +30,5 @@ pause(3);
 
 results = runtests('..\Component\UnitTesting\TestApp.m');
 system('taskkill /F /im ParkingMeterProject.exe /im cmd.exe &');
+disp(results.table);
+

@@ -18,6 +18,10 @@ function [] = parkingMeterLowLevel()
   if (TEST_MODE == 0)
     % Instantiate all constants for the normal application
     const = Constants;
+    if coder.target('Rtw')
+      % Force the master switch register value to 'on' to avoid direct shutdown
+      write_interface(const.BUTTONS_REGISTER,const.BIT_MASK_MASTER_SWITCH);
+    end
     fprintf('The normal mode of operation of the parking meter has been activated.\n');
     fprintf('Feel free to purchase tickets.\n');
     standard_operation_mode(const);
