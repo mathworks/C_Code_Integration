@@ -1,1 +1,1 @@
-open('UnitTestScript');
+open('UnitTest');

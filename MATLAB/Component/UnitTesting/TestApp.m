@@ -8,11 +8,13 @@ classdef TestApp < matlab.uitest.TestCase
   end
 
   methods (Access = private)
-    function outputsVerification(testCase,stimuli,responses,testID)
+    function [] = outputsVerification(testCase,stimuli,responses,testID)
+      % Add needed classes to the import list
+      import matlab.unittest.diagnostics.Diagnostic;
+      import matlab.unittest.diagnostics.FigureDiagnostic;
       % Kill the running timer of the App
       evalin('base','stop(timerfind); delete(timerfind);');
       % Initialization
-      xDataRef = (1:1:numel(stimuli))';
       yDataRef = str2double(responses(2:end,:));
       [nbSteps,nbParams] = size(testCase.App.AutoTestingTrace);
       xData = (1:1:nbSteps);
@@ -25,36 +27,40 @@ classdef TestApp < matlab.uitest.TestCase
       end
       yDataRef(nbSteps,:) = [0;0];
       yData(nbSteps,:) = [0;0];
+      xDataRef = (1:1:length(yDataRef))';
       % Replace potential NaNs in the results by zeros
       yDataRef(isnan(yDataRef)) = 0;
       yData(isnan(yData)) = 0;
       % Display results
-      figure(testID);
-      stairs(xDataRef,yDataRef(:,1),'LineStyle','-','LineWidth',1.5); hold('on');
-      stairs(xDataRef,yDataRef(:,2),'LineStyle','-','LineWidth',1.5);
-      stairs(xData,yData(:,1),'LineStyle','--','Marker','o','LineWidth',1.5);
-      stairs(xData,yData(:,2),'LineStyle',':','Marker','d','LineWidth',1.5);
+      hFig = figure('units','normalized','outerposition',[0 0 0.75 0.75]);
+      stairs(xDataRef,yDataRef(:,1),'LineStyle','-','LineWidth',2); hold('on');
+      stairs(xDataRef,yDataRef(:,2),'LineStyle','-','LineWidth',2);
+      stairs(xData,yData(:,1),'LineStyle','--','Marker','o','LineWidth',2);
+      stairs(xData,yData(:,2),'LineStyle',':','Marker','d','LineWidth',2);
       hold('off');
       xticks((1:1:nbSteps));
       xticklabels(categorical(stimuli));
       xtickangle(45);
-      xlabel('External events');
-      ylabel('Amount of money');
+      xlabel('External events','FontSize',14,'FontWeight','Bold');
+      ylabel('Amount of money','FontSize',14,'FontWeight','Bold');
       yticks((0:0.1:2));
       ytickformat('%.2f');
-      title(['Results of test case #' num2str(testID)]);
+      ax = gca; ax.FontSize = 16; 
+      title(['Results of test case #' num2str(testID)],'FontSize',18,'FontWeight','Bold');
       legend('Expected: Still to pay','Expected: Given back',...
              'Measured: Still to pay','Measured: Given back');
       % Verification of the produced output sequence against the reference
-      testCase.verifyEqual(testCase.App.AutoTestingTrace,responses)
+      testCase.verifyEqual(testCase.App.AutoTestingTrace,responses);
+      % Save the figure in the results
+      testCase.log(testID,Diagnostic.join(FigureDiagnostic(hFig)));
     end
   end
 
   methods (TestMethodSetup)
-    function launchApp(testCase)
-      % Instanciate the App Designer GUI
+    function [] = launchApp(testCase)
+      % Instantiate the App Designer GUI
       testCase.App = ParkingMeterGUI;
-      % Temporisation to be sure the App is up and running
+      % Temporization to be sure the App is up and running
       waitfor(testCase.App,'Running','on');
       pause(testCase.WaitTime);
       testCase.addTeardown(@delete,testCase.App);
@@ -62,7 +68,7 @@ classdef TestApp < matlab.uitest.TestCase
   end
 
   methods (Test)
-    function testCase_1_StraightTicketPurchase(testCase)
+    function [] = testCase_1_StraightTicketPurchase(testCase)
       fprintf('. Processing the test case #1...\n');
       pause(testCase.WaitTime);
       % Press the green button to start the purchase process
@@ -85,7 +91,7 @@ classdef TestApp < matlab.uitest.TestCase
       testCase.outputsVerification(stimuliTrace,responsesTrace,1);
     end
 
-    function testCase_2_CancelTicketPurchase(testCase)
+    function [] = testCase_2_CancelTicketPurchase(testCase)
       fprintf(' Processing the test case #2...\n');
       pause(testCase.WaitTime);
       % Press the green button to start the purchase process
@@ -108,7 +114,7 @@ classdef TestApp < matlab.uitest.TestCase
       testCase.outputsVerification(stimuliTrace,responsesTrace,2);
     end
 
-    function testCase_3_BiggestChangeOnTicketPurchase(testCase)
+    function [] = testCase_3_BiggestChangeOnTicketPurchase(testCase)
       fprintf(' Processing the test case #3...\n');
       pause(testCase.WaitTime);
       % Press the green button to start the purchase process
@@ -138,7 +144,7 @@ classdef TestApp < matlab.uitest.TestCase
       testCase.outputsVerification(stimuliTrace,responsesTrace,3);
     end
 
-    function testCase_4_FullyEmptyAndReloadCashBox(testCase)
+    function [] = testCase_4_FullyEmptyAndReloadCashBox(testCase)
       fprintf(' Processing the test case #4...\n');
       pause(testCase.WaitTime);
       for k=1:1:3
