@@ -9,9 +9,10 @@ classdef TestApp < matlab.uitest.TestCase
 
   methods (Access = private)
     function [] = outputsVerification(testCase,stimuli,responses,testID)
-      % Add needed classes to the import list
+      % Add the needed classes to import diagnostics and figures in the report
       import matlab.unittest.diagnostics.Diagnostic;
       import matlab.unittest.diagnostics.FigureDiagnostic;
+      import matlab.unittest.Verbosity;
       % Kill the running timer of the App
       evalin('base','stop(timerfind); delete(timerfind);');
       % Initialization
@@ -52,7 +53,7 @@ classdef TestApp < matlab.uitest.TestCase
       % Verification of the produced output sequence against the reference
       testCase.verifyEqual(testCase.App.AutoTestingTrace,responses);
       % Save the figure in the results
-      testCase.log(testID,Diagnostic.join(FigureDiagnostic(hFig)));
+      testCase.log(Verbosity.Terse,Diagnostic.join(FigureDiagnostic(hFig)));
     end
   end
 
@@ -144,60 +145,60 @@ classdef TestApp < matlab.uitest.TestCase
       testCase.outputsVerification(stimuliTrace,responsesTrace,3);
     end
 
-    function [] = testCase_4_FullyEmptyAndReloadCashBox(testCase)
-      fprintf(' Processing the test case #4...\n');
-      pause(testCase.WaitTime);
-      for k=1:1:3
-        % Press the green button to start the purchase process
-        testCase.press(testCase.App.ButtonGreen);
-        pause(testCase.WaitTime);      
-        % Insert a coin of 100 cents in the App
-        testCase.press(testCase.App.ImageCoin_100);
-        pause(testCase.WaitTime);      
-        % Insert a coin of 10 cents in the App
-        testCase.press(testCase.App.ImageCoin_010);
-        pause(testCase.WaitTime);      
-        % Insert a coin of 200 cents in the App
-        testCase.press(testCase.App.ImageCoin_200);
-        pause(testCase.WaitTime);      
-        % Take back the ticket from the App
-        testCase.press(testCase.App.ImageTicket);
-        pause(testCase.WaitTime);
-        % Take back the change from the App
-        testCase.press(testCase.App.ImageCoinSlot_1);
-        pause(testCase.WaitTime);
-      end
-      % Press the key button to fully reload the cash box
-      testCase.press(testCase.App.ImageCashBoxKey);
-      pause(testCase.WaitTime);
-      % Press the green button to start the purchase process
-      testCase.press(testCase.App.ButtonGreen);
-      pause(testCase.WaitTime);      
-      % Insert a coin of 200 cents in the App
-      testCase.press(testCase.App.ImageCoin_200);
-      pause(testCase.WaitTime);      
-      % Take back the ticket from the App
-      testCase.press(testCase.App.ImageTicket);
-      pause(testCase.WaitTime);
-      % Take back the change from the App
-      testCase.press(testCase.App.ImageCoinSlot_1);
-      pause(testCase.WaitTime);
-      % Sequences to expect for the correct behaviour
-      stimuliTrace = {'Start' 'Green Button' '100 Cents' '10 Cents' '200 Cents'...
-                      'Get Ticket' 'Wait' 'Get Change' 'Wait' 'Green Button'...
-                      '100 Cents' '10 Cents' '200 Cents' 'Get Ticket' 'Wait'...
-                      'Get Change' 'Wait' 'Green Button' '100 Cents' '10 Cents'...
-                      '200 Cents' 'Get Ticket' 'Wait' 'Get Change' 'Reload Box'...
-                      'Green Button' '200 Cents' 'Get Ticket' 'Wait' 'Get Change' 'End'};
-      responsesTrace = {'DISP','COIN';'---',' ';'1.20',' ';'0.20',' ';...
-                        '0.10',' ';' ','1.00';' ','0.50';' ','0.20';...
-                        ' ','0.20';'---',' ';'1.20',' ';'0.20',' ';...
-                        '0.10',' ';' ','1.00';' ','0.50';' ','0.20';...
-                        ' ','0.20';'---',' ';'1.20',' ';'0.20',' ';...
-                        '0.10',' ';' ','1.00';' ','0.50';' ','0.20';...
-                        '---',' ';' ',' ';'1.20',' ';' ','0.50';...
-                        ' ','0.20';' ','0.10';'---',' '};
-      testCase.outputsVerification(stimuliTrace,responsesTrace,4);
-    end
+%     function [] = testCase_4_FullyEmptyAndReloadCashBox(testCase)
+%       fprintf(' Processing the test case #4...\n');
+%       pause(testCase.WaitTime);
+%       for k=1:1:3
+%         % Press the green button to start the purchase process
+%         testCase.press(testCase.App.ButtonGreen);
+%         pause(testCase.WaitTime);      
+%         % Insert a coin of 100 cents in the App
+%         testCase.press(testCase.App.ImageCoin_100);
+%         pause(testCase.WaitTime);      
+%         % Insert a coin of 10 cents in the App
+%         testCase.press(testCase.App.ImageCoin_010);
+%         pause(testCase.WaitTime);      
+%         % Insert a coin of 200 cents in the App
+%         testCase.press(testCase.App.ImageCoin_200);
+%         pause(testCase.WaitTime);      
+%         % Take back the ticket from the App
+%         testCase.press(testCase.App.ImageTicket);
+%         pause(testCase.WaitTime);
+%         % Take back the change from the App
+%         testCase.press(testCase.App.ImageCoinSlot_1);
+%         pause(testCase.WaitTime);
+%       end
+%       % Press the key button to fully reload the cash box
+%       testCase.press(testCase.App.ImageCashBoxKey);
+%       pause(testCase.WaitTime);
+%       % Press the green button to start the purchase process
+%       testCase.press(testCase.App.ButtonGreen);
+%       pause(testCase.WaitTime);      
+%       % Insert a coin of 200 cents in the App
+%       testCase.press(testCase.App.ImageCoin_200);
+%       pause(testCase.WaitTime);      
+%       % Take back the ticket from the App
+%       testCase.press(testCase.App.ImageTicket);
+%       pause(testCase.WaitTime);
+%       % Take back the change from the App
+%       testCase.press(testCase.App.ImageCoinSlot_1);
+%       pause(testCase.WaitTime);
+%       % Sequences to expect for the correct behaviour
+%       stimuliTrace = {'Start' 'Green Button' '100 Cents' '10 Cents' '200 Cents'...
+%                       'Get Ticket' 'Wait' 'Get Change' 'Wait' 'Green Button'...
+%                       '100 Cents' '10 Cents' '200 Cents' 'Get Ticket' 'Wait'...
+%                       'Get Change' 'Wait' 'Green Button' '100 Cents' '10 Cents'...
+%                       '200 Cents' 'Get Ticket' 'Wait' 'Get Change' 'Reload Box'...
+%                       'Green Button' '200 Cents' 'Get Ticket' 'Wait' 'Get Change' 'End'};
+%       responsesTrace = {'DISP','COIN';'---',' ';'1.20',' ';'0.20',' ';...
+%                         '0.10',' ';' ','1.00';' ','0.50';' ','0.20';...
+%                         ' ','0.20';'---',' ';'1.20',' ';'0.20',' ';...
+%                         '0.10',' ';' ','1.00';' ','0.50';' ','0.20';...
+%                         ' ','0.20';'---',' ';'1.20',' ';'0.20',' ';...
+%                         '0.10',' ';' ','1.00';' ','0.50';' ','0.20';...
+%                         '---',' ';' ',' ';'1.20',' ';' ','0.50';...
+%                         ' ','0.20';' ','0.10';'---',' '};
+%       testCase.outputsVerification(stimuliTrace,responsesTrace,4);
+%     end
   end
 end
