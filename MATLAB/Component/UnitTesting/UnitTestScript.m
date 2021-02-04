@@ -31,4 +31,3 @@ pause(3);
 results = runtests('..\Component\UnitTesting\TestApp.m');
 system('taskkill /F /im ParkingMeterProject.exe /im cmd.exe &');
 disp(results.table);
-
