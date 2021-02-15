@@ -2,7 +2,7 @@
  * File: parkingMeterLowLevel.c
  *
  * MATLAB Coder version            : 5.1
- * C/C++ source code generated on  : 02-Feb-2021 09:25:13
+ * C/C++ source code generated on  : 15-Feb-2021 19:03:03
  */
 
 /* Include Files */
@@ -863,6 +863,9 @@ static void give_back_coin(unsigned short amount)
     write_register(40963, register_value);
 
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+    /*  Interface layer definition for target dependent HW */
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     /*  Function sleep_interface() */
     /*  Goal  : Define the interface layer to pause the system for an amount of time */
     /*  IN    : - duration: time duration in seconds */
@@ -883,6 +886,9 @@ static void give_back_coin(unsigned short amount)
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     write_register(40963, (unsigned char)(register_value ^ 1));
 
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+    /*  Interface layer definition for target dependent HW */
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     /*  Function sleep_interface() */
     /*  Goal  : Define the interface layer to pause the system for an amount of time */
@@ -929,6 +935,9 @@ static void give_back_coin(unsigned short amount)
     write_register(40963, b_register_value);
 
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+    /*  Interface layer definition for target dependent HW */
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     /*  Function sleep_interface() */
     /*  Goal  : Define the interface layer to pause the system for an amount of time */
     /*  IN    : - duration: time duration in seconds */
@@ -949,6 +958,9 @@ static void give_back_coin(unsigned short amount)
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     write_register(40963, (unsigned char)(b_register_value ^ 2));
 
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+    /*  Interface layer definition for target dependent HW */
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     /*  Function sleep_interface() */
     /*  Goal  : Define the interface layer to pause the system for an amount of time */
@@ -995,6 +1007,9 @@ static void give_back_coin(unsigned short amount)
     write_register(40963, c_register_value);
 
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+    /*  Interface layer definition for target dependent HW */
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     /*  Function sleep_interface() */
     /*  Goal  : Define the interface layer to pause the system for an amount of time */
     /*  IN    : - duration: time duration in seconds */
@@ -1015,6 +1030,9 @@ static void give_back_coin(unsigned short amount)
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     write_register(40963, (unsigned char)(c_register_value ^ 4));
 
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+    /*  Interface layer definition for target dependent HW */
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     /*  Function sleep_interface() */
     /*  Goal  : Define the interface layer to pause the system for an amount of time */
@@ -1061,6 +1079,9 @@ static void give_back_coin(unsigned short amount)
     write_register(40963, d_register_value);
 
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+    /*  Interface layer definition for target dependent HW */
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     /*  Function sleep_interface() */
     /*  Goal  : Define the interface layer to pause the system for an amount of time */
     /*  IN    : - duration: time duration in seconds */
@@ -1081,6 +1102,9 @@ static void give_back_coin(unsigned short amount)
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     write_register(40963, (unsigned char)(d_register_value ^ 8));
 
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+    /*  Interface layer definition for target dependent HW */
+    /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     /*  Function sleep_interface() */
     /*  Goal  : Define the interface layer to pause the system for an amount of time */
@@ -1426,6 +1450,9 @@ static void standard_operation_mode(void)
       }
 
       /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+      /*  Interface layer definition for target dependent HW */
+      /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+      /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
       /*  Function sleep_interface() */
       /*  Goal  : Define the interface layer to pause the system for an amount of time */
       /*  IN    : - duration: time duration in seconds */
@@ -1535,6 +1562,9 @@ static void standard_operation_mode(void)
       do {
         exitg1 = 0;
         if (inserted_amount < 120) {
+          /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+          /*  Interface layer definition for target dependent HW */
+          /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
           /*  Function sleep_interface() */
           /*  Goal  : Define the interface layer to pause the system for an amount of time */
@@ -1678,6 +1708,9 @@ static void standard_operation_mode(void)
           write_register(40963, c_register_value);
 
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+          /*  Interface layer definition for target dependent HW */
+          /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+          /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
           /*  Function sleep_interface() */
           /*  Goal  : Define the interface layer to pause the system for an amount of time */
           /*  IN    : - duration: time duration in seconds */
@@ -1698,6 +1731,9 @@ static void standard_operation_mode(void)
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
           write_register(40963, (unsigned char)(c_register_value ^ 16));
 
+          /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+          /*  Interface layer definition for target dependent HW */
+          /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
           /*  Function sleep_interface() */
           /*  Goal  : Define the interface layer to pause the system for an amount of time */
@@ -1777,7 +1813,8 @@ void parkingMeterLowLevel(void)
   /*  */
   /*  Author: Sebastien Dupertuis */
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-  /*  Initialization */
+  /*  Interface layer initialization */
+  /*  Include the needed headers and sources files */
   if (TEST_MODE == 0) {
     /*  Instantiate all constants for the normal application */
     /*  Force the master switch register value to 'on' to avoid direct shutdown */
@@ -2115,6 +2152,9 @@ void parkingMeterLowLevel(void)
           write_register(40963, register_value);
 
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+          /*  Interface layer definition for target dependent HW */
+          /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+          /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
           /*  Function sleep_interface() */
           /*  Goal  : Define the interface layer to pause the system for an amount of time */
           /*  IN    : - duration: time duration in seconds */
@@ -2135,6 +2175,9 @@ void parkingMeterLowLevel(void)
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
           write_register(40963, (unsigned char)(register_value ^ 16));
 
+          /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+          /*  Interface layer definition for target dependent HW */
+          /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
           /*  Function sleep_interface() */
           /*  Goal  : Define the interface layer to pause the system for an amount of time */
@@ -2399,6 +2442,9 @@ void parkingMeterLowLevel(void)
                       1) * 100) / 1000.0));
             fflush(stdout);
 
+            /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+            /*  Interface layer definition for target dependent HW */
+            /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
             /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
             /*  Function sleep_interface() */
             /*  Goal  : Define the interface layer to pause the system for an amount of time */

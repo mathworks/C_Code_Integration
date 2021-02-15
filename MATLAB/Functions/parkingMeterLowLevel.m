@@ -11,8 +11,17 @@
 function [] = parkingMeterLowLevel()
   global TEST_MODE;
 
-  % Initialization
-  initialization_interface();
+  % Interface layer initialization
+  if coder.target('MATLAB')
+  pause('on'); % Allow to stop MATLAB temporarily
+  elseif (coder.target('MEX') || coder.target('Rtw'))
+  % Include the needed headers and sources files
+  coder.cinclude('ParkingMeterMemory.h');
+  coder.updateBuildInfo('addSourceFiles','write_register.c');
+  coder.updateBuildInfo('addSourceFiles','read_register.c');
+  else
+  fprintf('No supported coder target has been specified.\n');
+  end
 
   if (coder.target('MATLAB') || coder.target('MEX') || coder.target('Rtw'))
   if (TEST_MODE == 0)
@@ -568,27 +577,6 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Interface layer definition for target dependent HW
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Function initialization_interface()
-% Goal  : Define the interface layer to initialize the main function
-% IN    : -
-% IN/OUT: -
-% OUT   : -
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [] = initialization_interface()
-  if coder.target('MATLAB')
-  pause('on'); % Allow to stop MATLAB temporarily
-  elseif (coder.target('MEX') || coder.target('Rtw'))
-  % Set Coder settings to add the needed headers and sources paths
-  coder.updateBuildInfo('addIncludePaths','$(START_DIR)\Interface_C_files');
-  coder.updateBuildInfo('addSourcePaths','$(START_DIR)\Interface_C_files');
-  % Include the header file containing the needed functions declarations
-  coder.cinclude('ParkingMeterMemory.h');
-  else
-  fprintf('No supported coder target has been specified.\n');
-  end
-end
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Function sleep_interface()
 % Goal  : Define the interface layer to pause the system for an amount of time
