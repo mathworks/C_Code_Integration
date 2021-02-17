@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+   <testsuite errors="0" failures="0" name="TestApp" skipped="0" tests="4" time="165.0035">
+      <testcase classname="TestApp" name="testCase_1_StraightTicketPurchase" time="25.1355"/>
+      <testcase classname="TestApp" name="testCase_2_CancelTicketPurchase" time="22.0304"/>
+      <testcase classname="TestApp" name="testCase_3_BiggestChangeOnTicketPurchase"
+                time="29.0768"/>
+      <testcase classname="TestApp" name="testCase_4_FullyEmptyAndReloadCashBox" time="88.7609"/>
+   </testsuite>
+</testsuites>

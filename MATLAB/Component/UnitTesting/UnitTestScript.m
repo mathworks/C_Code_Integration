@@ -24,8 +24,8 @@ end
 % Call the low-level MATLAB code of the application in a separate process
 fprintf('Starting the low-level application instance...\n');
 system('..\\Component\\UnitTesting\\ParkingMeterProject.exe&');
-
 pause(3);
+
 %% Call the unit testing framework for automated testing
 
 % Add the needed classes to run the test cases and generate reports
