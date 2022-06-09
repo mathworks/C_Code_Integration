@@ -1,8 +1,8 @@
 /*
  * File: main.c
  *
- * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 14-Oct-2019 19:10:03
+ * MATLAB Coder version            : 5.4
+ * C/C++ source code generated on  : 08-Jun-2022 10:01:23
  */
 
 /*************************************************************************/
@@ -38,7 +38,6 @@
 static void main_parkingMeterLowLevel(void);
 
 /* Function Definitions */
-
 /*
  * Arguments    : void
  * Return Type  : void
@@ -51,21 +50,20 @@ static void main_parkingMeterLowLevel(void)
 
 /*
  * Arguments    : int argc
- *                const char * const argv[]
+ *                char **argv
  * Return Type  : int
  */
-int main(int argc, const char * const argv[])
+int main(int argc, char **argv)
 {
   (void)argc;
   (void)argv;
-
-  /* The initialize function is being called automatically from your entry-point function. So, a call to initialize is not included here. */
+  /* The initialize function is being called automatically from your entry-point
+   * function. So, a call to initialize is not included here. */
   /* Invoke the entry-point functions.
-     You can call entry-point functions multiple times. */
+You can call entry-point functions multiple times. */
   main_parkingMeterLowLevel();
-
   /* Terminate the application.
-     You do not need to do this more than one time. */
+You do not need to do this more than one time. */
   parkingMeterLowLevel_terminate();
   return 0;
 }
