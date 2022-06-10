@@ -9,7 +9,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %#codegen
 function [] = parkingMeterLowLevel()
-  global TEST_MODE;
+  global TEST_MODE; %#ok<*GVMIS> 
 
   % Interface layer initialization
   if coder.target('MATLAB')

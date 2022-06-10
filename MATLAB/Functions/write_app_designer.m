@@ -12,13 +12,13 @@ function [] = write_app_designer(register_address,value) %#ok<*INUSD>
   
   switch (register_address)
     case const.DISPLAY_REGISTER_1
-      evalin('base',['app.NEW_DISPLAY_REGISTER_1 = ' num2str(value) ';']);
+      evalin('base',['app.DISPLAY_REGISTER_1 = ' num2str(value) ';']);
     case const.DISPLAY_REGISTER_2
-      evalin('base',['app.NEW_DISPLAY_REGISTER_2 = ' num2str(value) ';']);
+      evalin('base',['app.DISPLAY_REGISTER_2 = ' num2str(value) ';']);
     case const.DISPLAY_REGISTER_3
-      evalin('base',['app.NEW_DISPLAY_REGISTER_3 = ' num2str(value) ';']);
+      evalin('base',['app.DISPLAY_REGISTER_3 = ' num2str(value) ';']);
     case const.PERIPHERALS_REGISTER
-      evalin('base',['app.NEW_PERIPHERALS_REGISTER = ' num2str(value) ';']);
+      evalin('base',['app.PERIPHERALS_REGISTER = ' num2str(value) ';']);
     otherwise
       % Do nothing as the provided address does not match any register
   end

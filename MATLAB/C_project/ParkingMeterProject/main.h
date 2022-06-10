@@ -1,8 +1,8 @@
 /*
  * File: main.h
  *
- * MATLAB Coder version            : 5.1
- * C/C++ source code generated on  : 17-Feb-2021 14:46:11
+ * MATLAB Coder version            : 5.4
+ * C/C++ source code generated on  : 10-Jun-2022 12:46:07
  */
 
 /*************************************************************************/
@@ -29,6 +29,7 @@
 /* otherwise use them as required by your application.                   */
 /*                                                                       */
 /*************************************************************************/
+
 #ifndef MAIN_H
 #define MAIN_H
 
@@ -36,21 +37,19 @@
 #include "rtwtypes.h"
 #include <stddef.h>
 #include <stdlib.h>
+
 #ifdef __cplusplus
-
 extern "C" {
-
 #endif
 
-  /* Function Declarations */
-  extern int main(int argc, const char * const argv[]);
+/* Function Declarations */
+extern int main(int argc, char **argv);
 
 #ifdef __cplusplus
-
 }
 #endif
-#endif
 
+#endif
 /*
  * File trailer for main.h
  *

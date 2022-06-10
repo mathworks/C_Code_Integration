@@ -1,8 +1,8 @@
 /*
  * File: parkingMeterLowLevel.h
  *
- * MATLAB Coder version            : 5.1
- * C/C++ source code generated on  : 17-Feb-2021 14:46:11
+ * MATLAB Coder version            : 5.4
+ * C/C++ source code generated on  : 10-Jun-2022 12:46:07
  */
 
 #ifndef PARKINGMETERLOWLEVEL_H
@@ -17,22 +17,21 @@
 extern int TEST_MODE;
 
 #ifdef __cplusplus
-
 extern "C" {
-
 #endif
 
-  /* Function Declarations */
-  extern void parkingMeterLowLevel(void);
-  extern void parkingMeterLowLevel_initialize(void);
-  extern void parkingMeterLowLevel_terminate(void);
+/* Function Declarations */
+extern void parkingMeterLowLevel(void);
+
+extern void parkingMeterLowLevel_initialize(void);
+
+extern void parkingMeterLowLevel_terminate(void);
 
 #ifdef __cplusplus
-
 }
 #endif
-#endif
 
+#endif
 /*
  * File trailer for parkingMeterLowLevel.h
  *

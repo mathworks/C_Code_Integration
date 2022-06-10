@@ -3,7 +3,7 @@
 %         Press the "Run" button to execute
 % Author: Sebastien Dupertuis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%#ok<*GVMIS>
 clear variables; clc;
 global APP_DESIGNER; % To set low-level driver functions properly %#ok<*UNRCH>
 global UNIT_TESTING; % To set the automated unit testing of the App to false
