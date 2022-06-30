@@ -27,16 +27,17 @@ The contents of the "project shortcut" tab depends on the selected implementatio
 **Step 3**: Each local "Readme.txt" file provides the needed steps to do to properly run the application
 
 ## **Summary**
-A C# interface is used for the front-end of the parking meter and it can be controlled with MATLAB and Simulink through a Windows shared memory interface
+A C# interface is used for the front-end of the parking meter and it can be controlled with MATLAB and Simulink through a Windows shared memory interface.
+For the vanilla MATLAB implementation a MATLAB App Designer interface can also be used
 
 ## **For more information**
-* [Download a free trial](https://www.mathworks.com/campaigns/products/trials.html?prodcode=ML)
-* [Download a free trial](https://www.mathworks.com/campaigns/products/trials.html?prodcode=SL)
+* [Download a free MATLAB trial](https://www.mathworks.com/campaigns/products/trials.html?prodcode=ML)
+* [Download a free Simulink trial](https://www.mathworks.com/campaigns/products/trials.html?prodcode=SL)
 * [MATLAB App Designer](https://www.mathworks.com/products/matlab/app-designer.html)
 
 ### **Requires**
 
-- [MATLAB R2019b](https://www.mathworks.com/products/matlab.html)
+- [MATLAB R2022b](https://www.mathworks.com/products/matlab.html)
 
-Copyright 2020 - 2020 The MathWorks, Inc.
+Copyright 2022 - 2022 The MathWorks, Inc.
 
