@@ -8,11 +8,11 @@
  *   Builder which only recognizes certain fields.  Changes made
  *   outside these fields will be lost the next time the block is
  *   used to load, edit, and resave this file. This file will be overwritten
- *   by the S-function Builder block. If you want to edit this file by hand, 
- *   you must change it only in the area defined as:  
+ *   by the S-function Builder block. If you want to edit this file by hand,
+ *   you must change it only in the area defined as:
  *
  *        %%%-SFUNWIZ_defines_Changes_BEGIN
- *        #define NAME 'replacement text' 
+ *        #define NAME 'replacement text'
  *        %%% SFUNWIZ_defines_Changes_END
  *
  *   DO NOT change NAME--Change the 'replacement text' only.
@@ -24,76 +24,76 @@
  *
  *  -------------------------------------------------------------------------
  * | See matlabroot/simulink/src/sfuntmpl_doc.c for a more detailed template |
- *  ------------------------------------------------------------------------- 
+ *  -------------------------------------------------------------------------
  *
- * Created: Thu Jun 13 15:38:44 2019
+ * Created: Wed Jun 08 12:14:05 2022
  */
 
-#define S_FUNCTION_LEVEL 2
-#define S_FUNCTION_NAME write_register
+#define S_FUNCTION_LEVEL               2
+#define S_FUNCTION_NAME                write_register
+
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 /* %%%-SFUNWIZ_defines_Changes_BEGIN --- EDIT HERE TO _END */
-#define NUM_INPUTS            2
+#define NUM_INPUTS                     2
+
 /* Input Port  0 */
-#define IN_PORT_0_NAME        address
-#define INPUT_0_WIDTH         1
-#define INPUT_DIMS_0_COL      1
-#define INPUT_0_DTYPE         uint16_T
-#define INPUT_0_COMPLEX       COMPLEX_NO
-#define IN_0_FRAME_BASED      FRAME_NO
-#define IN_0_BUS_BASED        0
-#define IN_0_BUS_NAME         
-#define IN_0_DIMS             1-D
-#define INPUT_0_FEEDTHROUGH   1
-#define IN_0_ISSIGNED         0
-#define IN_0_WORDLENGTH       8
-#define IN_0_FIXPOINTSCALING  1
-#define IN_0_FRACTIONLENGTH   9
-#define IN_0_BIAS             0
-#define IN_0_SLOPE            0.125
+#define IN_PORT_0_NAME                 address
+#define INPUT_0_WIDTH                  1
+#define INPUT_DIMS_0_COL               1
+#define INPUT_0_DTYPE                  uint16_T
+#define INPUT_0_COMPLEX                COMPLEX_NO
+#define IN_0_FRAME_BASED               FRAME_NO
+#define IN_0_BUS_BASED                 0
+#define IN_0_BUS_NAME
+#define IN_0_DIMS                      1-D
+#define INPUT_0_FEEDTHROUGH            1
+#define IN_0_ISSIGNED                  0
+#define IN_0_WORDLENGTH                8
+#define IN_0_FIXPOINTSCALING           1
+#define IN_0_FRACTIONLENGTH            9
+#define IN_0_BIAS                      0
+#define IN_0_SLOPE                     0.125
+
 /* Input Port  1 */
-#define IN_PORT_1_NAME        value
-#define INPUT_1_WIDTH         1
-#define INPUT_DIMS_1_COL      1
-#define INPUT_1_DTYPE         uint8_T
-#define INPUT_1_COMPLEX       COMPLEX_NO
-#define IN_1_FRAME_BASED      FRAME_NO
-#define IN_1_BUS_BASED        0
-#define IN_1_BUS_NAME         
-#define IN_1_DIMS             1-D
-#define INPUT_1_FEEDTHROUGH   1
-#define IN_1_ISSIGNED         0
-#define IN_1_WORDLENGTH       8
-#define IN_1_FIXPOINTSCALING  1
-#define IN_1_FRACTIONLENGTH   9
-#define IN_1_BIAS             0
-#define IN_1_SLOPE            0.125
+#define IN_PORT_1_NAME                 value
+#define INPUT_1_WIDTH                  1
+#define INPUT_DIMS_1_COL               1
+#define INPUT_1_DTYPE                  uint8_T
+#define INPUT_1_COMPLEX                COMPLEX_NO
+#define IN_1_FRAME_BASED               FRAME_NO
+#define IN_1_BUS_BASED                 0
+#define IN_1_BUS_NAME
+#define IN_1_DIMS                      1-D
+#define INPUT_1_FEEDTHROUGH            1
+#define IN_1_ISSIGNED                  0
+#define IN_1_WORDLENGTH                8
+#define IN_1_FIXPOINTSCALING           1
+#define IN_1_FRACTIONLENGTH            9
+#define IN_1_BIAS                      0
+#define IN_1_SLOPE                     0.125
+#define NUM_OUTPUTS                    0
+#define NPARAMS                        0
+#define SAMPLE_TIME_0                  INHERITED_SAMPLE_TIME
+#define NUM_DISC_STATES                0
+#define DISC_STATES_IC                 [0]
+#define NUM_CONT_STATES                0
+#define CONT_STATES_IC                 [0]
+#define SFUNWIZ_GENERATE_TLC           1
+#define SOURCEFILES                    "__SFB__ParkingMeterMemory.c"
+#define PANELINDEX                     N/A
+#define USE_SIMSTRUCT                  0
+#define SHOW_COMPILE_STEPS             0
+#define CREATE_DEBUG_MEXFILE           0
+#define SAVE_CODE_ONLY                 1
+#define SFUNWIZ_REVISION               3.0
 
-#define NUM_OUTPUTS           0
-
-#define NPARAMS               0
-
-#define SAMPLE_TIME_0         INHERITED_SAMPLE_TIME
-#define NUM_DISC_STATES       0
-#define DISC_STATES_IC        [0]
-#define NUM_CONT_STATES       0
-#define CONT_STATES_IC        [0]
-
-#define SFUNWIZ_GENERATE_TLC  1
-#define SOURCEFILES           "__SFB__ParkingMeterMemory.c"
-#define PANELINDEX            8
-#define USE_SIMSTRUCT         0
-#define SHOW_COMPILE_STEPS    0
-#define CREATE_DEBUG_MEXFILE  0
-#define SAVE_CODE_ONLY        1
-#define SFUNWIZ_REVISION      3.0
 /* %%%-SFUNWIZ_defines_Changes_END --- EDIT HERE TO _BEGIN */
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 #include "simstruc.h"
 
-
 extern void write_register_Outputs_wrapper(const uint16_T *address,
-			const uint8_T *value);
+  const uint8_T *value);
+
 /*====================*
  * S-function methods *
  *====================*/
@@ -103,53 +103,47 @@ extern void write_register_Outputs_wrapper(const uint16_T *address,
  */
 static void mdlInitializeSizes(SimStruct *S)
 {
+  DECL_AND_INIT_DIMSINFO(inputDimsInfo);
+  DECL_AND_INIT_DIMSINFO(outputDimsInfo);
+  ssSetNumSFcnParams(S, NPARAMS);
+  if (ssGetNumSFcnParams(S) != ssGetSFcnParamsCount(S)) {
+    return;                            /* Parameter mismatch will be reported by Simulink */
+  }
 
-    DECL_AND_INIT_DIMSINFO(inputDimsInfo);
-    DECL_AND_INIT_DIMSINFO(outputDimsInfo);
-    ssSetNumSFcnParams(S, NPARAMS);
-    if (ssGetNumSFcnParams(S) != ssGetSFcnParamsCount(S)) {
-        return; /* Parameter mismatch will be reported by Simulink */
-    }
+  ssSetArrayLayoutForCodeGen(S, SS_COLUMN_MAJOR);
+  ssSetOperatingPointCompliance(S, USE_DEFAULT_OPERATING_POINT);
+  ssSetNumContStates(S, NUM_CONT_STATES);
+  ssSetNumDiscStates(S, NUM_DISC_STATES);
+  if (!ssSetNumInputPorts(S, NUM_INPUTS))
+    return;
 
-    ssSetArrayLayoutForCodeGen(S, SS_COLUMN_MAJOR);
+  /* Input Port 0 */
+  ssSetInputPortWidth(S, 0, INPUT_0_WIDTH);
+  ssSetInputPortDataType(S, 0, SS_UINT16);
+  ssSetInputPortComplexSignal(S, 0, INPUT_0_COMPLEX);
+  ssSetInputPortDirectFeedThrough(S, 0, INPUT_0_FEEDTHROUGH);
+  ssSetInputPortRequiredContiguous(S, 0, 1);/*direct input signal access*/
 
-    ssSetOperatingPointCompliance(S, USE_DEFAULT_OPERATING_POINT);
+  /* Input Port 1 */
+  ssSetInputPortWidth(S, 1, INPUT_1_WIDTH);
+  ssSetInputPortDataType(S, 1, SS_UINT8);
+  ssSetInputPortComplexSignal(S, 1, INPUT_1_COMPLEX);
+  ssSetInputPortDirectFeedThrough(S, 1, INPUT_1_FEEDTHROUGH);
+  ssSetInputPortRequiredContiguous(S, 1, 1);/*direct input signal access*/
+  if (!ssSetNumOutputPorts(S, NUM_OUTPUTS))
+    return;
+  ssSetNumPWork(S, 0);
+  ssSetNumSampleTimes(S, 1);
+  ssSetNumRWork(S, 0);
+  ssSetNumIWork(S, 0);
+  ssSetNumModes(S, 0);
+  ssSetNumNonsampledZCs(S, 0);
+  ssSetSimulinkVersionGeneratedIn(S, "10.5");
 
-    ssSetNumContStates(S, NUM_CONT_STATES);
-    ssSetNumDiscStates(S, NUM_DISC_STATES);
-
-
-    if (!ssSetNumInputPorts(S, NUM_INPUTS)) return;
-    /* Input Port 0 */
-    ssSetInputPortWidth(S, 0, INPUT_0_WIDTH);
-    ssSetInputPortDataType(S, 0, SS_UINT16);
-    ssSetInputPortComplexSignal(S, 0, INPUT_0_COMPLEX);
-    ssSetInputPortDirectFeedThrough(S, 0, INPUT_0_FEEDTHROUGH);
-    ssSetInputPortRequiredContiguous(S, 0, 1); /*direct input signal access*/
-
-    /* Input Port 1 */
-    ssSetInputPortWidth(S, 1, INPUT_1_WIDTH);
-    ssSetInputPortDataType(S, 1, SS_UINT8);
-    ssSetInputPortComplexSignal(S, 1, INPUT_1_COMPLEX);
-    ssSetInputPortDirectFeedThrough(S, 1, INPUT_1_FEEDTHROUGH);
-    ssSetInputPortRequiredContiguous(S, 1, 1); /*direct input signal access*/
-
-
-    if (!ssSetNumOutputPorts(S, NUM_OUTPUTS)) return;
-    ssSetNumPWork(S, 0);
-
-    ssSetNumSampleTimes(S, 1);
-    ssSetNumRWork(S, 0);
-    ssSetNumIWork(S, 0);
-    ssSetNumModes(S, 0);
-    ssSetNumNonsampledZCs(S, 0);
-
-    ssSetSimulinkVersionGeneratedIn(S, "10.0");
-
-    /* Take care when specifying exception free code - see sfuntmpl_doc.c */
-    ssSetOptions(S, (SS_OPTION_EXCEPTION_FREE_CODE |
-                     SS_OPTION_USE_TLC_WITH_ACCELERATOR |
-                     SS_OPTION_WORKS_WITH_CODE_REUSE));
+  /* Take care when specifying exception free code - see sfuntmpl_doc.c */
+  ssSetOptions(S, (SS_OPTION_EXCEPTION_FREE_CODE |
+                   SS_OPTION_USE_TLC_WITH_ACCELERATOR |
+                   SS_OPTION_WORKS_WITH_CODE_REUSE));
 }
 
 /* Function: mdlInitializeSampleTimes =========================================
@@ -158,32 +152,36 @@ static void mdlInitializeSizes(SimStruct *S)
  */
 static void mdlInitializeSampleTimes(SimStruct *S)
 {
-    ssSetSampleTime(S, 0, SAMPLE_TIME_0);
-    ssSetModelReferenceSampleTimeDefaultInheritance(S);
-    ssSetOffsetTime(S, 0, 0.0);
+  ssSetSampleTime(S, 0, SAMPLE_TIME_0);
+  ssSetModelReferenceSampleTimeDefaultInheritance(S);
+  ssSetOffsetTime(S, 0, 0.0);
 }
 
 #define MDL_SET_INPUT_PORT_DATA_TYPE
+
 static void mdlSetInputPortDataType(SimStruct *S, int port, DTypeId dType)
 {
-    ssSetInputPortDataType(S, 0, dType);
+  ssSetInputPortDataType(S, 0, dType);
 }
 
 #define MDL_SET_OUTPUT_PORT_DATA_TYPE
+
 static void mdlSetOutputPortDataType(SimStruct *S, int port, DTypeId dType)
 {
-    ssSetOutputPortDataType(S, 0, dType);
+  ssSetOutputPortDataType(S, 0, dType);
 }
 
 #define MDL_SET_DEFAULT_PORT_DATA_TYPES
+
 static void mdlSetDefaultPortDataTypes(SimStruct *S)
 {
-    ssSetInputPortDataType(S, 0, SS_DOUBLE);
-    ssSetOutputPortDataType(S, 0, SS_DOUBLE);
+  ssSetInputPortDataType(S, 0, SS_DOUBLE);
+  ssSetOutputPortDataType(S, 0, SS_DOUBLE);
 }
 
-#define MDL_START  /* Change to #undef to remove function */
+#define MDL_START                                                /* Change to #undef to remove function */
 #if defined(MDL_START)
+
 /* Function: mdlStart =======================================================
  * Abstract:
  *    This function is called once at start of model execution. If you
@@ -193,18 +191,17 @@ static void mdlSetDefaultPortDataTypes(SimStruct *S)
 static void mdlStart(SimStruct *S)
 {
 }
-#endif /*  MDL_START */
+
+#endif                                 /*  MDL_START */
 
 /* Function: mdlOutputs =======================================================
  *
  */
 static void mdlOutputs(SimStruct *S, int_T tid)
 {
-    const uint16_T *address = (uint16_T *) ssGetInputPortRealSignal(S, 0);
-    const uint8_T *value = (uint8_T *) ssGetInputPortRealSignal(S, 1);
-
-    write_register_Outputs_wrapper(address, value);
-
+  const uint16_T *address = (uint16_T *) ssGetInputPortRealSignal(S, 0);
+  const uint8_T *value = (uint8_T *) ssGetInputPortRealSignal(S, 1);
+  write_register_Outputs_wrapper(address, value);
 }
 
 /* Function: mdlTerminate =====================================================
@@ -215,7 +212,6 @@ static void mdlOutputs(SimStruct *S, int_T tid)
  */
 static void mdlTerminate(SimStruct *S)
 {
-
 }
 
 /* Function added to have the model running in normal mode */
@@ -225,8 +221,8 @@ static void mdlSetWorkWidths(SimStruct *S)
     ssSupportsMultipleExecInstances(S, true);
 }
 
-#ifdef  MATLAB_MEX_FILE    /* Is this file being compiled as a MEX-file? */
-#include "simulink.c"      /* MEX-file interface mechanism */
+#ifdef MATLAB_MEX_FILE                 /* Is this file being compiled as a MEX-file? */
+#include "simulink.c"                  /* MEX-file interface mechanism */
 #else
-#include "cg_sfun.h"       /* Code generation registration function */
+#include "cg_sfun.h"                   /* Code generation registration function */
 #endif

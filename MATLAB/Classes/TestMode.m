@@ -217,7 +217,7 @@ classdef TestMode < Constants
     function [] = leds_return_money(const_obj,f_api)
       % Text constants declaration 
       TEXT_INPUT  = 'State value of the give back cash LEDs [0-1]: ';
-      TEXT_RESULT = ['The desired value has been successfully'...
+      TEXT_RESULT = ['The desired value has been successfully '...
                      'written to the give back cash LEDs.'];
 
       % Variables declaration 
@@ -229,7 +229,9 @@ classdef TestMode < Constants
       % Get the data to write in the register 
       state = const_obj.check_get_data(TEXT_INPUT,int32(0),int32(1));
 
-      % Write the user's data to the 7 segments displays 
+%       f_api.write_interface(const_obj.AVAILABLE_COINS_REGISTER,...
+%                             bitand(uint8(state),const_obj.BIT_MASK_010_CENTS));
+      % Write the user's data to the peripherals 
       f_api.switch_leds_on(const_obj,state);
       fprintf('%s\n\n',TEXT_RESULT);
       fprintf('%s\n',const_obj.TEXT_SEPARATOR);

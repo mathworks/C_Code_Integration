@@ -9,15 +9,28 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %#codegen
 function [] = parkingMeterLowLevel()
-  global TEST_MODE;
+  global TEST_MODE; %#ok<*GVMIS> 
 
-  % Initialization
-  initialization_interface();
+  % Interface layer initialization
+  if coder.target('MATLAB')
+  pause('on'); % Allow to stop MATLAB temporarily
+  elseif (coder.target('MEX') || coder.target('Rtw'))
+  % Include the needed headers and sources files
+  coder.cinclude('ParkingMeterMemory.h');
+  coder.updateBuildInfo('addSourceFiles','write_register.c');
+  coder.updateBuildInfo('addSourceFiles','read_register.c');
+  else
+  fprintf('No supported coder target has been specified.\n');
+  end
 
   if (coder.target('MATLAB') || coder.target('MEX') || coder.target('Rtw'))
   if (TEST_MODE == 0)
     % Instantiate all constants for the normal application
     const = Constants;
+    if coder.target('Rtw')
+      % Force the master switch register value to 'on' to avoid direct shutdown
+      write_interface(const.BUTTONS_REGISTER,const.BIT_MASK_MASTER_SWITCH);
+    end
     fprintf('The normal mode of operation of the parking meter has been activated.\n');
     fprintf('Feel free to purchase tickets.\n');
     standard_operation_mode(const);
@@ -564,27 +577,6 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Interface layer definition for target dependent HW
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Function initialization_interface()
-% Goal  : Define the interface layer to initialize the main function
-% IN    : -
-% IN/OUT: -
-% OUT   : -
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [] = initialization_interface()
-  if coder.target('MATLAB')
-  pause('on'); % Allow to stop MATLAB temporarily
-  elseif (coder.target('MEX') || coder.target('Rtw'))
-  % Set Coder settings to add the needed headers and sources paths
-  coder.updateBuildInfo('addIncludePaths','$(START_DIR)\Interface_C_files');
-  coder.updateBuildInfo('addSourcePaths','$(START_DIR)\Interface_C_files');
-  % Include the header file containing the needed functions declarations
-  coder.cinclude('ParkingMeterMemory.h');
-  else
-  fprintf('No supported coder target has been specified.\n');
-  end
-end
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Function sleep_interface()
 % Goal  : Define the interface layer to pause the system for an amount of time
