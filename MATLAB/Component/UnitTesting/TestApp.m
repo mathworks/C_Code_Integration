@@ -4,7 +4,7 @@ classdef TestApp < matlab.uitest.TestCase
 
   properties
     App
-    WaitTime = 3;
+    WaitTime = 2;
     LineWidth = 2;
     FontSize = 16;
     FontWeight = 'Bold';
