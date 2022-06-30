@@ -43,14 +43,14 @@ function [] = parseFile(file_name)
       start_count = true;
     end
     
-    if (counter == 4)
+    if (counter == 2)
       for i=1:NB_LINES_ADD
         % Save the current text line
         saved_line{i,1} = fgets(file_write_ID);
         offset = offset + length(saved_line{i,1});
       end
       % Get current line position
-      position = ftell(file_write_ID);
+      position = ftell(file_write_ID)-4;
       % Go to the identified expression line
       fseek(file_write_ID,position - offset,'bof');
       % Write the custom code at the right location

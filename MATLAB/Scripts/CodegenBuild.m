@@ -12,7 +12,7 @@ clear variables; clc;
 
 % Initialization
 global TEST_MODE; %#ok<NUSED>
-defineTestMode(1); % '0' => normal mode, '1' => test mode
+defineTestMode(0); % '0' => normal mode, '1' => test mode
 
 %% Create configuration object of class 'coder.EmbeddedCodeConfig'.
 cfg = coder.config('lib','ecoder',true);

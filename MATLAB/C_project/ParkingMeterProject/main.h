@@ -1,8 +1,8 @@
 /*
  * File: main.h
  *
- * MATLAB Coder version            : 4.3
- * C/C++ source code generated on  : 14-Oct-2019 18:07:56
+ * MATLAB Coder version            : 5.4
+ * C/C++ source code generated on  : 10-Jun-2022 12:46:07
  */
 
 /*************************************************************************/
@@ -29,20 +29,27 @@
 /* otherwise use them as required by your application.                   */
 /*                                                                       */
 /*************************************************************************/
+
 #ifndef MAIN_H
 #define MAIN_H
 
 /* Include Files */
+#include "rtwtypes.h"
 #include <stddef.h>
 #include <stdlib.h>
-#include "rtwtypes.h"
-#include "parkingMeterLowLevel_types.h"
 
-/* Function Declarations */
-extern int main(int argc, const char * const argv[]);
-
+#ifdef __cplusplus
+extern "C" {
 #endif
 
+/* Function Declarations */
+extern int main(int argc, char **argv);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif
 /*
  * File trailer for main.h
  *
