@@ -4,7 +4,7 @@
 % Author: Sebastien Dupertuis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %#ok<*GVMIS>
-clear variables; clc;
+clearvars -except app; clc;
 global APP_DESIGNER; % To set low-level driver functions properly %#ok<*UNRCH>
 global UNIT_TESTING; % To set the automated unit testing of the App to false
 
@@ -24,12 +24,19 @@ CODEGEN_FOLDER = '..\MEX_functions\codegen';
 %% Start the system to do manual testing
 
 if (APP_DESIGNER) % No MEX of the low-level interface possible here
-  % Close potential instance of the App Designer GUI
-  clear app;
   % Launch the App Designer GUI
   fprintf('%s\n','Instanciation of the App Designer object...');
-  app = ParkingMeterGUI;
-  waitfor(app,'Running','on');
+  if ~exist('app','var')
+    % Find and remove any remaining open figures
+    allApps = findall(0,'Type','figure');
+    if ~isempty(allApps)
+      delete(allApps);
+      clear('allApps');
+    end
+    % Instanciate one single app interface
+    app = ParkingMeterGUI;
+    waitfor(app,'Running','on');
+  end
   fprintf('%s\n',TEXT_RUN);
   % Call the standard MATLAB code
   parkingMeterLowLevel();

@@ -125,8 +125,33 @@ classdef TestApp < matlab.uitest.TestCase
       testCase.outputsVerification(stimuliTrace,responsesTrace,2);
     end
 
-    function [] = testCase_3_BiggestChangeOnTicketPurchase(testCase)
-      fprintf(' Processing the test case #3...\n');
+    function [] = testCase_3_SameValueCoinTicketPurchase(testCase)
+      fprintf('. Processing the test case #3...\n');
+      pause(testCase.WaitTime);
+      % Press the green button to start the purchase process
+      testCase.press(testCase.App.ButtonGreen);
+      pause(testCase.WaitTime);
+      % Repeat the insertion of the same value coin
+      for k=1:1:6
+        % Insert a coin of 20 cents in the App
+        testCase.press(testCase.App.ImageCoin_020);
+        pause(testCase.WaitTime/2);
+      end
+      pause(testCase.WaitTime);      
+      % Take back the ticket from the App
+      testCase.press(testCase.App.ImageTicket);
+      pause(testCase.WaitTime);
+      % Sequences to expect for the correct behaviour
+      stimuliTrace = {'Start' 'Green Button' '20 Cents' '20 Cents' '20 Cents'...
+                      '20 Cents' '20 Cents' '20 Cents' 'Get Ticket' 'Wait'...
+                      'Get Change' 'End'};
+      responsesTrace = {'DISP','COIN';'---',' ';'1.20',' ';'1.00',' ';...
+                        '0.80',' ';'0.60',' ';'0.40',' ';'0.20',' ';'---',' '};
+      testCase.outputsVerification(stimuliTrace,responsesTrace,1);
+    end
+
+    function [] = testCase_4_BiggestChangeOnTicketPurchase(testCase)
+      fprintf(' Processing the test case #4...\n');
       pause(testCase.WaitTime);
       % Press the green button to start the purchase process
       testCase.press(testCase.App.ButtonGreen);
