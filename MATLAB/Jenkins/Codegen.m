@@ -42,16 +42,3 @@ cfg.HardwareImplementation.TargetHWDeviceType = 'Intel->x86-64 (Windows64)';
 %% Invoke MATLAB Coder
 fprintf('Starting the C code generation and building process...\n');
 codegen('-config','cfg','parkingMeterLowLevel','-nargout','0','-d','..\Codegen'); 
-
-%% Start the standalone executable
-system('..\C_project\ParkingMeterProject\x64\Debug\ParkingMeterProject.exe&');
-% system('..\C_project\ParkingMeterProject\x64\Release\ParkingMeterProject.exe&');
-
-%% Close potential instance of the C# GUI
-if (system('taskkill -f -im ParkingMeterGUI.exe') ~= 0)
-  fprintf(repmat('\b',1,54)); % Remove the useless console error message
-  fprintf('No running instance of the C# GUI has been detected.\n');
-end
-
-%% Launch the C# GUI
-system('..\\..\\ParkingMeterGUI.exe&');

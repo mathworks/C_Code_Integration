@@ -2,7 +2,7 @@
  * File: parkingMeterLowLevel.c
  *
  * MATLAB Coder version            : 5.4
- * C/C++ source code generated on  : 10-Jun-2022 12:46:07
+ * C/C++ source code generated on  : 10-Jul-2022 12:20:36
  */
 
 /* Include Files */
@@ -2168,7 +2168,11 @@ void parkingMeterLowLevel(void)
             }
           } while (exitg2 == 0);
           unsigned char b_a;
-          /*  Write the user's data to the 7 segments displays  */
+          /*        f_api.write_interface(const_obj.AVAILABLE_COINS_REGISTER,...
+           */
+          /*                              bitand(uint8(state),const_obj.BIT_MASK_010_CENTS));
+           */
+          /*  Write the user's data to the peripherals  */
           /*  Get the current peripherals register status */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
@@ -2229,7 +2233,7 @@ void parkingMeterLowLevel(void)
              */
             write_register(40963, (unsigned char)(c_register_value | 64));
           }
-          printf("%s\n\n", "The desired value has been successfullywritten to "
+          printf("%s\n\n", "The desired value has been successfully written to "
                            "the give back cash LEDs.");
           fflush(stdout);
           printf("%s\n", "-----------------------------------------------------"
