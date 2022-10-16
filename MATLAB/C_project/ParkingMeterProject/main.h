@@ -1,8 +1,8 @@
 /*
  * File: main.h
  *
- * MATLAB Coder version            : 5.4
- * C/C++ source code generated on  : 10-Jul-2022 12:20:36
+ * MATLAB Coder version            : 5.5
+ * C/C++ source code generated on  : 16-Oct-2022 19:05:47
  */
 
 /*************************************************************************/
@@ -44,6 +44,8 @@ extern "C" {
 
 /* Function Declarations */
 extern int main(int argc, char **argv);
+
+extern void main_parkingMeterLowLevel(void);
 
 #ifdef __cplusplus
 }

@@ -1,8 +1,8 @@
 /*
  * File: parkingMeterLowLevel.c
  *
- * MATLAB Coder version            : 5.4
- * C/C++ source code generated on  : 10-Jul-2022 12:20:36
+ * MATLAB Coder version            : 5.5
+ * C/C++ source code generated on  : 16-Oct-2022 19:05:47
  */
 
 /* Include Files */
@@ -148,7 +148,7 @@ static void TestMode_display_value(void)
     int digit_value;
     int x;
     /*  Compute the cent */
-    digit_value = data - div_nde_s32_floor(data) * 10;
+    digit_value = data - data / 10 * 10;
     b_display_digit(1U, digit_value, 0.0);
     /*  Compute the tens of cents */
     b_remainder = (int)rt_roundd((double)(data - digit_value) / 10.0);
@@ -458,18 +458,21 @@ static void display_cents_value(unsigned short cents_value)
     unsigned short x;
     /*  Compute the cent */
     digit_value =
-        (unsigned short)((unsigned int)cents_value - cents_value / 10 * 10);
+        (unsigned short)(cents_value -
+                         (unsigned int)((int)(cents_value / 10U) * 10));
     display_digit(1U, digit_value, 0.0);
     /*  Compute the tens of cents */
     b_remainder = (unsigned short)rt_roundd(
         (double)(unsigned short)(cents_value - digit_value) / 10.0);
     digit_value =
-        (unsigned short)((unsigned int)b_remainder - b_remainder / 10 * 10);
+        (unsigned short)(b_remainder -
+                         (unsigned int)((int)(b_remainder / 10U) * 10));
     display_digit(2U, digit_value, 0.0);
     /*  Compute the hundreds of cents */
     x = (unsigned short)rt_roundd(
         (double)(unsigned short)(b_remainder - digit_value) / 10.0);
-    display_digit(3U, (unsigned short)((unsigned int)x - x / 10 * 10), 1.0);
+    display_digit(3U, (unsigned short)(x - (unsigned int)((int)(x / 10U) * 10)),
+                  1.0);
   } else {
     printf("Incorrect cents value provided to the parking meter display!\n");
     fflush(stdout);
@@ -605,13 +608,13 @@ static void display_digit(unsigned char display_ID, unsigned short digit_value,
  */
 static int div_nde_s32_floor(int numerator)
 {
-  int b_numerator;
+  int i;
   if ((numerator < 0) && (numerator % 10 != 0)) {
-    b_numerator = -1;
+    i = -1;
   } else {
-    b_numerator = 0;
+    i = 0;
   }
-  return numerator / 10 + b_numerator;
+  return numerator / 10 + i;
 }
 
 /*
@@ -2352,8 +2355,8 @@ void parkingMeterLowLevel(void)
           fflush(stdout);
         } break;
         case 6: {
-          int c_data;
           int data;
+          int i1;
           unsigned char b_register_value;
           /*  Text constants declaration  */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2468,11 +2471,11 @@ void parkingMeterLowLevel(void)
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
           if (data != 0) {
-            c_data = b_register_value | 128;
+            i1 = b_register_value | 128;
           } else {
-            c_data = b_register_value & 127;
+            i1 = b_register_value & 127;
           }
-          write_register(40963, (unsigned char)c_data);
+          write_register(40963, (unsigned char)i1);
         } break;
         case 7: {
           int b;

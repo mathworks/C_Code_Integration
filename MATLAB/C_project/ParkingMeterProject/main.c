@@ -1,8 +1,8 @@
 /*
  * File: main.c
  *
- * MATLAB Coder version            : 5.4
- * C/C++ source code generated on  : 10-Jul-2022 12:20:36
+ * MATLAB Coder version            : 5.5
+ * C/C++ source code generated on  : 16-Oct-2022 19:05:47
  */
 
 /*************************************************************************/
@@ -34,20 +34,7 @@
 #include "main.h"
 #include "parkingMeterLowLevel.h"
 
-/* Function Declarations */
-static void main_parkingMeterLowLevel(void);
-
 /* Function Definitions */
-/*
- * Arguments    : void
- * Return Type  : void
- */
-static void main_parkingMeterLowLevel(void)
-{
-  /* Call the entry-point 'parkingMeterLowLevel'. */
-  parkingMeterLowLevel();
-}
-
 /*
  * Arguments    : int argc
  *                char **argv
@@ -66,6 +53,16 @@ You can call entry-point functions multiple times. */
 You do not need to do this more than one time. */
   parkingMeterLowLevel_terminate();
   return 0;
+}
+
+/*
+ * Arguments    : void
+ * Return Type  : void
+ */
+void main_parkingMeterLowLevel(void)
+{
+  /* Call the entry-point 'parkingMeterLowLevel'. */
+  parkingMeterLowLevel();
 }
 
 /*

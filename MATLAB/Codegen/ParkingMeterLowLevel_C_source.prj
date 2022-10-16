@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.coder" plugin-version="R2021a">
-  <configuration build-checksum="4264272890" file="D:\GitHub\Parking_Meter\MATLAB\Codegen\ParkingMeterLowLevel_C_source.prj" location="D:\GitHub\Parking_Meter\MATLAB\Codegen" name="ParkingMeterLowLevel_C_source" target="target.unifiedcoder" target-name="MATLAB Coder">
+  <configuration build-checksum="4286932788" file="D:\GitHub\C_Code_Integration\MATLAB\Codegen\ParkingMeterLowLevel_C_source.prj" location="D:\GitHub\C_Code_Integration\MATLAB\Codegen" name="ParkingMeterLowLevel_C_source" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
@@ -32,6 +32,7 @@
       <param.FilePartitionMethod>option.FilePartitionMethod.SingleFile</param.FilePartitionMethod>
       <param.GenerateComments>true</param.GenerateComments>
       <param.MATLABSourceComments>false</param.MATLABSourceComments>
+      <param.MATLABSourceCommentLineNumbers>true</param.MATLABSourceCommentLineNumbers>
       <param.CodeFormattingTool>option.CodeFormattingTool.Auto</param.CodeFormattingTool>
       <param.ReservedNameArray />
       <param.CppStyleConst>true</param.CppStyleConst>
@@ -40,12 +41,13 @@
       <param.ReportPotentialDifferences>false</param.ReportPotentialDifferences>
       <param.GenerateReport>true</param.GenerateReport>
       <param.HighlightImplicitExpansionIssues>true</param.HighlightImplicitExpansionIssues>
+      <param.HighlightLoopControlIssues>false</param.HighlightLoopControlIssues>
       <param.LaunchReport>false</param.LaunchReport>
       <param.ReportInfoVarName />
       <param.DefaultTestFile />
       <param.MergeInstrumentationResults>false</param.MergeInstrumentationResults>
       <param.VerificationMode>option.VerificationMode.None</param.VerificationMode>
-      <param.VerificationStatus>option.VerificationStatus.Passed</param.VerificationStatus>
+      <param.VerificationStatus>option.VerificationStatus.FailedTest</param.VerificationStatus>
       <param.EnableMexProfiling>false</param.EnableMexProfiling>
       <var.BuiltWithMexProfiling>false</var.BuiltWithMexProfiling>
       <param.CustomSourceCode />
@@ -118,6 +120,7 @@
         <param.StackUsageMax />
         <param.GenerateComments />
         <param.MATLABSourceComments />
+        <param.MATLABSourceCommentLineNumbers />
         <param.CodeFormattingTool />
         <param.ReservedNameArray />
         <param.CppStyleConst />
@@ -126,6 +129,7 @@
         <param.ReportPotentialDifferences />
         <param.GenerateReport />
         <param.HighlightImplicitExpansionIssues />
+        <param.HighlightLoopControlIssues />
         <param.LaunchReport />
         <param.ReportInfoVarName />
         <param.DefaultTestFile />
@@ -199,7 +203,9 @@
       <param.GenerateComments>true</param.GenerateComments>
       <param.CommentStyle>option.CommentStyle.Auto</param.CommentStyle>
       <param.MATLABSourceComments>false</param.MATLABSourceComments>
+      <param.MATLABSourceCommentLineNumbers>true</param.MATLABSourceCommentLineNumbers>
       <param.MATLABFcnDesc>true</param.MATLABFcnDesc>
+      <param.ReqsInCode>false</param.ReqsInCode>
       <param.ConvertIfToSwitch>false</param.ConvertIfToSwitch>
       <param.PreserveExternInFcnDecls>true</param.PreserveExternInFcnDecls>
       <param.EnableSignedLeftShifts>true</param.EnableSignedLeftShifts>
@@ -247,6 +253,7 @@
       <param.GenerateCodeReplacementReport>false</param.GenerateCodeReplacementReport>
       <param.HighlightPotentialDataTypeIssues>false</param.HighlightPotentialDataTypeIssues>
       <param.HighlightImplicitExpansionIssues>true</param.HighlightImplicitExpansionIssues>
+      <param.HighlightLoopControlIssues>false</param.HighlightLoopControlIssues>
       <param.LaunchReport>false</param.LaunchReport>
       <param.ReportInfoVarName />
       <param.SILDebugging>false</param.SILDebugging>
@@ -402,7 +409,9 @@
         <param.GenerateComments />
         <param.CommentStyle />
         <param.MATLABSourceComments />
+        <param.MATLABSourceCommentLineNumbers />
         <param.MATLABFcnDesc />
+        <param.ReqsInCode />
         <param.ConvertIfToSwitch />
         <param.PreserveExternInFcnDecls />
         <param.EnableSignedLeftShifts />
@@ -450,6 +459,7 @@
         <param.GenerateCodeReplacementReport />
         <param.HighlightPotentialDataTypeIssues />
         <param.HighlightImplicitExpansionIssues />
+        <param.HighlightLoopControlIssues />
         <param.LaunchReport />
         <param.ReportInfoVarName />
         <param.SILDebugging />
@@ -592,13 +602,13 @@
     <param.hdlParamStorage />
     <var.gc.lastOutputRoot>codegen\lib\parkingMeterLowLevel</var.gc.lastOutputRoot>
     <var.gc.lastOutputType>C_CODE</var.gc.lastOutputType>
-    <var.gc.preBuildChecksum>1477922572</var.gc.preBuildChecksum>
+    <var.gc.preBuildChecksum>2939559863</var.gc.preBuildChecksum>
     <var.cfi.lastOutputRoot>codegen\mex\parkingMeterLowLevel</var.cfi.lastOutputRoot>
-    <var.cfi.preBuildChecksum>4264272890</var.cfi.preBuildChecksum>
+    <var.cfi.preBuildChecksum>3594407137</var.cfi.preBuildChecksum>
     <var.lastCfiTestSnippet>TestParkingMeterLowLevel</var.lastCfiTestSnippet>
     <var.outdatedOnRestore>false</var.outdatedOnRestore>
-    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;D:\GitHub\Parking_Meter\MATLAB\Classes\Constants.m&lt;/file&gt;&lt;file&gt;D:\GitHub\Parking_Meter\MATLAB\Classes\TestMode.m&lt;/file&gt;&lt;file&gt;D:\GitHub\Parking_Meter\MATLAB\Functions\parkingMeterLowLevel.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;72690001&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
-    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;D:\GitHub\Parking_Meter\MATLAB\Classes\Constants.m&lt;/file&gt;&lt;file&gt;D:\GitHub\Parking_Meter\MATLAB\Classes\TestMode.m&lt;/file&gt;&lt;file&gt;D:\GitHub\Parking_Meter\MATLAB\Functions\parkingMeterLowLevel.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
+    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;D:\GitHub\C_Code_Integration\MATLAB\Classes\Constants.m&lt;/file&gt;&lt;file&gt;D:\GitHub\C_Code_Integration\MATLAB\Classes\TestMode.m&lt;/file&gt;&lt;file&gt;D:\GitHub\Parking_Meter\MATLAB\Functions\parkingMeterLowLevel.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;3833642474&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
+    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;D:\GitHub\C_Code_Integration\MATLAB\Classes\Constants.m&lt;/file&gt;&lt;file&gt;D:\GitHub\C_Code_Integration\MATLAB\Classes\TestMode.m&lt;/file&gt;&lt;file&gt;D:\GitHub\Parking_Meter\MATLAB\Functions\parkingMeterLowLevel.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
     <param.forceMexBuild>false</param.forceMexBuild>
     <param.NoDefaultJIT>false</param.NoDefaultJIT>
     <param.configImportActive>false</param.configImportActive>
@@ -857,11 +867,11 @@
       <file>D:\GitHub\Parking_Meter\MATLAB\Functions\parkingMeterLowLevel.m</file>
     </fileset.inputtypes>
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\codegen\lib\parkingMeterLowLevel" name="parkingMeterLowLevel.lib" optional="false">D:\GitHub\Parking_Meter\MATLAB\Codegen\codegen\lib\parkingMeterLowLevel\parkingMeterLowLevel.lib</file>
+      <file location="${PROJECT_ROOT}\codegen\lib\parkingMeterLowLevel" name="parkingMeterLowLevel.lib" optional="false">D:\GitHub\C_Code_Integration\MATLAB\Codegen\codegen\lib\parkingMeterLowLevel\parkingMeterLowLevel.lib</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\Program Files\MATLAB\R2022a</root>
+      <root>C:\Program Files\MATLAB\R2022b</root>
       <toolboxes>
         <toolbox name="matlabcoder" />
         <toolbox name="embeddedcoder" />

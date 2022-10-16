@@ -22,10 +22,10 @@ cfg.EnableStrengthReduction = true;
 cfg.GenerateReport = true;
 cfg.ReportPotentialDifferences = false;
 cfg.SaturateOnIntegerOverflow = false;
-cfg.CustomInclude = sprintf('..\\Interface_C_files\n');
-cfg.CustomSource = sprintf(['..\\Interface_C_files\\read_register.c\n'...
-                            '..\\Interface_C_files\\write_register.c\n'...
-                            '..\\Interface_C_files\\ParkingMeterMemory.h']);
+cfg.CustomInclude = {'..\\Interface_C_files'};
+cfg.CustomSource = {'..\\Interface_C_files\\read_register.c', ...
+                    '..\\Interface_C_files\\write_register.c', ...
+                    '..\\Interface_C_files\\ParkingMeterMemory.h'};
 cfg.FilePartitionMethod = 'SingleFile';
 cfg.InitFltsAndDblsToZero = false;
 cfg.PreserveVariableNames = 'All';
