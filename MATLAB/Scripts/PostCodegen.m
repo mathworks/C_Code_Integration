@@ -2,7 +2,7 @@
 % Goal : Copy the generated C and H files to an external Visual Studio project
 %        and then build a x64 Debug and a Release version.
 %
-% Author: Sebastien Dupertuis
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Constants definition
@@ -27,7 +27,7 @@ copyfile('examples',DESTINATION_PATH);
 
 % Go to the VS2019 project's folder
 cd(DESTINATION_PATH);
-% Build the VS2019 project
+% Build the VS2022 project
 fprintf('Building the Debug executable...\n');
 error_flag = system([BUILD_COMMAND 'Debug']);
 fprintf('Building the Release executable...\n');

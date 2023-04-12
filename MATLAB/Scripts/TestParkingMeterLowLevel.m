@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Goal  : Test of the main function of the Parking Meter Low Level module.
 %         Press the "Run" button to execute
-% Author: Sebastien Dupertuis
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %#ok<*GVMIS>
 clearvars -except app; clc;
@@ -14,7 +14,7 @@ APP_DESIGNER = true;  % 'true' => App Designer implementation, 'false' => C# App
 UNIT_TESTING = false; % 'false' => Manual testing, 'true' => Automated testing.
                       % Here it MUST always be set to false, otherwise the App
                       % will be locked as no test cases are defined in the script
-TEST_MEX = false;  % 'true' => Generate and test the MEX file, 'false' => No MEX
+TEST_MEX = true;  % 'true' => Generate and test the MEX file, 'false' => No MEX
 defineTestMode(1); % '1' => test mode, '0' => normal operation mode
 
 % Text constants declaration

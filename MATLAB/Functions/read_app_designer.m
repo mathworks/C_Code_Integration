@@ -5,6 +5,8 @@ function [value] = read_app_designer(register_address) %#ok<*INUSD>
 % IN    : - register_address: address of the register in unsigned 16 bit
 % IN/OUT: -
 % OUT   : - value: value to read from the register as an unsigned 8 bit
+%
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % Instantiate all constants for the normal application
   const = Constants;

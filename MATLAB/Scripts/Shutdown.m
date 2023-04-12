@@ -4,7 +4,7 @@
 %         the settings applied at the project's setup. It should be called by a
 %         shutdown shortcut linked to its Project
 %
-% Author: Sebastien Dupertuis
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 disp('Project closing.');
 % Move to the root folder of the project

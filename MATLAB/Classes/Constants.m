@@ -6,7 +6,7 @@ classdef Constants
 %         Once an object has been created out of this class, it must then be
 %         passed has an input argument to all the functions of the application.
 %
-% Author: Sebastien Dupertuis
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %#codegen
   properties (Constant = true)

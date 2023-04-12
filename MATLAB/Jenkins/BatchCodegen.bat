@@ -1,3 +1,4 @@
+REM Copyright 2023 The MathWorks, Inc.
 @echo ================================================================================
 @echo Starting MATLAB to generate C code automatically for the low-level application
 @echo ================================================================================

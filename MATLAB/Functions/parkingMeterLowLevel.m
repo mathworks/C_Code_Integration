@@ -5,7 +5,7 @@
 % IN/OUT: -
 % OUT   : - error_flag: error code
 %
-% Author: Sebastien Dupertuis
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %#codegen
 function [] = parkingMeterLowLevel()

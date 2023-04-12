@@ -1,8 +1,8 @@
 /*
  * File: parkingMeterLowLevel.c
  *
- * MATLAB Coder version            : 5.5
- * C/C++ source code generated on  : 16-Oct-2022 19:05:47
+ * MATLAB Coder version            : 5.6
+ * C/C++ source code generated on  : 12-Apr-2023 11:40:40
  */
 
 /* Include Files */
@@ -106,7 +106,7 @@ static void TestMode_display_value(void)
        */
       nb_input_types = scanf_s("%d%c", &data, &terminator, 1);
       /*  Check if the provided data is an integer number */
-      if ((nb_input_types == 2) && (terminator == '\x0a')) {
+      if ((nb_input_types == 2) && (terminator == '\n')) {
         exitg2 = 1;
       } else {
         printf("The value provided is not of the right data type!\n");
@@ -249,7 +249,7 @@ static void TestMode_give_back_coin(void)
            * scanf_s */
           nb_input_types = scanf_s("%d%c", &coin_choice, &terminator, 1);
           /*  Check if the provided data is an integer number */
-          if ((nb_input_types == 2) && (terminator == '\x0a')) {
+          if ((nb_input_types == 2) && (terminator == '\n')) {
             exitg3 = 1;
           } else {
             printf("The value provided is not of the right data type!\n");
@@ -1802,7 +1802,7 @@ void parkingMeterLowLevel(void)
   /*  IN/OUT: - */
   /*  OUT   : - error_flag: error code */
   /*  */
-  /*  Author: Sebastien Dupertuis */
+  /*  Copyright 2023 The MathWorks, Inc. */
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    */
   /*  Interface layer initialization */
@@ -1930,7 +1930,7 @@ void parkingMeterLowLevel(void)
              * scanf_s */
             nb_input_types = scanf_s("%d%c", &choice, &terminator, 1);
             /*  Check if the provided data is an integer number */
-            if ((nb_input_types == 2) && (terminator == '\x0a')) {
+            if ((nb_input_types == 2) && (terminator == '\n')) {
               exitg3 = 1;
             } else {
               printf("The value provided is not of the right data type!\n");
@@ -2053,7 +2053,7 @@ void parkingMeterLowLevel(void)
                * scanf_s */
               e_nb_input_types = scanf_s("%d%c", &b_data, &e_terminator, 1);
               /*  Check if the provided data is an integer number */
-              if ((e_nb_input_types == 2) && (e_terminator == '\x0a')) {
+              if ((e_nb_input_types == 2) && (e_terminator == '\n')) {
                 exitg3 = 1;
               } else {
                 printf("The value provided is not of the right data type!\n");
@@ -2151,7 +2151,7 @@ void parkingMeterLowLevel(void)
                * scanf_s */
               b_nb_input_types = scanf_s("%d%c", &state, &b_terminator, 1);
               /*  Check if the provided data is an integer number */
-              if ((b_nb_input_types == 2) && (b_terminator == '\x0a')) {
+              if ((b_nb_input_types == 2) && (b_terminator == '\n')) {
                 exitg3 = 1;
               } else {
                 printf("The value provided is not of the right data type!\n");
@@ -2411,7 +2411,7 @@ void parkingMeterLowLevel(void)
                * scanf_s */
               c_nb_input_types = scanf_s("%d%c", &data, &c_terminator, 1);
               /*  Check if the provided data is an integer number */
-              if ((c_nb_input_types == 2) && (c_terminator == '\x0a')) {
+              if ((c_nb_input_types == 2) && (c_terminator == '\n')) {
                 exitg3 = 1;
               } else {
                 printf("The value provided is not of the right data type!\n");
@@ -2534,7 +2534,7 @@ void parkingMeterLowLevel(void)
                * scanf_s */
               d_nb_input_types = scanf_s("%d%c", &b, &d_terminator, 1);
               /*  Check if the provided data is an integer number */
-              if ((d_nb_input_types == 2) && (d_terminator == '\x0a')) {
+              if ((d_nb_input_types == 2) && (d_terminator == '\n')) {
                 exitg3 = 1;
               } else {
                 printf("The value provided is not of the right data type!\n");

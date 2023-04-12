@@ -6,6 +6,8 @@ function [] = write_app_designer(register_address,value) %#ok<*INUSD>
 %         - value: value to store in the register as an unsigned 8 bit
 % IN/OUT: -
 % OUT   : -
+%
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % Instantiate all constants for the normal application
   const = Constants;

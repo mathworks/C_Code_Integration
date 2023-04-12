@@ -4,7 +4,7 @@ classdef SevenSegmentDisplays
 % Goal  : This class contains all properties and methods needed to instanciate
 %         and use a UI component implementing a group of 7-segment displays
 %
-% Author: Sebastien Dupertuis
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   % Variables belonging to the object with direct external access

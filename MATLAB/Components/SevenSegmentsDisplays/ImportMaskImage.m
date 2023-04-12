@@ -2,7 +2,7 @@
 % Script: ImportMaskImage
 % Goal  : Take a 7-segment display image as a reference to create a labeled mask
 %
-% Author: Sebastien Dupertuis
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear variables; clc
 % Convert the mask image into Black and White representation

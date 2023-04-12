@@ -8,7 +8,7 @@
 % IN/OUT: -
 % OUT   : - 
 %
-% Author: Sebastien Dupertuis
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [] = defineTestMode(test_mode_on)
   global TEST_MODE; %#ok<GVMIS> 
