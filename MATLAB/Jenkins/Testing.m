@@ -28,13 +28,13 @@ import matlab.unittest.plugins.TestReportPlugin;
 import matlab.unittest.plugins.XMLPlugin;
 import matlab.unittest.plugins.codecoverage.CoberturaFormat;
 % Setup the test suite
-suite = testsuite('..\Component\UnitTesting\TestApp.m');
+suite = testsuite('..\Components\UnitTesting\TestApp.m');
 % Build test runner and add needed reports plugins
 runner = TestRunner.withTextOutput('OutputDetail', Verbosity.Detailed);
 runner.addPlugin(TestReportPlugin.producingPDF('Report.pdf'));
 runner.addPlugin(TestReportPlugin.producingHTML('Report.html'));
 runner.addPlugin(XMLPlugin.producingJUnitFormat('JunitTestResults.xml'));
-runner.addPlugin(CodeCoveragePlugin.forFolder({'..\Component'},...
+runner.addPlugin(CodeCoveragePlugin.forFolder({'..\Components'},...
                  'Producing',CoberturaFormat('cobertura.xml')));
 results = runner.run(suite);
 % Close the figures

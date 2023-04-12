@@ -1,7 +1,7 @@
 <deployment-project plugin="plugin.coder" plugin-version="R2023a">
-  <configuration build-checksum="3751027640" file="C:\GitHub\C_Code_Integration\MATLAB\Codegen\ParkingMeterLowLevel_C_source.prj" location="C:\GitHub\C_Code_Integration\MATLAB\Codegen" name="ParkingMeterLowLevel_C_source" target="target.unifiedcoder" target-name="MATLAB Coder">
+  <configuration build-checksum="20794257" file="D:\GitHub\C_Code_Integration\MATLAB\Codegen\ParkingMeterLowLevel_C_source.prj" location="D:\GitHub\C_Code_Integration\MATLAB\Codegen" name="ParkingMeterLowLevel_C_source" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
-      <param.BuiltInstrumentedMex />
+      <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
       <param.WorkingFolder>option.WorkingFolder.Project</param.WorkingFolder>
       <param.SpecifiedWorkingFolder />
@@ -11,15 +11,15 @@
       <var.SimdQueryHardwareVendor>Generic</var.SimdQueryHardwareVendor>
       <var.SimdQueryHardwareType>MATLAB Host Computer</var.SimdQueryHardwareType>
       <param.InstructionSetExtensionsAvailableInUI>true</param.InstructionSetExtensionsAvailableInUI>
-      <param.ResponsivenessChecks />
-      <param.ExtrinsicCalls />
-      <param.IntegrityChecks />
+      <param.ResponsivenessChecks>true</param.ResponsivenessChecks>
+      <param.ExtrinsicCalls>true</param.ExtrinsicCalls>
+      <param.IntegrityChecks>true</param.IntegrityChecks>
       <param.SaturateOnIntegerOverflow>true</param.SaturateOnIntegerOverflow>
       <param.EnableAutoParallelization>false</param.EnableAutoParallelization>
       <param.NumberOfCpuThreads>0</param.NumberOfCpuThreads>
       <param.OptimizeReductions>false</param.OptimizeReductions>
-      <param.SIMDAcceleration />
-      <param.GlobalDataSyncMethod />
+      <param.SIMDAcceleration>option.SIMDAcceleration.Portable</param.SIMDAcceleration>
+      <param.GlobalDataSyncMethod>option.GlobalDataSyncMethod.SyncAlways</param.GlobalDataSyncMethod>
       <param.EnableVariableSizing>true</param.EnableVariableSizing>
       <param.EnableDynamicMemoryAllocation>true</param.EnableDynamicMemoryAllocation>
       <param.DynamicMemoryAllocation>option.DynamicMemoryAllocation.Threshold</param.DynamicMemoryAllocation>
@@ -38,7 +38,7 @@
       <param.CodeFormattingTool>option.CodeFormattingTool.Auto</param.CodeFormattingTool>
       <param.ReservedNameArray />
       <param.CppStyleConst>true</param.CppStyleConst>
-      <param.EnableDebugging />
+      <param.EnableDebugging>false</param.EnableDebugging>
       <param.Verbosity>option.Verbosity.Info</param.Verbosity>
       <param.ReportPotentialDifferences>false</param.ReportPotentialDifferences>
       <param.GenerateReport>true</param.GenerateReport>
@@ -49,7 +49,7 @@
       <param.DefaultTestFile />
       <param.MergeInstrumentationResults>false</param.MergeInstrumentationResults>
       <param.VerificationMode>option.VerificationMode.None</param.VerificationMode>
-      <param.VerificationStatus>option.VerificationStatus.FailedTest</param.VerificationStatus>
+      <param.VerificationStatus>option.VerificationStatus.Passed</param.VerificationStatus>
       <param.EnableMexProfiling>false</param.EnableMexProfiling>
       <var.BuiltWithMexProfiling>false</var.BuiltWithMexProfiling>
       <param.CustomSourceCode />
@@ -65,12 +65,12 @@
       </param.CustomSource>
       <param.CustomLibrary />
       <param.PostCodeGenCommand />
-      <param.mex.GenCodeOnly />
+      <param.mex.GenCodeOnly>false</param.mex.GenCodeOnly>
       <param.ConstantFoldingTimeout>40000</param.ConstantFoldingTimeout>
       <param.CompileTimeRecursionLimit>50</param.CompileTimeRecursionLimit>
       <param.EnableRuntimeRecursion>true</param.EnableRuntimeRecursion>
       <param.PreserveVariableNames>option.PreserveVariableNames.None</param.PreserveVariableNames>
-      <param.EchoExpressions />
+      <param.EchoExpressions>true</param.EchoExpressions>
       <param.InlineThreshold>10</param.InlineThreshold>
       <param.InlineThresholdMax>200</param.InlineThresholdMax>
       <param.InlineStackLimit>1000000</param.InlineStackLimit>
@@ -82,13 +82,13 @@
       <param.EnableOpenMP>true</param.EnableOpenMP>
       <param.InitFltsAndDblsToZero>true</param.InitFltsAndDblsToZero>
       <param.DefaultVariableInitialization>option.DefaultVariableInitialization.None</param.DefaultVariableInitialization>
-      <param.ConstantInputs />
+      <param.ConstantInputs>option.ConstantInputs.CheckValues</param.ConstantInputs>
       <param.EnableCRICodeCoverage>true</param.EnableCRICodeCoverage>
       <param.EnableAutoParallelizationReporting>true</param.EnableAutoParallelizationReporting>
       <param.CacheDynamicArrayDataPointer>true</param.CacheDynamicArrayDataPointer>
       <param.EnableJIT>false</param.EnableJIT>
-      <param.EnableJITSilentBailOut />
-      <param.CheckForIssuesJIT />
+      <param.EnableJITSilentBailOut>false</param.EnableJITSilentBailOut>
+      <param.CheckForIssuesJIT>true</param.CheckForIssuesJIT>
       <param.EnableGitSupport>false</param.EnableGitSupport>
       <param.EnableAutoCommit>true</param.EnableAutoCommit>
       <param.RepositoryStyle>option.RepositoryStyle.Auto</param.RepositoryStyle>
@@ -180,8 +180,8 @@
     <profile key="profile.c">
       <param.WorkingFolder>option.WorkingFolder.Specified</param.WorkingFolder>
       <param.SpecifiedWorkingFolder>C:\GitHub\C_Code_Integration\MATLAB\Codegen</param.SpecifiedWorkingFolder>
-      <param.BuildFolder>option.BuildFolder.Project</param.BuildFolder>
-      <param.SpecifiedBuildFolder />
+      <param.BuildFolder>option.BuildFolder.Specified</param.BuildFolder>
+      <param.SpecifiedBuildFolder>.</param.SpecifiedBuildFolder>
       <param.SearchPaths />
       <var.SimdQueryHardwareVendor>Intel</var.SimdQueryHardwareVendor>
       <var.SimdQueryHardwareType>x86-64 (Windows64)</var.SimdQueryHardwareType>
@@ -399,8 +399,6 @@
       <param.psQuickConfValue>option.psQuickConfValue.proj</param.psQuickConfValue>
       <param.psOutputFolder>results_$codegenName$</param.psOutputFolder>
       <unset>
-        <param.BuildFolder />
-        <param.SpecifiedBuildFolder />
         <param.SearchPaths />
         <param.InstructionSetExtensionsAvailableInUI />
         <param.InstructionSetExtensions />
@@ -584,7 +582,7 @@
     </param.TestSnippets>
     <param.ExternalFcnMajority>column</param.ExternalFcnMajority>
     <param.UseGlobals>option.UseGlobals.Yes</param.UseGlobals>
-    <param.outputfile>${PROJECT_ROOT}\codegen\lib\parkingMeterLowLevel\parkingMeterLowLevel.lib</param.outputfile>
+    <param.outputfile>${PROJECT_ROOT}\.\parkingMeterLowLevel.lib</param.outputfile>
     <param.version>R2012a</param.version>
     <param.HasECoderFeatures>true</param.HasECoderFeatures>
     <param.HasGpuCoder>true</param.HasGpuCoder>
@@ -622,15 +620,15 @@
     <var.DismissScreener>true</var.DismissScreener>
     <param.unifiedParamStorage />
     <param.hdlParamStorage />
-    <var.gc.lastOutputRoot />
+    <var.gc.lastOutputRoot>.</var.gc.lastOutputRoot>
     <var.gc.lastOutputType>C_CODE</var.gc.lastOutputType>
-    <var.gc.preBuildChecksum>461060178</var.gc.preBuildChecksum>
+    <var.gc.preBuildChecksum>20794257</var.gc.preBuildChecksum>
     <var.cfi.lastOutputRoot>codegen\mex\parkingMeterLowLevel</var.cfi.lastOutputRoot>
-    <var.cfi.preBuildChecksum>795844783</var.cfi.preBuildChecksum>
+    <var.cfi.preBuildChecksum>1837885328</var.cfi.preBuildChecksum>
     <var.lastCfiTestSnippet>TestParkingMeterLowLevel</var.lastCfiTestSnippet>
     <var.outdatedOnRestore>false</var.outdatedOnRestore>
-    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;C:\GitHub\C_Code_Integration\MATLAB\Classes\Constants.m&lt;/file&gt;&lt;file&gt;C:\GitHub\C_Code_Integration\MATLAB\Classes\TestMode.m&lt;/file&gt;&lt;file&gt;C:\GitHub\C_Code_Integration\MATLAB\Functions\parkingMeterLowLevel.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;1352999305&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
-    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;C:\GitHub\C_Code_Integration\MATLAB\Classes\Constants.m&lt;/file&gt;&lt;file&gt;C:\GitHub\C_Code_Integration\MATLAB\Classes\TestMode.m&lt;/file&gt;&lt;file&gt;C:\GitHub\C_Code_Integration\MATLAB\Functions\parkingMeterLowLevel.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
+    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;D:\GitHub\C_Code_Integration\MATLAB\Classes\Constants.m&lt;/file&gt;&lt;file&gt;D:\GitHub\C_Code_Integration\MATLAB\Classes\TestMode.m&lt;/file&gt;&lt;file&gt;D:\GitHub\C_Code_Integration\MATLAB\Functions\parkingMeterLowLevel.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;964986463&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
+    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;D:\GitHub\C_Code_Integration\MATLAB\Classes\Constants.m&lt;/file&gt;&lt;file&gt;D:\GitHub\C_Code_Integration\MATLAB\Classes\TestMode.m&lt;/file&gt;&lt;file&gt;D:\GitHub\C_Code_Integration\MATLAB\Functions\parkingMeterLowLevel.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
     <param.forceMexBuild>false</param.forceMexBuild>
     <param.NoDefaultJIT>false</param.NoDefaultJIT>
     <param.configImportActive>false</param.configImportActive>
@@ -647,7 +645,7 @@
     <param.mex.outputfile>parkingMeterLowLevel_mex</param.mex.outputfile>
     <param.grt.outputfile>parkingMeterLowLevel</param.grt.outputfile>
     <param.artifact>option.target.artifact.lib</param.artifact>
-    <param.outputfile>${PROJECT_ROOT}\codegen\lib\parkingMeterLowLevel\parkingMeterLowLevel.lib</param.outputfile>
+    <param.outputfile>${PROJECT_ROOT}\.\parkingMeterLowLevel.lib</param.outputfile>
     <param.CppNamespace />
     <param.CppPackagesToNamespaces>true</param.CppPackagesToNamespaces>
     <param.CppNamespaceForMathworksCode>coder</param.CppNamespaceForMathworksCode>
@@ -674,7 +672,7 @@
     <param.gpu.MinPoolSize>8</param.gpu.MinPoolSize>
     <param.gpu.MaxPoolSize>2048</param.gpu.MaxPoolSize>
     <var.checkIssuesGpu>false</var.checkIssuesGpu>
-    <var.hasGpu>false</var.hasGpu>
+    <var.hasGpu>true</var.hasGpu>
     <var.isDeepLearningForMatlabCoderEnabled>true</var.isDeepLearningForMatlabCoderEnabled>
     <param.deeplearning.EnableDeepLearning>false</param.deeplearning.EnableDeepLearning>
     <param.deeplearning.DeepLearningCustomCallback />
@@ -774,7 +772,6 @@
       <var.redirectedInputTypeData />
       <param.unifiedParamStorage />
       <param.hdlParamStorage />
-      <var.gc.lastOutputRoot />
       <var.outdatedOnRestore />
       <param.forceMexBuild />
       <param.NoDefaultJIT />
@@ -884,21 +881,21 @@
       <param.FixedPointUseDesignRanges />
     </unset>
     <fileset.entrypoints>
-      <file custom-data-expanded="false" value="C:\GitHub\C_Code_Integration\MATLAB\Functions\parkingMeterLowLevel.m" />
+      <file custom-data-expanded="false" value="D:\GitHub\C_Code_Integration\MATLAB\Functions\parkingMeterLowLevel.m" />
     </fileset.entrypoints>
     <fileset.testbench>
       <file>${PROJECT_ROOT}\Test_ParkingMeterLowLevel.m</file>
       <file>O:\Projects\Demos\branches\Sebastien_Dupertuis\File_Exchange\Parking_Meter\MATLAB\Scripts\TestParkingMeterLowLevel.m</file>
     </fileset.testbench>
     <fileset.inputtypes>
-      <file>C:\GitHub\C_Code_Integration\MATLAB\Functions\parkingMeterLowLevel.m</file>
+      <file>D:\GitHub\C_Code_Integration\MATLAB\Functions\parkingMeterLowLevel.m</file>
     </fileset.inputtypes>
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\codegen\lib\parkingMeterLowLevel" name="parkingMeterLowLevel.lib" optional="false">C:\GitHub\C_Code_Integration\MATLAB\Codegen\codegen\lib\parkingMeterLowLevel\parkingMeterLowLevel.lib</file>
+      <file location="${PROJECT_ROOT}\." name="parkingMeterLowLevel.lib" optional="false">D:\GitHub\C_Code_Integration\MATLAB\Codegen\.\parkingMeterLowLevel.lib</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\MATLAB\R2023a</root>
+      <root>C:\Program Files\MATLAB\R2023a</root>
       <toolboxes>
         <toolbox name="matlabcoder" />
         <toolbox name="embeddedcoder" />

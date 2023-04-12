@@ -1,6 +1,6 @@
 classdef TestApp < matlab.uitest.TestCase
   % Call the test execution for example like this:
-  % results = runtests('..\Component\UnitTesting\TestApp.m');
+  % results = runtests('..\Components\UnitTesting\TestApp.m');
   % Copyright 2023 The MathWorks, Inc.
 
   properties
@@ -80,7 +80,7 @@ classdef TestApp < matlab.uitest.TestCase
                'LineStyle','--','Marker','o','LineWidth',testCase.LineWidth);
         hold('off');
         grid('on');
-        xlim([1 nbSteps]);
+        xlim([1 max([2 nbSteps])]);
         if (k == 1)
           title(['Results of test case #' num2str(testID) ': ' testText],...
                'FontSize',testCase.FontSize,'FontWeight',testCase.FontWeight);
@@ -111,7 +111,7 @@ classdef TestApp < matlab.uitest.TestCase
   methods (TestMethodSetup)
     function [] = launchApp(testCase)
       % Instantiate the App Designer GUI
-      testCase.App = ParkingMeterGUI;
+      testCase.App = ParkingMeterAutoTestGUI;
       % Temporization to be sure the App is up and running
       waitfor(testCase.App,'Running','on');
       pause(testCase.WaitTime);

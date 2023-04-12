@@ -20,4 +20,4 @@ labels(labels == 7) = -3;
 labels(labels == 8) = -8;
 labels = -labels;
 % Save labelled mask
-save('..\Component\UIClass\SevenSegmentMask.mat','labels');
+save('..\Components\UIClass\SevenSegmentMask.mat','labels');

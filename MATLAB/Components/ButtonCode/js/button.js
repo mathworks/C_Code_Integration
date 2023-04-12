@@ -20,7 +20,7 @@ function setup(html) {
         } else {
             var ButtonContent = [
                 '<div style="display: flex; gap: 5px; flex-direction: ' + html.Data.FlexDirection + '; align-items: ' + html.Data.AlignItems + '; justify-content: ' + html.Data.JustifyContent + ';">',
-                '<img src="images/' + html.Data.Icon + '" height="' + html.Data.IconSize +'" width="' + html.Data.IconSize + '";/>',
+                '<img src="' + html.Data.Icon + '" height="' + html.Data.IconSize +'" width="' + html.Data.IconSize + '";/>',
                 html.Data.Text,
                 '</div>',
             ].join('\n');
@@ -29,6 +29,8 @@ function setup(html) {
 
         // Customize button appearance with CSS
         var StyleProps = [
+            'background-image: url("' + html.Data.BackgroundImage + '");',
+            'background-size: cover;', /* Resize the background image to cover the entire container */
             'background-color: ' + html.Data.ButtonColor + ';',
             'color: ' + html.Data.FontColor + ';',
             'font-size: ' + html.Data.FontSize + 'px;',
