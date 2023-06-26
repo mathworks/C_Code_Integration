@@ -8,10 +8,10 @@
 % IN/OUT: -
 % OUT   : - 
 %
-% Copyright 2019 The MathWorks, Inc.
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [] = defineTestMode(test_mode_on)
-  global TEST_MODE;
+  global TEST_MODE; %#ok<GVMIS> 
   if (nargin ~= 1 || (test_mode_on ~= 0 && test_mode_on ~= 1))
     TEST_MODE = int32(0); % Disable the test mode by default
   else

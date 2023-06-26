@@ -6,7 +6,7 @@ classdef Constants
 %         Once an object has been created out of this class, it must then be
 %         passed has an input argument to all the functions of the application.
 %
-% Author: Copyright 2019 The MathWorks, Inc.
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %#codegen
   properties (Constant = true)
@@ -31,6 +31,7 @@ classdef Constants
     BIT_MASK_050_CENTS = 0x04;
     BIT_MASK_100_CENTS = 0x08;
     BIT_MASK_200_CENTS = 0x10;
+    BIT_MASK_CHANGE_COINS = 0x0F;
     % Bit mask encoding of buttons
     BIT_MASK_GREEN_BUTTON  = 0x01;
     BIT_MASK_RED_BUTTON    = 0x02;
@@ -65,13 +66,14 @@ classdef Constants
     INT_CASE_ENTRY_M = uint16(45); % ASCII code for '-'
 
     % 7 segments displays identifiers
-    DISPLAY_1 = uint8(1); 
-    DISPLAY_2 = uint8(2); 
-    DISPLAY_3 = uint8(3); 
+    NB_DISPLAYS = uint8(3);
+    DISPLAY_1   = uint8(1);
+    DISPLAY_2   = uint8(2);
+    DISPLAY_3   = uint8(3);
     % Parking meter system constants 
     MINUS_VALUE     = Constants.INT_CASE_ENTRY_M; % Must be identical 
     TICKET_FEE      = uint16(120);
-    PULSE_DURATION  = 0.1;
+    PULSE_DURATION  = 0.25;
     REFRESHING_TIME = 0.01;
     % Addresses of the registers accessed by the 7segments displays
     DISPLAY_REGISTER_1 = 0xA000;

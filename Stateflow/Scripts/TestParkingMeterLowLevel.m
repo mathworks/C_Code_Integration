@@ -1,10 +1,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Goal  : Test of the main function of the Parking Meter Low Level module
 %
-% Copyright 2019 The MathWorks, Inc.
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear variables; clc;
-global TEST_MODE; %#ok<NUSED>
+global TEST_MODE; %#ok<GVMIS,NUSED>
 
 % Initialization
 TEST_MEX = 0; % Generate and test the MEX file if set to '1'
@@ -28,8 +28,11 @@ if (TEST_MEX == 0)
 else
   % Generate the MEX function of the main file
   fprintf('Building the MEX file, please wait...\n');
-  codegen('parkingMeterLowLevel','..\Interface_C_files\write_register.c',...
-          '-d',CODEGEN_FOLDER,'-report');
+  cfg = coder.config('mex');
+  cfg.CustomSource = '..\Interface_C_files\write_register.c';
+  cfg.CustomInclude = '..\Interface_C_files';
+  cfg.CustomSourceCode = '#include "ParkingMeterMemory.h"';
+  codegen('-config','cfg','parkingMeterLowLevel','-d',CODEGEN_FOLDER,'-report');
   fprintf('The MEX file has been built successfully.\n');
   movefile('parkingMeterLowLevel_mex.mexw64','..\MEX_functions');
   rmdir(CODEGEN_FOLDER,'s');

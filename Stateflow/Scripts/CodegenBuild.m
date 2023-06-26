@@ -6,12 +6,12 @@
 % 
 % See also CODER, CODER.CONFIG, CODER.TYPEOF, CODEGEN.
 %
-% Copyright 2019 The MathWorks, Inc.
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear variables; clc;
 
 % Initialization
-global TEST_MODE; %#ok<NUSED>
+global TEST_MODE; %#ok<NUSED,GVMIS> 
 defineTestMode(1); % '0' => normal mode, '1' => test mode
 
 %% Create configuration object of class 'coder.EmbeddedCodeConfig'.
@@ -22,10 +22,10 @@ cfg.EnableStrengthReduction = true;
 cfg.GenerateReport = true;
 cfg.ReportPotentialDifferences = false;
 cfg.SaturateOnIntegerOverflow = false;
-cfg.CustomInclude = sprintf('..\\Interface_C_files\n');
-cfg.CustomSource = sprintf(['..\\Interface_C_files\\read_register.c\n'...
-                            '..\\Interface_C_files\\write_register.c\n'...
-                            '..\\Interface_C_files\\ParkingMeterMemory.h']);
+cfg.CustomInclude = {'..\\Interface_C_files'};
+cfg.CustomSource  = {'..\\Interface_C_files\\read_register.c', ...
+                     '..\\Interface_C_files\\write_register.c', ...
+                     '..\\Interface_C_files\\ParkingMeterMemory.h'};
 cfg.FilePartitionMethod = 'SingleFile';
 cfg.InitFltsAndDblsToZero = false;
 cfg.PreserveVariableNames = 'All';

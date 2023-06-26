@@ -9,7 +9,7 @@
 * MEX Build: Run this command to build the MEX:
 * >> mex '..\MEX_functions\write_register.c' -outdir '..\MEX_functions'
 *
-* Copyright 2019 The MathWorks, Inc.
+* Copyright 2023 The MathWorks, Inc.
 *******************************************************************************/
 
 /* Packages to include */

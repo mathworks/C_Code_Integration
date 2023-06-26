@@ -5,11 +5,11 @@
 % IN/OUT: -
 % OUT   : - error_flag: error code
 %
-% Copyright 2019 The MathWorks, Inc.
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %#codegen
 function [] = parkingMeterLowLevel()
-  global TEST_MODE;
+  global TEST_MODE; %#ok<*GVMIS> 
 
   % Initialization
   initialization_interface();

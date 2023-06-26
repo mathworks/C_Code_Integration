@@ -1,8 +1,8 @@
 /*
  * File: parkingMeterLowLevel.c
  *
- * MATLAB Coder version            : 5.4
- * C/C++ source code generated on  : 08-Jun-2022 10:01:23
+ * MATLAB Coder version            : 5.6
+ * C/C++ source code generated on  : 26-Jun-2023 17:34:49
  */
 
 /* Include Files */
@@ -159,8 +159,6 @@ static void Scheduler_step(Scheduler *this)
       case 1:
         /* State: CHECK_COINS */
         /* State Scheduler.CHECK_COINS becomes inactive */
-        this->StateflowInternalData.ActiveChildVars.ActiveChildVar_Scheduler =
-            0.0;
         /* State Scheduler.PURCHASE_TICKET becomes active */
         this->StateflowInternalData.ActiveChildVars.ActiveChildVar_Scheduler =
             13.0;
@@ -176,8 +174,6 @@ static void Scheduler_step(Scheduler *this)
       case 3:
         /* State: INITIALIZATION */
         /* State Scheduler.INITIALIZATION becomes inactive */
-        this->StateflowInternalData.ActiveChildVars.ActiveChildVar_Scheduler =
-            0.0;
         /* State Scheduler.PURCHASE_CHECK becomes active */
         this->StateflowInternalData.ActiveChildVars.ActiveChildVar_Scheduler =
             2.0;
@@ -188,8 +184,6 @@ static void Scheduler_step(Scheduler *this)
           /* %SFXSourceLine:<Scheduler/Scheduler/Transition#56>
            * obj.master_switch == false */
           /* State Scheduler.PURCHASE_CHECK becomes inactive */
-          this->StateflowInternalData.ActiveChildVars.ActiveChildVar_Scheduler =
-              0.0;
           /* State Scheduler.STOP_EXECUTION becomes active */
           this->StateflowInternalData.ActiveChildVars.ActiveChildVar_Scheduler =
               4.0;
@@ -202,8 +196,6 @@ static void Scheduler_step(Scheduler *this)
           /* %SFXSourceLine:<Scheduler/Scheduler/Transition#58>
            * obj.green_pressed == true */
           /* State Scheduler.PURCHASE_CHECK becomes inactive */
-          this->StateflowInternalData.ActiveChildVars.ActiveChildVar_Scheduler =
-              0.0;
           /* State Scheduler.CHECK_COINS becomes active */
           this->StateflowInternalData.ActiveChildVars.ActiveChildVar_Scheduler =
               1.0;
@@ -245,8 +237,6 @@ static void Scheduler_step(Scheduler *this)
             /* %SFXSourceLine:<Scheduler/Scheduler/PURCHASE_TICKET/Transition#37>
              * obj.red_pressed == true */
             /* State Scheduler.PURCHASE_TICKET.CANCEL_CHECK becomes inactive */
-            this->StateflowInternalData.ActiveChildVars
-                .ActiveChildVar_PURCHASE_TICKET = 0.0;
             /* State Scheduler.PURCHASE_TICKET.CANCEL_PURCHASE becomes active */
             this->StateflowInternalData.ActiveChildVars
                 .ActiveChildVar_PURCHASE_TICKET = 21.0;
@@ -260,8 +250,6 @@ static void Scheduler_step(Scheduler *this)
             this->obj.ISR[3] = true;
           } else {
             /* State Scheduler.PURCHASE_TICKET.CANCEL_CHECK becomes inactive */
-            this->StateflowInternalData.ActiveChildVars
-                .ActiveChildVar_PURCHASE_TICKET = 0.0;
             /* State Scheduler.PURCHASE_TICKET.COIN_CHECK becomes active */
             this->StateflowInternalData.ActiveChildVars
                 .ActiveChildVar_PURCHASE_TICKET = 40.0;
@@ -300,8 +288,6 @@ static void Scheduler_step(Scheduler *this)
             /* %SFXSourceLine:<Scheduler/Scheduler/PURCHASE_TICKET/Transition#42>
              * obj.coins_reg_value ~= obj.register_value */
             /* State Scheduler.PURCHASE_TICKET.COIN_CHECK becomes inactive */
-            this->StateflowInternalData.ActiveChildVars
-                .ActiveChildVar_PURCHASE_TICKET = 0.0;
             this->StateflowInternalData.StepCounters
                 .c_Scheduler_PURCHASE_TICKET_UPD = 0.0;
             /* State Scheduler.PURCHASE_TICKET.UPDATE_AMOUNT becomes active */
@@ -309,8 +295,6 @@ static void Scheduler_step(Scheduler *this)
                 .ActiveChildVar_PURCHASE_TICKET = 22.0;
           } else {
             /* State Scheduler.PURCHASE_TICKET.COIN_CHECK becomes inactive */
-            this->StateflowInternalData.ActiveChildVars
-                .ActiveChildVar_PURCHASE_TICKET = 0.0;
             /* State Scheduler.PURCHASE_TICKET.CANCEL_CHECK becomes active */
             this->StateflowInternalData.ActiveChildVars
                 .ActiveChildVar_PURCHASE_TICKET = 35.0;
@@ -324,8 +308,6 @@ static void Scheduler_step(Scheduler *this)
         case 46:
           /* State: INITIALIZATION */
           /* State Scheduler.PURCHASE_TICKET.INITIALIZATION becomes inactive */
-          this->StateflowInternalData.ActiveChildVars
-              .ActiveChildVar_PURCHASE_TICKET = 0.0;
           /* State Scheduler.PURCHASE_TICKET.CANCEL_CHECK becomes active */
           this->StateflowInternalData.ActiveChildVars
               .ActiveChildVar_PURCHASE_TICKET = 35.0;
@@ -366,8 +348,6 @@ static void Scheduler_step(Scheduler *this)
             /* %SFXSourceLine:<Scheduler/Scheduler/PURCHASE_TICKET/Transition#39>
              * after(REFRESHING_TICK, tick) */
             /* State Scheduler.PURCHASE_TICKET.UPDATE_AMOUNT becomes inactive */
-            this->StateflowInternalData.ActiveChildVars
-                .ActiveChildVar_PURCHASE_TICKET = 0.0;
             /* State Scheduler.PURCHASE_TICKET.CANCEL_CHECK becomes active */
             this->StateflowInternalData.ActiveChildVars
                 .ActiveChildVar_PURCHASE_TICKET = 35.0;
@@ -380,8 +360,6 @@ static void Scheduler_step(Scheduler *this)
             /* %SFXSourceLine:<Scheduler/Scheduler/PURCHASE_TICKET/Transition#44>
              * obj.inserted_amount >= TICKET_FEE */
             /* State Scheduler.PURCHASE_TICKET.UPDATE_AMOUNT becomes inactive */
-            this->StateflowInternalData.ActiveChildVars
-                .ActiveChildVar_PURCHASE_TICKET = 0.0;
             /* State Scheduler.PURCHASE_TICKET.PRINT_RECEIPT becomes active */
             this->StateflowInternalData.ActiveChildVars
                 .ActiveChildVar_PURCHASE_TICKET = 33.0;
@@ -508,7 +486,7 @@ static void TestMode_give_back_coin(void)
           format = "%d%c";
           nb_input_types = scanf_s(format, &coin_choice, &terminator, 1);
           /*  Check if the provided data is an integer number */
-          if ((nb_input_types == 2) && (terminator == '\x0a')) {
+          if ((nb_input_types == 2) && (terminator == '\n')) {
             exitg3 = 1;
           } else {
             char *CLEAR_STDIN;
@@ -665,7 +643,7 @@ static void TestMode_write_register(void)
       b_format = "%d%c";
       nb_input_types = scanf_s(b_format, &data, &terminator, 1);
       /*  Check if the provided data is an integer number */
-      if ((nb_input_types == 2) && (terminator == '\x0a')) {
+      if ((nb_input_types == 2) && (terminator == '\n')) {
         exitg3 = 1;
       } else {
         char *b_CLEAR_STDIN;
@@ -1035,13 +1013,13 @@ static void display_digit(unsigned char display_ID, unsigned short digit_value,
  */
 static int div_nde_s32_floor(int numerator)
 {
-  int b_numerator;
+  int i;
   if ((numerator < 0) && (numerator % 10 != 0)) {
-    b_numerator = -1;
+    i = -1;
   } else {
-    b_numerator = 0;
+    i = 0;
   }
-  return numerator / 10 + b_numerator;
+  return numerator / 10 + i;
 }
 
 /*
@@ -1117,7 +1095,7 @@ static void give_back_coin(unsigned short amount)
     /*  OUT   : - */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      */
-    Sleep(100);
+    Sleep(250);
     /*  Sleep asks milliseconds as input */
     /*  Reset the selected bit only and write the new value to the register */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1144,7 +1122,7 @@ static void give_back_coin(unsigned short amount)
     /*  OUT   : - */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      */
-    Sleep(100);
+    Sleep(250);
     /*  Sleep asks milliseconds as input */
   } break;
   case 20U: {
@@ -1200,7 +1178,7 @@ static void give_back_coin(unsigned short amount)
     /*  OUT   : - */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      */
-    Sleep(100);
+    Sleep(250);
     /*  Sleep asks milliseconds as input */
     /*  Reset the selected bit only and write the new value to the register */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1227,7 +1205,7 @@ static void give_back_coin(unsigned short amount)
     /*  OUT   : - */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      */
-    Sleep(100);
+    Sleep(250);
     /*  Sleep asks milliseconds as input */
   } break;
   case 50U: {
@@ -1283,7 +1261,7 @@ static void give_back_coin(unsigned short amount)
     /*  OUT   : - */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      */
-    Sleep(100);
+    Sleep(250);
     /*  Sleep asks milliseconds as input */
     /*  Reset the selected bit only and write the new value to the register */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1310,7 +1288,7 @@ static void give_back_coin(unsigned short amount)
     /*  OUT   : - */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      */
-    Sleep(100);
+    Sleep(250);
     /*  Sleep asks milliseconds as input */
   } break;
   case 100U: {
@@ -1366,7 +1344,7 @@ static void give_back_coin(unsigned short amount)
     /*  OUT   : - */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      */
-    Sleep(100);
+    Sleep(250);
     /*  Sleep asks milliseconds as input */
     /*  Reset the selected bit only and write the new value to the register */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1393,7 +1371,7 @@ static void give_back_coin(unsigned short amount)
     /*  OUT   : - */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      */
-    Sleep(100);
+    Sleep(250);
     /*  Sleep asks milliseconds as input */
   } break;
   default:
@@ -1633,7 +1611,7 @@ static void standard_operation_mode(void)
         b_k = 0;
         exitg2 = false;
         while ((!exitg2) && (b_k <= ii_size_idx_1 - 1)) {
-          bool guard1 = false;
+          bool guard1;
           guard1 = false;
           switch (ii_data[b_k]) {
           case 1: {
@@ -1662,22 +1640,29 @@ static void standard_operation_mode(void)
               unsigned short digit_value;
               /*  Compute the cent */
               digit_value =
-                  (unsigned short)((unsigned int)chart.obj.display_value -
-                                   chart.obj.display_value / 10 * 10);
+                  (unsigned short)(chart.obj.display_value -
+                                   (unsigned int)((int)(chart.obj
+                                                            .display_value /
+                                                        10U) *
+                                                  10));
               display_digit(1U, digit_value, 0.0);
               /*  Compute the tens of cents */
               b_remainder = (unsigned short)rt_roundd(
                   (double)(unsigned short)(chart.obj.display_value -
                                            digit_value) /
                   10.0);
-              digit_value = (unsigned short)((unsigned int)b_remainder -
-                                             b_remainder / 10 * 10);
+              digit_value =
+                  (unsigned short)(b_remainder -
+                                   (unsigned int)((int)(b_remainder / 10U) *
+                                                  10));
               display_digit(2U, digit_value, 0.0);
               /*  Compute the hundreds of cents */
               b_x = (unsigned short)rt_roundd(
                   (double)(unsigned short)(b_remainder - digit_value) / 10.0);
               display_digit(
-                  3U, (unsigned short)((unsigned int)b_x - b_x / 10 * 10), 1.0);
+                  3U,
+                  (unsigned short)(b_x - (unsigned int)((int)(b_x / 10U) * 10)),
+                  1.0);
             } else {
               printf("Incorrect cents value provided to the parking meter "
                      "display!\n");
@@ -1686,7 +1671,7 @@ static void standard_operation_mode(void)
             guard1 = true;
           } break;
           case 2: {
-            int b_chart;
+            int i3;
             unsigned char register_value;
             /*  Update the coins flap status */
             /*  Get the current peripherals register status */
@@ -1729,11 +1714,11 @@ static void standard_operation_mode(void)
             /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
              */
             if (chart.obj.flap_open) {
-              b_chart = register_value | 128;
+              i3 = register_value | 128;
             } else {
-              b_chart = register_value & 127;
+              i3 = register_value & 127;
             }
-            write_register(40963, (unsigned char)b_chart);
+            write_register(40963, (unsigned char)i3);
             guard1 = true;
           } break;
           case 3: {
@@ -2016,7 +2001,7 @@ static void standard_operation_mode(void)
               /*  OUT   : - */
               /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                */
-              Sleep(100);
+              Sleep(250);
               /*  Sleep asks milliseconds as input */
               /*  Reset the selected bit only and write the new value to the
                * register */
@@ -2044,7 +2029,7 @@ static void standard_operation_mode(void)
               /*  OUT   : - */
               /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                */
-              Sleep(100);
+              Sleep(250);
               /*  Sleep asks milliseconds as input */
             }
             /*  Give back coin's change */
@@ -2283,7 +2268,7 @@ void parkingMeterLowLevel(void)
   /*  IN/OUT: - */
   /*  OUT   : - error_flag: error code */
   /*  */
-  /*  Copyright 2019 The MathWorks, Inc. */
+  /*  Copyright 2023 The MathWorks, Inc. */
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    */
   /*  Initialization */
@@ -2394,7 +2379,7 @@ void parkingMeterLowLevel(void)
             format = "%d%c";
             nb_input_types = scanf_s(format, &choice, &terminator, 1);
             /*  Check if the provided data is an integer number */
-            if ((nb_input_types == 2) && (terminator == '\x0a')) {
+            if ((nb_input_types == 2) && (terminator == '\n')) {
               exitg3 = 1;
             } else {
               char *CLEAR_STDIN;
@@ -2481,7 +2466,7 @@ void parkingMeterLowLevel(void)
               b_format = "%d%c";
               b_nb_input_types = scanf_s(b_format, &data, &b_terminator, 1);
               /*  Check if the provided data is an integer number */
-              if ((b_nb_input_types == 2) && (b_terminator == '\x0a')) {
+              if ((b_nb_input_types == 2) && (b_terminator == '\n')) {
                 exitg3 = 1;
               } else {
                 char *b_CLEAR_STDIN;
@@ -2526,7 +2511,7 @@ void parkingMeterLowLevel(void)
             int digit_value;
             int x;
             /*  Compute the cent */
-            digit_value = data - div_nde_s32_floor(data) * 10;
+            digit_value = data - data / 10 * 10;
             b_display_digit(1U, digit_value, 0.0);
             /*  Compute the tens of cents */
             b_remainder = (int)rt_roundd((double)(data - digit_value) / 10.0);
@@ -2599,7 +2584,7 @@ void parkingMeterLowLevel(void)
               c_format = "%d%c";
               c_nb_input_types = scanf_s(c_format, &state, &c_terminator, 1);
               /*  Check if the provided data is an integer number */
-              if ((c_nb_input_types == 2) && (c_terminator == '\x0a')) {
+              if ((c_nb_input_types == 2) && (c_terminator == '\n')) {
                 exitg3 = 1;
               } else {
                 char *c_CLEAR_STDIN;
@@ -2621,7 +2606,7 @@ void parkingMeterLowLevel(void)
             }
           } while (exitg2 == 0);
           unsigned char b_a;
-          /*  Write the user's data to the 7 segments displays  */
+          /*  Write the user's data to the peripherals */
           /*  Get the current peripherals register status */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
@@ -2682,7 +2667,7 @@ void parkingMeterLowLevel(void)
              */
             write_register(40963, (unsigned char)(c_register_value | 64));
           }
-          printf("%s\n\n", "The desired value has been successfullywritten to "
+          printf("%s\n\n", "The desired value has been successfully written to "
                            "the give back cash LEDs.");
           fflush(stdout);
           printf("%s\n", "-----------------------------------------------------"
@@ -2760,7 +2745,7 @@ void parkingMeterLowLevel(void)
           /*  OUT   : - */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
-          Sleep(100);
+          Sleep(250);
           /*  Sleep asks milliseconds as input */
           /*  Reset the selected bit only and write the new value to the
            * register */
@@ -2788,7 +2773,7 @@ void parkingMeterLowLevel(void)
           /*  OUT   : - */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
-          Sleep(100);
+          Sleep(250);
           /*  Sleep asks milliseconds as input */
           printf("%s\n\n", "---------------------------------------------------"
                            "----------------------------");
@@ -2796,7 +2781,7 @@ void parkingMeterLowLevel(void)
         } break;
         case 6: {
           int b_data;
-          int c_data;
+          int i1;
           unsigned char b_register_value;
           /*  Text constants declaration  */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2853,7 +2838,7 @@ void parkingMeterLowLevel(void)
               d_format = "%d%c";
               d_nb_input_types = scanf_s(d_format, &b_data, &d_terminator, 1);
               /*  Check if the provided data is an integer number */
-              if ((d_nb_input_types == 2) && (d_terminator == '\x0a')) {
+              if ((d_nb_input_types == 2) && (d_terminator == '\n')) {
                 exitg3 = 1;
               } else {
                 char *d_CLEAR_STDIN;
@@ -2915,11 +2900,11 @@ void parkingMeterLowLevel(void)
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
           if (b_data != 0) {
-            c_data = b_register_value | 128;
+            i1 = b_register_value | 128;
           } else {
-            c_data = b_register_value & 127;
+            i1 = b_register_value & 127;
           }
-          write_register(40963, (unsigned char)c_data);
+          write_register(40963, (unsigned char)i1);
         } break;
         case 7: {
           int b;
@@ -2980,7 +2965,7 @@ void parkingMeterLowLevel(void)
               e_format = "%d%c";
               e_nb_input_types = scanf_s(e_format, &b, &e_terminator, 1);
               /*  Check if the provided data is an integer number */
-              if ((e_nb_input_types == 2) && (e_terminator == '\x0a')) {
+              if ((e_nb_input_types == 2) && (e_terminator == '\n')) {
                 exitg3 = 1;
               } else {
                 char *e_CLEAR_STDIN;
@@ -3095,7 +3080,7 @@ void parkingMeterLowLevel(void)
  */
 void parkingMeterLowLevel_initialize(void)
 {
-  TEST_MODE = 0;
+  TEST_MODE = 1;
   isInitialized_parkingMeterLowLevel = true;
 }
 

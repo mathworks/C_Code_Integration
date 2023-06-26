@@ -7,7 +7,7 @@
 *          The header file must be included in the C console program to have the
 *          full system working properly: #include "ParkingMeterMemory.h"
 *
-* Copyright 2019 The MathWorks, Inc.
+* Copyright 2023 The MathWorks, Inc.
 *******************************************************************************/
 
 /* Packages to include */
