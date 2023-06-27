@@ -1,5 +1,5 @@
 %% File : read_register.tlc
-%% Created : Wed Jun 08 12:12:51 2022
+%% Created : Tue Jun 27 15:35:38 2023
 %%
 %% Description: 
 %%   Simulink Coder wrapper functions interface generated for 
@@ -22,6 +22,8 @@
 %%      generated code.
 %%
 %function BlockTypeSetup(block, system) Output
+    %assign uint16Type = LibGetDataTypeNameFromId(::CompiledModel.tSS_UINT16)
+    %assign uint8Type = LibGetDataTypeNameFromId(::CompiledModel.tSS_UINT8)
 
   %if IsModelReferenceSimTarget() || CodeFormat == "S-Function" || ::isRAccel
     %assign hFileName = "read_register_accel_wrapper"
@@ -34,15 +36,15 @@
     #ifdef MATLAB_MEX_FILE
     #include "tmwtypes.h"
     #else
-    #include "rtwtypes.h"
+    %<SLibEmitIncludesForBasicTypesAll()>
     #endif
     #ifdef __cplusplus
     #define SFB_EXTERN_C extern "C"
     #else
     #define SFB_EXTERN_C extern
     #endif
-    SFB_EXTERN_C void read_register_Outputs_wrapper_accel(const uint16_T *address,
-			uint8_T *value);
+    SFB_EXTERN_C void read_register_Outputs_wrapper_accel(const %<uint16Type> *address,
+			%<uint8Type> *value);
     #undef SFB_EXTERN_C
     #endif
     %closefile hFile
@@ -54,17 +56,17 @@
     #ifdef MATLAB_MEX_FILE
     #include "tmwtypes.h"
     #else
-    #include "rtwtypes.h"
+    %<SLibEmitIncludesForBasicTypesAll()>
     #endif
     #include "%<hFileName>.h"
     
 
     extern void read_register_Start_wrapper(void);
-    extern void read_register_Outputs_wrapper(const uint16_T *address,
-			uint8_T *value);
+    extern void read_register_Outputs_wrapper(const %<uint16Type> *address,
+			%<uint8Type> *value);
     extern void read_register_Terminate_wrapper(void);
-    void read_register_Outputs_wrapper_accel(const uint16_T *address,
-			uint8_T *value){
+    void read_register_Outputs_wrapper_accel(const %<uint16Type> *address,
+			%<uint8Type> *value){
     read_register_Outputs_wrapper(address,
 			value);
     }
@@ -84,8 +86,8 @@
 
     SFB_EXTERN_C void read_register_Start_wrapper(void);
 
-    SFB_EXTERN_C void read_register_Outputs_wrapper(const uint16_T *address,
-			uint8_T *value);
+    SFB_EXTERN_C void read_register_Outputs_wrapper(const %<uint16Type> *address,
+			%<uint8Type> *value);
 
     SFB_EXTERN_C void read_register_Terminate_wrapper(void);
 

@@ -7,7 +7,9 @@
 #include "tmwtypes.h"
 #include "simstruc_types.h"
 #else
+#define SIMPLIFIED_RTWTYPES_COMPATIBILITY
 #include "rtwtypes.h"
+#undef SIMPLIFIED_RTWTYPES_COMPATIBILITY
 #endif
 
 
@@ -16,6 +18,7 @@
 #include "ParkingMeterMemory.h"
 /* %%%-SFUNWIZ_wrapper_includes_Changes_END --- EDIT HERE TO _BEGIN */
 #define u_width 1
+#define u_1_width 1
 
 /*
  * Create external references here.  

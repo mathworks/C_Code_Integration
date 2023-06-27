@@ -6,8 +6,9 @@ function [] = parseFile(file_name)
 % IN/OUT  : -
 % OUT     : -
 %
-% Author  : Sebastien Dupertuis
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
   % Custom code to add to support multiple execution instances
   CODE_TO_ADD = {'/* Function added to have the model running in normal mode */'
                  '#define MDL_SET_WORK_WIDTHS'

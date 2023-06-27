@@ -9,7 +9,7 @@ function updateSamplingTime(model,parameter)
 % IN/OUT  : -
 % OUT     : -
 %
-% Author  : Sebastien Dupertuis
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   % Set the Data Dictionary parameters

@@ -6,7 +6,7 @@ function [] = closeGUI()
 % IN/OUT  : -
 % OUT     : -
 %
-% Author  : Sebastien Dupertuis
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   % Close potential instance of the C# GUI

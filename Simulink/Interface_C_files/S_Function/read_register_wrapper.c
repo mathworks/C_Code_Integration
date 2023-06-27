@@ -7,7 +7,9 @@
 #include "tmwtypes.h"
 #include "simstruc_types.h"
 #else
+#define SIMPLIFIED_RTWTYPES_COMPATIBILITY
 #include "rtwtypes.h"
+#undef SIMPLIFIED_RTWTYPES_COMPATIBILITY
 #endif
 
 

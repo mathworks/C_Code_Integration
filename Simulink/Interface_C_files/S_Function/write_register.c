@@ -26,7 +26,7 @@
  * | See matlabroot/simulink/src/sfuntmpl_doc.c for a more detailed template |
  *  -------------------------------------------------------------------------
  *
- * Created: Wed Jun 08 12:14:05 2022
+ * Created: Tue Jun 27 15:44:48 2023
  */
 
 #define S_FUNCTION_LEVEL               2
@@ -38,11 +38,12 @@
 
 /* Input Port  0 */
 #define IN_PORT_0_NAME                 address
+#define INPUT_0_DIMS_ND                {1,1}
+#define INPUT_0_NUM_ELEMS              1
 #define INPUT_0_WIDTH                  1
 #define INPUT_DIMS_0_COL               1
 #define INPUT_0_DTYPE                  uint16_T
 #define INPUT_0_COMPLEX                COMPLEX_NO
-#define IN_0_FRAME_BASED               FRAME_NO
 #define IN_0_BUS_BASED                 0
 #define IN_0_BUS_NAME
 #define IN_0_DIMS                      1-D
@@ -56,11 +57,12 @@
 
 /* Input Port  1 */
 #define IN_PORT_1_NAME                 value
+#define INPUT_1_DIMS_ND                {1,1}
+#define INPUT_1_NUM_ELEMS              1
 #define INPUT_1_WIDTH                  1
 #define INPUT_DIMS_1_COL               1
 #define INPUT_1_DTYPE                  uint8_T
 #define INPUT_1_COMPLEX                COMPLEX_NO
-#define IN_1_FRAME_BASED               FRAME_NO
 #define IN_1_BUS_BASED                 0
 #define IN_1_BUS_NAME
 #define IN_1_DIMS                      1-D
@@ -118,14 +120,14 @@ static void mdlInitializeSizes(SimStruct *S)
     return;
 
   /* Input Port 0 */
-  ssSetInputPortWidth(S, 0, INPUT_0_WIDTH);
+  ssSetInputPortWidth(S, 0, INPUT_0_NUM_ELEMS);
   ssSetInputPortDataType(S, 0, SS_UINT16);
   ssSetInputPortComplexSignal(S, 0, INPUT_0_COMPLEX);
   ssSetInputPortDirectFeedThrough(S, 0, INPUT_0_FEEDTHROUGH);
   ssSetInputPortRequiredContiguous(S, 0, 1);/*direct input signal access*/
 
   /* Input Port 1 */
-  ssSetInputPortWidth(S, 1, INPUT_1_WIDTH);
+  ssSetInputPortWidth(S, 1, INPUT_1_NUM_ELEMS);
   ssSetInputPortDataType(S, 1, SS_UINT8);
   ssSetInputPortComplexSignal(S, 1, INPUT_1_COMPLEX);
   ssSetInputPortDirectFeedThrough(S, 1, INPUT_1_FEEDTHROUGH);
@@ -138,13 +140,39 @@ static void mdlInitializeSizes(SimStruct *S)
   ssSetNumIWork(S, 0);
   ssSetNumModes(S, 0);
   ssSetNumNonsampledZCs(S, 0);
-  ssSetSimulinkVersionGeneratedIn(S, "10.5");
+  ssSetSimulinkVersionGeneratedIn(S, "10.7");
 
   /* Take care when specifying exception free code - see sfuntmpl_doc.c */
   ssSetOptions(S, (SS_OPTION_EXCEPTION_FREE_CODE |
                    SS_OPTION_USE_TLC_WITH_ACCELERATOR |
                    SS_OPTION_WORKS_WITH_CODE_REUSE));
 }
+
+#if defined(MATLAB_MEX_FILE)
+#define MDL_SET_INPUT_PORT_DIMENSION_INFO
+
+static void mdlSetInputPortDimensionInfo(SimStruct *S,
+  int_T port,
+  const DimsInfo_T *dimsInfo)
+{
+  if (!ssSetInputPortDimensionInfo(S, port, dimsInfo))
+    return;
+}
+
+#endif
+
+#define MDL_SET_OUTPUT_PORT_DIMENSION_INFO
+#if defined(MDL_SET_OUTPUT_PORT_DIMENSION_INFO)
+
+static void mdlSetOutputPortDimensionInfo(SimStruct *S,
+  int_T port,
+  const DimsInfo_T *dimsInfo)
+{
+  if (!ssSetOutputPortDimensionInfo(S, port, dimsInfo))
+    return;
+}
+
+#endif
 
 /* Function: mdlInitializeSampleTimes =========================================
  * Abstract:

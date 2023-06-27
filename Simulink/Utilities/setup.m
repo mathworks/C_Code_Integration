@@ -7,8 +7,9 @@
 % IN/OUT  : -
 % OUT     : -
 %
-% Author  : Sebastien Dupertuis
+% Copyright 2023 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function setup()
   disp('Begin the initialization of the project...');
   % Use Simulink Project API to get the current project
