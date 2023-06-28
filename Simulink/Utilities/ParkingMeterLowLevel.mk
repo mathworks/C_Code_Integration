@@ -1,15 +1,10 @@
-###########################################################################
-## Makefile generated for Simulink model 'ParkingMeterLowLevel'. 
+﻿###########################################################################
+## Makefile generated for component 'ParkingMeterLowLevel'. 
 ## 
 ## Makefile     : ParkingMeterLowLevel.mk
-## Generated on : Fri Oct 11 15:31:49 2019
-## MATLAB Coder version: 4.3 (R2019b)
-## 
-## Build Info:
-## 
+## Generated on : Tue Jun 27 17:18:18 2023
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)\ParkingMeterLowLevel.exe
 ## Product type : executable
-## Build type   : Top-Level Standalone Executable
 ## 
 ###########################################################################
 
@@ -26,11 +21,10 @@
 
 PRODUCT_NAME              = ParkingMeterLowLevel
 MAKEFILE                  = ParkingMeterLowLevel.mk
-MATLAB_ROOT               = C:\MATLAB\R2019b
-MATLAB_BIN                = C:\MATLAB\R2019b\bin
+MATLAB_ROOT               = C:\PROGRA~1\MATLAB\R2023a
+MATLAB_BIN                = C:\PROGRA~1\MATLAB\R2023a\bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)\win64
-MASTER_ANCHOR_DIR         = 
-START_DIR                 = O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code
+START_DIR                 = D:\GitHub\C_Code_Integration\Simulink\Code
 SOLVER                    = 
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
@@ -48,9 +42,9 @@ NODEBUG                   = 1
 ## TOOLCHAIN SPECIFICATIONS
 ###########################################################################
 
-# Toolchain Name:          Microsoft Visual C++ 2019 v16.0 | nmake (64-bit Windows)
-# Supported Version(s):    16.0
-# ToolchainInfo Version:   2019b
+# Toolchain Name:          Microsoft Visual C++ 2022 v17.0 | nmake (64-bit Windows)
+# Supported Version(s):    17.0
+# ToolchainInfo Version:   2023a
 # Specification Revision:  1.0
 # 
 #-------------------------------------------
@@ -75,7 +69,7 @@ CPU                 = AMD64
 APPVER              = 5.02
 CVARSFLAG           = $(cvarsmt)
 CFLAGS_ADDITIONAL   = -D_CRT_SECURE_NO_WARNINGS
-CPPFLAGS_ADDITIONAL = -EHs -D_CRT_SECURE_NO_WARNINGS
+CPPFLAGS_ADDITIONAL = -EHs -D_CRT_SECURE_NO_WARNINGS /wd4251 /Zc:__cplusplus
 LIBS_TOOLCHAIN      = $(conlibs)
 
 TOOLCHAIN_SRCS = 
@@ -182,10 +176,10 @@ INCLUDES = $(INCLUDES_BUILDINFO)
 
 DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0
 DEFINES_CUSTOM = 
-DEFINES_IMPLIED = -DTID01EQ=0
+DEFINES_OPTS = -DTID01EQ=0
 DEFINES_STANDARD = -DMODEL=ParkingMeterLowLevel -DNUMST=1 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
 
-DEFINES = $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_IMPLIED) $(DEFINES_STANDARD)
+DEFINES = $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(DEFINES_STANDARD)
 
 ###########################################################################
 ## SOURCE FILES
@@ -217,7 +211,7 @@ PREBUILT_OBJS =
 ## LIBRARIES
 ###########################################################################
 
-MODELREF_LIBS = O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\AvailableCoins\AvailableCoins_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\Buttons\Buttons_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\Flap\Flap_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\GeneratePulse\GeneratePulse_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\WriteRegister\WriteRegister_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\InsertedCoins\InsertedCoins_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\ReadRegister\ReadRegister_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\SegmentsDisplays\SegmentsDisplays_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\WriteRegisterTriggered\WriteRegisterTriggered_rtwlib.lib O:\Projects\Demos\trunk\CES\Parking_Meter\Simulink\Code\slprj\ert\Terminate\Terminate_rtwlib.lib
+MODELREF_LIBS = D:\GitHub\C_Code_Integration\Simulink\Code\slprj\ert\AvailableCoins\AvailableCoins_rtwlib.lib D:\GitHub\C_Code_Integration\Simulink\Code\slprj\ert\Buttons\Buttons_rtwlib.lib D:\GitHub\C_Code_Integration\Simulink\Code\slprj\ert\Flap\Flap_rtwlib.lib D:\GitHub\C_Code_Integration\Simulink\Code\slprj\ert\GeneratePulse\GeneratePulse_rtwlib.lib D:\GitHub\C_Code_Integration\Simulink\Code\slprj\ert\WriteRegister\WriteRegister_rtwlib.lib D:\GitHub\C_Code_Integration\Simulink\Code\slprj\ert\InsertedCoins\InsertedCoins_rtwlib.lib D:\GitHub\C_Code_Integration\Simulink\Code\slprj\ert\ReadRegister\ReadRegister_rtwlib.lib D:\GitHub\C_Code_Integration\Simulink\Code\slprj\ert\SegmentsDisplays\SegmentsDisplays_rtwlib.lib D:\GitHub\C_Code_Integration\Simulink\Code\slprj\ert\WriteRegisterTriggered\WriteRegisterTriggered_rtwlib.lib D:\GitHub\C_Code_Integration\Simulink\Code\slprj\ert\Terminate\Terminate_rtwlib.lib
 
 LIBS = $(START_DIR)\slprj\ert\_sharedutils\rtwshared.lib
 
@@ -360,12 +354,12 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MODELREF_LIBS) $(LIBS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
 
 
-{$(START_DIR)\ParkingMeterLowLevel_ert_rtw}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
+ParkingMeterLowLevel.obj : "$(START_DIR)\ParkingMeterLowLevel_ert_rtw\ParkingMeterLowLevel.c"
+	$(CC) $(CFLAGS) -Fo"$@" "$(START_DIR)\ParkingMeterLowLevel_ert_rtw\ParkingMeterLowLevel.c"
 
 
-{$(START_DIR)\ParkingMeterLowLevel_ert_rtw}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
+ert_main.obj : "$(START_DIR)\ParkingMeterLowLevel_ert_rtw\ert_main.c"
+	$(CC) $(CFLAGS) -Fo"$@" "$(START_DIR)\ParkingMeterLowLevel_ert_rtw\ert_main.c"
 
 
 ###########################################################################
@@ -408,7 +402,7 @@ info :
 
 
 clean : 
-	$(ECHO) "### Deleting all derived files..."
+	$(ECHO) "### Deleting all derived files ..."
 	@if exist $(PRODUCT) $(RM) $(PRODUCT)
 	$(RM) $(ALL_OBJS)
 	$(ECHO) "### Deleted all derived files."
