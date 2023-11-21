@@ -122,7 +122,7 @@ function ert_make_rtw_hook(hookMethod,modelName,~,~,~,buildArgs)
       % Start the standalone executable
       if strcmp(modelName,'ParkingMeterLowLevel')
         system('..\ParkingMeterLowLevel.exe&');
-      elseif strcmp(modelName,'ParkingMeterSystem')
+      elseif strcmp(modelName,'ParkingMeterSystemNew')
         system('..\ParkingMeterSystem.exe&');
       else
         disp('No executable to run...')
