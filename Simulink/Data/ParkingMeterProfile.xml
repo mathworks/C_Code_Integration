@@ -1,7 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MF0 version="1.1" packageUris="http://schema.mathworks.com/mf0/systemcomposer_property/19700101">
+<MF0 version="1.1" packageUris="http://schema.mathworks.com/mf0/meta/19700101 http://schema.mathworks.com/mf0/systemcomposer_property/2.10 http://schema.mathworks.com/mf0/systemcomposer_services_proxy/1.1">
   <systemcomposer.property.UnitQueryClientWrapper type="systemcomposer.property.UnitQueryClientWrapper" uuid="71023cd0-8e59-4ba6-aaed-e1a158d20ca3"/>
   <systemcomposer.profile.Profile type="systemcomposer.profile.Profile" uuid="d9a2569c-9524-4ea0-8c15-fdf8f56c23c9">
+    <prototypes type="systemcomposer.profile.Prototype" uuid="9cb29688-9842-4928-a42b-9e1bd808b144">
+      <appliesTo>Connector</appliesTo>
+      <componentHeaderColor empty="true"/>
+      <connectorLineColor type="systemcomposer.profile.RGBValueStruct">
+        <BLUE>255</BLUE>
+        <GREEN>70</GREEN>
+      </connectorLineColor>
+      <connectorLineStyle>DASH</connectorLineStyle>
+      <p_Name>FunctionCalls</p_Name>
+      <defaultStereotypeMap type="systemcomposer.profile.DefaultStereotypeMap" uuid="aceac09c-f56b-479a-bb74-15bfd64fd7b1"/>
+      <metaAttributes type="mf.zero.meta.AttributeMap" uuid="8af4d865-b1b1-4854-aad4-755110a329b3"/>
+      <propertySet type="systemcomposer.property.PropertySet" uuid="f3d5509b-8516-40df-906c-b73bd0702b64">
+        <p_Name>Stereotype</p_Name>
+        <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="0ab14cd1-58e9-406e-b57f-1ea720aebcb9"/>
+      </propertySet>
+      <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="5479a088-ed9b-4844-a5e2-6e676bd848eb"/>
+    </prototypes>
+    <prototypes type="systemcomposer.profile.Prototype" uuid="7f68f6fd-e200-4646-99bb-67c6f19bca5a">
+      <appliesTo>Component</appliesTo>
+      <componentHeaderColor type="systemcomposer.profile.RGBValueStruct">
+        <BLUE>177</BLUE>
+        <GREEN>228</GREEN>
+        <RED>249</RED>
+      </componentHeaderColor>
+      <connectorLineColor empty="true"/>
+      <icon>CUSTOM</icon>
+      <p_customIcon>HMI.png</p_customIcon>
+      <p_Name>HMI</p_Name>
+      <defaultStereotypeMap type="systemcomposer.profile.DefaultStereotypeMap" uuid="f9142793-e911-4808-b850-90f126e9e8f1"/>
+      <metaAttributes type="mf.zero.meta.AttributeMap" uuid="7f90d973-e654-419e-b1c8-1b495eac3b5f"/>
+      <propertySet type="systemcomposer.property.PropertySet" uuid="fea1844f-ff29-4db0-8e58-77522f00e807">
+        <p_Name>Stereotype</p_Name>
+        <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="e8fd6d2a-db9c-441f-979f-c5e966f57a2e"/>
+      </propertySet>
+      <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="45eb2058-601e-49f4-8843-6fd6b474893f"/>
+    </prototypes>
+    <prototypes type="systemcomposer.profile.Prototype" uuid="b695c1c8-e61c-48d4-aa6f-5f8e5308d343">
+      <appliesTo>Connector</appliesTo>
+      <componentHeaderColor empty="true"/>
+      <connectorLineColor type="systemcomposer.profile.RGBValueStruct">
+        <GREEN>255</GREEN>
+      </connectorLineColor>
+      <p_Name>InputStimuli</p_Name>
+      <defaultStereotypeMap type="systemcomposer.profile.DefaultStereotypeMap" uuid="7f143fb7-5ad6-473f-800a-0175947476f7"/>
+      <metaAttributes type="mf.zero.meta.AttributeMap" uuid="14f0c1db-c62e-456f-a9af-eef23b7738c6"/>
+      <propertySet type="systemcomposer.property.PropertySet" uuid="a07571bc-aaa8-43a8-a662-7d8ccedb5acd">
+        <p_Name>Stereotype</p_Name>
+        <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="954b8d84-8d2b-4c9d-ae35-b871dedcb08b"/>
+      </propertySet>
+      <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="10efcbf0-df80-460b-92cd-86eb5ddb021e"/>
+    </prototypes>
+    <prototypes type="systemcomposer.profile.Prototype" uuid="554f2728-fbbe-4dc8-8b2f-49f55c4f474a">
+      <appliesTo>Connector</appliesTo>
+      <componentHeaderColor empty="true"/>
+      <connectorLineColor type="systemcomposer.profile.RGBValueStruct">
+        <BLUE>200</BLUE>
+        <GREEN>153</GREEN>
+        <RED>255</RED>
+      </connectorLineColor>
+      <p_Name>OutputResponses</p_Name>
+      <defaultStereotypeMap type="systemcomposer.profile.DefaultStereotypeMap" uuid="54597553-3570-4bfa-84d5-348fb917c4be"/>
+      <metaAttributes type="mf.zero.meta.AttributeMap" uuid="81837437-26b2-4288-95eb-6eceafca0041"/>
+      <propertySet type="systemcomposer.property.PropertySet" uuid="7f698a8d-8697-422e-a29c-fa46541bc53f">
+        <p_Name>Stereotype</p_Name>
+        <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="659f46a9-573b-4c6e-88d3-bf294b25998a"/>
+      </propertySet>
+      <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="47dea7cc-a1ec-4f16-b8c2-12d35a89b451"/>
+    </prototypes>
+    <prototypes type="systemcomposer.profile.Prototype" uuid="e4cc2faa-59d7-4a13-8495-71b704882292">
+      <appliesTo>Component</appliesTo>
+      <componentHeaderColor type="systemcomposer.profile.RGBValueStruct">
+        <BLUE>184</BLUE>
+        <GREEN>228</GREEN>
+        <RED>210</RED>
+      </componentHeaderColor>
+      <connectorLineColor empty="true"/>
+      <icon>CUSTOM</icon>
+      <p_customIcon>Scheduler.png</p_customIcon>
+      <p_Name>Scheduling</p_Name>
+      <defaultStereotypeMap type="systemcomposer.profile.DefaultStereotypeMap" uuid="639261fd-8bf9-4bc8-8745-bfd327360095"/>
+      <metaAttributes type="mf.zero.meta.AttributeMap" uuid="24fe49b6-0c08-464a-ab6d-38b6a2926744"/>
+      <propertySet type="systemcomposer.property.PropertySet" uuid="8ee86761-31cf-4b2e-bdab-09e0aac46f06">
+        <p_Name>Stereotype</p_Name>
+        <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="f035d165-bbfa-41b6-b1ac-e9c99ee8cec0"/>
+      </propertySet>
+      <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="cedc6931-d452-45b7-9e31-2abf8127eaab"/>
+    </prototypes>
+    <prototypes type="systemcomposer.profile.Prototype" uuid="b38c6e0a-2338-40b1-b9c4-b02a0564d269">
+      <appliesTo>Component</appliesTo>
+      <componentHeaderColor type="systemcomposer.profile.RGBValueStruct">
+        <BLUE>187</BLUE>
+        <GREEN>178</GREEN>
+        <RED>225</RED>
+      </componentHeaderColor>
+      <connectorLineColor empty="true"/>
+      <icon>CUSTOM</icon>
+      <p_customIcon>Stop.png</p_customIcon>
+      <p_Name>Terminate</p_Name>
+      <defaultStereotypeMap type="systemcomposer.profile.DefaultStereotypeMap" uuid="e219b348-ee14-4966-93c2-5000d537760d"/>
+      <metaAttributes type="mf.zero.meta.AttributeMap" uuid="d2f3d73a-1fa8-41c1-a844-d072e6a95955"/>
+      <propertySet type="systemcomposer.property.PropertySet" uuid="f88e53d5-88ea-4415-ae72-0b67c6553a8a">
+        <p_Name>Stereotype</p_Name>
+        <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="a0448f23-95db-4a79-a7a3-ddbe8c604272"/>
+      </propertySet>
+      <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="ed4633a5-6f0b-46b9-9754-449978130f98"/>
+    </prototypes>
     <valueTypes type="systemcomposer.property.BooleanType" uuid="9d11da34-68cb-4868-bc8e-f84711b2d08e">
       <p_Name>boolean</p_Name>
     </valueTypes>
@@ -62,11 +168,11 @@
       <p_Name>uint8</p_Name>
     </valueTypes>
     <p_Name>ParkingMeterProfile</p_Name>
-    <elemProxy type="systemcomposer.internal.proxy.ProxyTarget" uuid="c0597ef3-8171-47e7-8059-829f098cd416"/>
+    <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="c0597ef3-8171-47e7-8059-829f098cd416"/>
   </systemcomposer.profile.Profile>
-  <systemcomposer.internal.ModelIdentifier type="systemcomposer.internal.ModelIdentifier" uuid="0f7fd593-ebdc-4e2f-89fc-8cd767003000">
+  <systemcomposer.property.evolution.V1EvolutionData type="systemcomposer.property.evolution.V1EvolutionData" uuid="27ff08bb-0cd6-4764-9eef-2d0954cdea19"/>
+  <systemcomposer.services.proxy.ModelIdentifier type="systemcomposer.services.proxy.ModelIdentifier" uuid="0f7fd593-ebdc-4e2f-89fc-8cd767003000">
     <URI>ParkingMeterProfile</URI>
     <modelType>PROFILE_MODEL</modelType>
-  </systemcomposer.internal.ModelIdentifier>
-  <systemcomposer.internal.resolver.CurrentModelResolver type="systemcomposer.internal.resolver.CurrentModelResolver" uuid="7b274ff6-58ce-439e-9946-a4482d71acca"/>
+  </systemcomposer.services.proxy.ModelIdentifier>
 </MF0>
