@@ -15,7 +15,7 @@ function [] = build_process(mdlName)
     MAIN_C_FILE   = 'ert_mainLowLevel.c';
     MAIN_MK_FILE  = 'ParkingMeterLowLevel.mk';
     MAIN_BAT_FILE = 'ParkingMeterLowLevel.bat';
-  elseif strcmp(mdlName,'ParkingMeterSystemNew')
+  elseif strcmp(mdlName,'ParkingMeterSystem')
     MAIN_C_FILE   = 'ert_mainSystem.c';
     MAIN_MK_FILE  = 'ParkingMeterSystem.mk';
     MAIN_BAT_FILE = 'ParkingMeterSystem.bat';
