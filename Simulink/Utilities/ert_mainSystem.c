@@ -50,7 +50,14 @@ void rt_OneStep(void)
   /* Set model inputs here */
 
   /* Step the model */
-  ParkingMeterSystem_step();
+  SchedulerToAccessTheSharedMemory();
+  ReadAccessToButtonsRegister();
+  ReadAccessToInsertedCoinsRegister();
+  WriteAccesToPeripheralsPulseGeneration();
+  WriteAccesToDisplaysRegisters();
+  WriteAccesToPeripheralsFlap();
+  WriteAccesToAvailableCoinsRegister();
+  SwitchOff();
 
   /* Get model outputs here */
 
@@ -92,9 +99,6 @@ int_T main(int_T argc, const char *argv[])
   }
 
   /* Disable rt_OneStep() here */
-
-  /* Terminate model */
-  ParkingMeterSystem_terminate();
   return 0;
 }
 
