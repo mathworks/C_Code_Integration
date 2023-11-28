@@ -23,9 +23,9 @@ function [] = build_process(mdlName)
     error('Wrong model name. Build process stopped...');
   end
   % Important note:
-  % To get the very first version of the generated C and make files, one option
-  % in the "Code Generation" category of the "Configuration Parameters panel
-  % must be set => Custom templates: Generate an example main program
+  % To build the executable correctly, one option in the "Code Generation"
+  % category of the "Configuration Parameters" panel must be set =>
+  % Custom templates: Generate an example main program
 
   % Set the selected main C file as the main ERT C file
   copyfile([UTILS_FOLDER,MAIN_C_FILE]  , [UTILS_FOLDER,MAIN_ERT_FILE]);

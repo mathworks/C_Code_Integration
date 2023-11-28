@@ -50,14 +50,14 @@ void rt_OneStep(void)
   /* Set model inputs here */
 
   /* Step the model */
-  SchedulerToAccessTheSharedMemory();
-  ReadAccessToButtonsRegister();
-  ReadAccessToInsertedCoinsRegister();
-  WriteAccesToPeripheralsPulseGeneration();
-  WriteAccesToDisplaysRegisters();
-  WriteAccesToPeripheralsFlap();
-  WriteAccesToAvailableCoinsRegister();
-  SwitchOff();
+  ReadAccessToButtonsRegister_D1();
+  ReadAccessToInsertedCoinsRegister_D1();
+  WriteAccesToPeripheralsPulseGeneration_D1();
+  WriteAccesToDisplaysRegisters_D1();
+  WriteAccesToPeripheralsFlap_D1();
+  WriteAccesToAvailableCoinsRegister_D1();
+  TerminateExecution_D1();
+  SchedulerToAccessTheSharedMemory_D1();
 
   /* Get model outputs here */
 
