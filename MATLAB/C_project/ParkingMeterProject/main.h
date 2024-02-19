@@ -1,8 +1,8 @@
 /*
  * File: main.h
  *
- * MATLAB Coder version            : 5.6
- * C/C++ source code generated on  : 26-Jun-2023 15:30:55
+ * MATLAB Coder version            : 23.2
+ * C/C++ source code generated on  : 16-Feb-2024 17:27:57
  */
 
 /*************************************************************************/

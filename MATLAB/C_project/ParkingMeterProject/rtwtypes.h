@@ -1,18 +1,14 @@
 /*
  * File: rtwtypes.h
  *
- * MATLAB Coder version            : 5.6
- * C/C++ source code generated on  : 26-Jun-2023 15:30:55
+ * MATLAB Coder version            : 23.2
+ * C/C++ source code generated on  : 16-Feb-2024 17:27:57
  */
 
 #ifndef RTWTYPES_H
 #define RTWTYPES_H
 
 /* Include Files */
-
-#ifndef __cplusplus
-#include <stdbool.h>
-#endif
 
 #ifdef __cplusplus
 extern "C" {
@@ -51,7 +47,7 @@ typedef double real64_T;
 
 typedef double real_T;
 typedef double time_T;
-typedef bool boolean_T;
+typedef unsigned char boolean_T;
 typedef int int_T;
 typedef unsigned int uint_T;
 typedef unsigned long ulong_T;
