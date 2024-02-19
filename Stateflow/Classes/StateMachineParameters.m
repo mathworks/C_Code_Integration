@@ -4,7 +4,7 @@ classdef StateMachineParameters
 % Goal  : This class contains all the inputs and outputs of the interface to the
 %         state machine object.
 %
-% Author: Copyright 2023 The MathWorks, Inc.
+% Author: Copyright 2024 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %#codegen
   properties (Constant = false)

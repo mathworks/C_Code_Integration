@@ -6,7 +6,7 @@ classdef TestMode < Constants
 %         Once an object has been created out of the superclass, it must then be
 %         passed has an input argument to all the functions of the application.
 %
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2024 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %#codegen
   % The following constants will be added to the superclass "Constants"

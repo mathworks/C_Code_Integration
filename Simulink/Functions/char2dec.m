@@ -7,7 +7,7 @@ function [dec_value] = char2dec(char_sequence)
 % IN/OUT  : -
 % OUT     : - dec_value: decimal representation of the char sequence
 %
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2024 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %#codegen
   % Local constants declaration

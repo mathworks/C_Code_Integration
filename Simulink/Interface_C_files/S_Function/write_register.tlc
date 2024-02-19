@@ -1,5 +1,5 @@
 %% File : write_register.tlc
-%% Created : Tue Jun 27 15:44:48 2023
+%% Created : Mon Feb 19 20:10:07 2024
 %%
 %% Description: 
 %%   Simulink Coder wrapper functions interface generated for 
@@ -36,7 +36,7 @@
     #ifdef MATLAB_MEX_FILE
     #include "tmwtypes.h"
     #else
-    %<SLibEmitIncludesForBasicTypesAll()>
+    %<LibEmitPlatformTypeIncludes()>
     #endif
     #ifdef __cplusplus
     #define SFB_EXTERN_C extern "C"
@@ -56,7 +56,7 @@
     #ifdef MATLAB_MEX_FILE
     #include "tmwtypes.h"
     #else
-    %<SLibEmitIncludesForBasicTypesAll()>
+    %<LibEmitPlatformTypeIncludes()>
     #endif
     #include "%<hFileName>.h"
     

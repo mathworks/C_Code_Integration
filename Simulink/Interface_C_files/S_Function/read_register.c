@@ -26,7 +26,7 @@
  * | See matlabroot/simulink/src/sfuntmpl_doc.c for a more detailed template |
  *  -------------------------------------------------------------------------
  *
- * Created: Tue Jun 27 15:35:38 2023
+ * Created: Mon Feb 19 20:03:33 2024
  */
 
 #define S_FUNCTION_LEVEL               2
@@ -80,12 +80,12 @@
 #define NUM_CONT_STATES                0
 #define CONT_STATES_IC                 [0]
 #define SFUNWIZ_GENERATE_TLC           1
-#define SOURCEFILES                    "__SFB__ParkingMeterMemory.c"
+#define SOURCEFILES                    "__SFB__..\ParkingMeterMemory.c__SFB__"
 #define PANELINDEX                     N/A
 #define USE_SIMSTRUCT                  0
 #define SHOW_COMPILE_STEPS             0
 #define CREATE_DEBUG_MEXFILE           0
-#define SAVE_CODE_ONLY                 1
+#define SAVE_CODE_ONLY                 0
 #define SFUNWIZ_REVISION               3.0
 
 /* %%%-SFUNWIZ_defines_Changes_END --- EDIT HERE TO _BEGIN */
@@ -104,8 +104,6 @@ extern void read_register_Outputs_wrapper(const uint16_T *address,
  */
 static void mdlInitializeSizes(SimStruct *S)
 {
-  DECL_AND_INIT_DIMSINFO(inputDimsInfo);
-  DECL_AND_INIT_DIMSINFO(outputDimsInfo);
   ssSetNumSFcnParams(S, NPARAMS);
   if (ssGetNumSFcnParams(S) != ssGetSFcnParamsCount(S)) {
     return;                            /* Parameter mismatch will be reported by Simulink */
@@ -137,12 +135,14 @@ static void mdlInitializeSizes(SimStruct *S)
   ssSetNumIWork(S, 0);
   ssSetNumModes(S, 0);
   ssSetNumNonsampledZCs(S, 0);
-  ssSetSimulinkVersionGeneratedIn(S, "10.7");
+  ssSetSimulinkVersionGeneratedIn(S, "23.2");
 
   /* Take care when specifying exception free code - see sfuntmpl_doc.c */
+  ssSetRuntimeThreadSafetyCompliance(S, RUNTIME_THREAD_SAFETY_COMPLIANCE_FALSE);
   ssSetOptions(S, (SS_OPTION_EXCEPTION_FREE_CODE |
                    SS_OPTION_USE_TLC_WITH_ACCELERATOR |
                    SS_OPTION_WORKS_WITH_CODE_REUSE));
+  ssSupportsMultipleExecInstances(S, true);
 }
 
 #if defined(MATLAB_MEX_FILE)
@@ -237,13 +237,6 @@ static void mdlOutputs(SimStruct *S, int_T tid)
  */
 static void mdlTerminate(SimStruct *S)
 {
-}
-
-/* Function added to have the model running in normal mode */
-#define MDL_SET_WORK_WIDTHS
-static void mdlSetWorkWidths(SimStruct *S)
-{
-    ssSupportsMultipleExecInstances(S, true);
 }
 
 #ifdef MATLAB_MEX_FILE                 /* Is this file being compiled as a MEX-file? */

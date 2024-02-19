@@ -18,9 +18,8 @@ global UNIT_TESTING; %#ok<GVMIS>
 % Set to true if the MATLAB unit testing API is used, otherwise always false
 UNIT_TESTING = true;
 % Close any potential running instance of the low-level application
-if (system('taskkill /F /im ParkingMeterProject.exe /im cmd.exe &') ~= 0)
-  fprintf('No running instance of the low-level application has been detected.\n');
-end
+system('start /b taskkill /F /im ParkingMeterProject.exe /im cmd.exe &');
+pause(2);
 % Call the low-level MATLAB code of the application in a separate process
 fprintf('Starting the low-level application instance...\n');
 system('start /b ..\\C_project\\ParkingMeterProject\\x64\\Release\\ParkingMeterProject.exe&');

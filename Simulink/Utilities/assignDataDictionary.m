@@ -3,7 +3,7 @@
 % Goal   : Assign the right data dictionary to all referenced models with
 %          their own parameter values based on the selected mode to run.
 %
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2024 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 disp('Updating the set of parameters...');

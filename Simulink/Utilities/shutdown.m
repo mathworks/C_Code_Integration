@@ -4,7 +4,7 @@
 %          undoes the settings applied at the project's setup. It should
 %          be called by a shutdown shortcut linked to its Simulink Project
 %
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2024 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 disp('Begin the termination of the project...');

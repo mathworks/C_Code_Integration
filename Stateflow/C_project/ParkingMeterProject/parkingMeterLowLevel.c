@@ -1,8 +1,8 @@
 /*
  * File: parkingMeterLowLevel.c
  *
- * MATLAB Coder version            : 5.6
- * C/C++ source code generated on  : 26-Jun-2023 17:34:49
+ * MATLAB Coder version            : 23.2
+ * C/C++ source code generated on  : 19-Feb-2024 20:49:13
  */
 
 /* Include Files */
@@ -131,7 +131,7 @@ static void Scheduler_step(Scheduler *this)
     this->StateflowInternalData.IsExecuting = true;
     if (!this->StateflowInternalData.IsActiveVars.IsActiveVar_Scheduler) {
       this->StateflowInternalData.IsActiveVars.IsActiveVar_Scheduler = true;
-      /* SFXSourceLine:<Scheduler/Scheduler/Transition#52> REFRESHING_TICK =
+      /* SFXSourceLine:<Scheduler/Scheduler/Transition#1095> REFRESHING_TICK =
        * obj.refreshing_time/obj.sampling_time; */
       this->REFRESHING_TICK =
           this->obj.refreshing_time / this->obj.sampling_time;
@@ -181,7 +181,7 @@ static void Scheduler_step(Scheduler *this)
       case 2:
         /* State: PURCHASE_CHECK */
         if (!this->obj.master_switch) {
-          /* %SFXSourceLine:<Scheduler/Scheduler/Transition#56>
+          /* %SFXSourceLine:<Scheduler/Scheduler/Transition#1099>
            * obj.master_switch == false */
           /* State Scheduler.PURCHASE_CHECK becomes inactive */
           /* State Scheduler.STOP_EXECUTION becomes active */
@@ -193,7 +193,7 @@ static void Scheduler_step(Scheduler *this)
            * true;  */
           this->obj.ISR[6] = true;
         } else if (this->obj.green_pressed) {
-          /* %SFXSourceLine:<Scheduler/Scheduler/Transition#58>
+          /* %SFXSourceLine:<Scheduler/Scheduler/Transition#1101>
            * obj.green_pressed == true */
           /* State Scheduler.PURCHASE_CHECK becomes inactive */
           /* State Scheduler.CHECK_COINS becomes active */
@@ -234,7 +234,7 @@ static void Scheduler_step(Scheduler *this)
         case 35:
           /* State: CANCEL_CHECK */
           if (this->obj.red_pressed) {
-            /* %SFXSourceLine:<Scheduler/Scheduler/PURCHASE_TICKET/Transition#37>
+            /* %SFXSourceLine:<Scheduler/Scheduler/PURCHASE_TICKET/Transition#1080>
              * obj.red_pressed == true */
             /* State Scheduler.PURCHASE_TICKET.CANCEL_CHECK becomes inactive */
             /* State Scheduler.PURCHASE_TICKET.CANCEL_PURCHASE becomes active */
@@ -285,7 +285,7 @@ static void Scheduler_step(Scheduler *this)
         case 40:
           /* State: COIN_CHECK */
           if (this->obj.coins_reg_value != this->obj.register_value) {
-            /* %SFXSourceLine:<Scheduler/Scheduler/PURCHASE_TICKET/Transition#42>
+            /* %SFXSourceLine:<Scheduler/Scheduler/PURCHASE_TICKET/Transition#1085>
              * obj.coins_reg_value ~= obj.register_value */
             /* State Scheduler.PURCHASE_TICKET.COIN_CHECK becomes inactive */
             this->StateflowInternalData.StepCounters
@@ -345,7 +345,7 @@ static void Scheduler_step(Scheduler *this)
               .c_Scheduler_PURCHASE_TICKET_UPD++;
           if (this->StateflowInternalData.StepCounters
                   .c_Scheduler_PURCHASE_TICKET_UPD >= this->REFRESHING_TICK) {
-            /* %SFXSourceLine:<Scheduler/Scheduler/PURCHASE_TICKET/Transition#39>
+            /* %SFXSourceLine:<Scheduler/Scheduler/PURCHASE_TICKET/Transition#1082>
              * after(REFRESHING_TICK, tick) */
             /* State Scheduler.PURCHASE_TICKET.UPDATE_AMOUNT becomes inactive */
             /* State Scheduler.PURCHASE_TICKET.CANCEL_CHECK becomes active */
@@ -357,7 +357,7 @@ static void Scheduler_step(Scheduler *this)
              * obj.ISR(5) = true;  */
             this->obj.ISR[4] = true;
           } else if (this->obj.inserted_amount >= 120) {
-            /* %SFXSourceLine:<Scheduler/Scheduler/PURCHASE_TICKET/Transition#44>
+            /* %SFXSourceLine:<Scheduler/Scheduler/PURCHASE_TICKET/Transition#1087>
              * obj.inserted_amount >= TICKET_FEE */
             /* State Scheduler.PURCHASE_TICKET.UPDATE_AMOUNT becomes inactive */
             /* State Scheduler.PURCHASE_TICKET.PRINT_RECEIPT becomes active */
@@ -2268,7 +2268,7 @@ void parkingMeterLowLevel(void)
   /*  IN/OUT: - */
   /*  OUT   : - error_flag: error code */
   /*  */
-  /*  Copyright 2023 The MathWorks, Inc. */
+  /*  Copyright 2024 The MathWorks, Inc. */
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    */
   /*  Initialization */

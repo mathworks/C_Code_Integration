@@ -2,7 +2,7 @@
 % Goal : Copy the generated C and H files to an external Visual Studio project
 %        and then build a x64 Debug and a Release version.
 %
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2024 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Constants definition

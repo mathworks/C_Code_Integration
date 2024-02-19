@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" name="TestApp" skipped="0" tests="8" time="212.8374">
-    <testcase classname="TestApp" name="testCase_StraightTicketPurchase" time="17.1552"/>
-    <testcase classname="TestApp" name="testCase_BiggestChangeOnTicketPurchase" time="20.8503"/>
-    <testcase classname="TestApp" name="testCase_CancelTicketPurchase" time="15.9136"/>
-    <testcase classname="TestApp" name="testCase_050CentsIncrementalTicketPurchase" time="22.7067"/>
-    <testcase classname="TestApp" name="testCase_020CentsIncrementalTicketPurchase" time="27.378"/>
-    <testcase classname="TestApp" name="testCase_010CentsIncrementalTicketPurchase" time="39.1569"/>
-    <testcase classname="TestApp" name="testCase_FullyEmptyAndReloadCashBox" time="57.4174"/>
-    <testcase classname="TestApp" name="testCase_SwitchOffTheLowLevelApplication" time="12.2592"/>
+  <testsuite errors="0" failures="0" name="TestApp" skipped="0" tests="8" time="214.9674">
+    <testcase classname="TestApp" name="testCase_StraightTicketPurchase" time="17.8369"/>
+    <testcase classname="TestApp" name="testCase_BiggestChangeOnTicketPurchase" time="21.8814"/>
+    <testcase classname="TestApp" name="testCase_CancelTicketPurchase" time="17.3836"/>
+    <testcase classname="TestApp" name="testCase_050CentsIncrementalTicketPurchase" time="22.8884"/>
+    <testcase classname="TestApp" name="testCase_020CentsIncrementalTicketPurchase" time="26.9817"/>
+    <testcase classname="TestApp" name="testCase_010CentsIncrementalTicketPurchase" time="37.5231"/>
+    <testcase classname="TestApp" name="testCase_FullyEmptyAndReloadCashBox" time="58.1692"/>
+    <testcase classname="TestApp" name="testCase_SwitchOffTheLowLevelApplication" time="12.3031"/>
   </testsuite>
 </testsuites>

@@ -5,7 +5,7 @@
 % IN/OUT: -
 % OUT   : - error_flag: error code
 %
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2024 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %#codegen
 function [] = parkingMeterLowLevel()
