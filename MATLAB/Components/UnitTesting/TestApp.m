@@ -1,7 +1,7 @@
 classdef TestApp < matlab.uitest.TestCase
   % Call the test execution for example like this:
   % results = runtests('..\Components\UnitTesting\TestApp.m');
-  % Copyright 2023 The MathWorks, Inc.
+  % Copyright 2024 The MathWorks, Inc.
 
   properties
     App

@@ -1,7 +1,7 @@
 classdef TextFont
     %TEXTFONT Button text font.
     %
-    %   Copyright 2023 The MathWorks, Inc.
+    %   Copyright 2024 The MathWorks, Inc.
 
    enumeration
       normal ("normal")

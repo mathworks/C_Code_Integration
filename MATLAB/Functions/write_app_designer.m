@@ -7,7 +7,7 @@ function [] = write_app_designer(register_address,value) %#ok<*INUSD>
 % IN/OUT: -
 % OUT   : -
 %
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2024 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % Instantiate all constants for the normal application
   const = Constants;

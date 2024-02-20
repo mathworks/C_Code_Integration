@@ -1,7 +1,7 @@
 classdef htmlbutton < matlab.ui.componentcontainer.ComponentContainer
     %HTMLBUTTON Customizable HTML button.
     %
-    %   Copyright 2023 The MathWorks, Inc.
+    %   Copyright 2024 The MathWorks, Inc.
 
     events (HasCallbackProperty, NotifyAccess = private)
         ButtonPushed

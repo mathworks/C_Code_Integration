@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.coder" plugin-version="R2023a">
-  <configuration build-checksum="2732898471" file="B:\GitWorkingCopies\C_Code_Integration\MATLAB\Codegen\ParkingMeterLowLevel_C_source.prj" location="B:\GitWorkingCopies\C_Code_Integration\MATLAB\Codegen" name="ParkingMeterLowLevel_C_source" target="target.unifiedcoder" target-name="MATLAB Coder">
+  <configuration build-checksum="2732898471" file="D:\GitHub\C_Code_Integration\MATLAB\Codegen\ParkingMeterLowLevel_C_source.prj" location="D:\GitHub\C_Code_Integration\MATLAB\Codegen" name="ParkingMeterLowLevel_C_source" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
       <param.BuiltInstrumentedMex />
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
@@ -48,7 +48,7 @@
       <param.ReportInfoVarName />
       <param.DefaultTestFile />
       <param.MergeInstrumentationResults>false</param.MergeInstrumentationResults>
-      <param.VerificationMode>option.VerificationMode.None</param.VerificationMode>
+      <param.VerificationMode />
       <param.VerificationStatus>option.VerificationStatus.Passed</param.VerificationStatus>
       <param.EnableMexProfiling>false</param.EnableMexProfiling>
       <var.BuiltWithMexProfiling />
@@ -276,7 +276,7 @@
       <param.DefaultTestFile />
       <param.MergeInstrumentationResults>false</param.MergeInstrumentationResults>
       <param.RanPilSilVerification>false</param.RanPilSilVerification>
-      <param.VerificationMode>option.VerificationMode.None</param.VerificationMode>
+      <param.VerificationMode />
       <param.VerificationStatus>option.VerificationStatus.Inactive</param.VerificationStatus>
       <param.CustomSourceCode />
       <param.CustomHeaderCode />
@@ -627,7 +627,7 @@
     <var.lastCfiTestSnippet>TestParkingMeterLowLevel</var.lastCfiTestSnippet>
     <var.outdatedOnRestore />
     <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;B:\GitWorkingCopies\C_Code_Integration\MATLAB\Classes\Constants.m&lt;/file&gt;&lt;file&gt;B:\GitWorkingCopies\C_Code_Integration\MATLAB\Classes\TestMode.m&lt;/file&gt;&lt;file&gt;B:\GitWorkingCopies\C_Code_Integration\MATLAB\Functions\parkingMeterLowLevel.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;800063666&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
-    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;B:\GitWorkingCopies\C_Code_Integration\MATLAB\Classes\Constants.m&lt;/file&gt;&lt;file&gt;B:\GitWorkingCopies\C_Code_Integration\MATLAB\Classes\TestMode.m&lt;/file&gt;&lt;file&gt;B:\GitWorkingCopies\C_Code_Integration\MATLAB\Functions\parkingMeterLowLevel.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
+    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;B:\GitWorkingCopies\C_Code_Integration\MATLAB\Functions\parkingMeterLowLevel.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
     <param.forceMexBuild>false</param.forceMexBuild>
     <param.NoDefaultJIT />
     <param.configImportActive>false</param.configImportActive>
@@ -671,7 +671,7 @@
     <param.gpu.MinPoolSize />
     <param.gpu.MaxPoolSize />
     <var.checkIssuesGpu>false</var.checkIssuesGpu>
-    <var.hasGpu>true</var.hasGpu>
+    <var.hasGpu>false</var.hasGpu>
     <var.isDeepLearningForMatlabCoderEnabled>true</var.isDeepLearningForMatlabCoderEnabled>
     <param.deeplearning.EnableDeepLearning>false</param.deeplearning.EnableDeepLearning>
     <param.deeplearning.DeepLearningCustomCallback />
@@ -890,7 +890,7 @@
       <file>B:\GitWorkingCopies\C_Code_Integration\MATLAB\Functions\parkingMeterLowLevel.m</file>
     </fileset.inputtypes>
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\." name="parkingMeterLowLevel.lib" optional="false">B:\GitWorkingCopies\C_Code_Integration\MATLAB\Codegen\.\parkingMeterLowLevel.lib</file>
+      <file location="${PROJECT_ROOT}\." name="parkingMeterLowLevel.lib" optional="false">D:\GitHub\C_Code_Integration\MATLAB\Codegen\.\parkingMeterLowLevel.lib</file>
     </build-deliverables>
     <workflow />
     <matlab>

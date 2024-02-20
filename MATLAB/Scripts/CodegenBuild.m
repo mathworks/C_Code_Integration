@@ -6,7 +6,7 @@
 % 
 % See also CODER, CODER.CONFIG, CODER.TYPEOF, CODEGEN.
 %
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2024 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear variables; clc;
 

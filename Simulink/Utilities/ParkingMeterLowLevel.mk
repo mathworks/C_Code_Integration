@@ -2,7 +2,7 @@
 ## Makefile generated for component 'ParkingMeterLowLevel'. 
 ## 
 ## Makefile     : ParkingMeterLowLevel.mk
-## Generated on : Tue Jun 27 17:18:18 2023
+## Generated on : Tue Feb 20 09:58:38 2024
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)\ParkingMeterLowLevel.exe
 ## Product type : executable
 ## 
@@ -21,8 +21,8 @@
 
 PRODUCT_NAME              = ParkingMeterLowLevel
 MAKEFILE                  = ParkingMeterLowLevel.mk
-MATLAB_ROOT               = C:\PROGRA~1\MATLAB\R2023a
-MATLAB_BIN                = C:\PROGRA~1\MATLAB\R2023a\bin
+MATLAB_ROOT               = C:\PROGRA~1\MATLAB\R2023b
+MATLAB_BIN                = C:\PROGRA~1\MATLAB\R2023b\bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)\win64
 START_DIR                 = D:\GitHub\C_Code_Integration\Simulink\Code
 SOLVER                    = 
@@ -44,7 +44,7 @@ NODEBUG                   = 1
 
 # Toolchain Name:          Microsoft Visual C++ 2022 v17.0 | nmake (64-bit Windows)
 # Supported Version(s):    17.0
-# ToolchainInfo Version:   2023a
+# ToolchainInfo Version:   2023b
 # Specification Revision:  1.0
 # 
 #-------------------------------------------
@@ -314,11 +314,27 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MODELREF_LIBS) $(LIBS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
 
 
+.cc.obj :
+	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+
+
+.cxx.obj :
+	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+
+
 {$(RELATIVE_PATH_TO_ANCHOR)}.c.obj :
 	$(CC) $(CFLAGS) -Fo"$@" "$<"
 
 
 {$(RELATIVE_PATH_TO_ANCHOR)}.cpp.obj :
+	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+
+
+{$(RELATIVE_PATH_TO_ANCHOR)}.cc.obj :
+	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+
+
+{$(RELATIVE_PATH_TO_ANCHOR)}.cxx.obj :
 	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
 
 
@@ -330,11 +346,27 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MODELREF_LIBS) $(LIBS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
 
 
+{$(START_DIR)}.cc.obj :
+	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+
+
+{$(START_DIR)}.cxx.obj :
+	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+
+
 {$(START_DIR)\ParkingMeterLowLevel_ert_rtw}.c.obj :
 	$(CC) $(CFLAGS) -Fo"$@" "$<"
 
 
 {$(START_DIR)\ParkingMeterLowLevel_ert_rtw}.cpp.obj :
+	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+
+
+{$(START_DIR)\ParkingMeterLowLevel_ert_rtw}.cc.obj :
+	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+
+
+{$(START_DIR)\ParkingMeterLowLevel_ert_rtw}.cxx.obj :
 	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
 
 
@@ -346,11 +378,43 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MODELREF_LIBS) $(LIBS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
 
 
+{$(MATLAB_ROOT)\rtw\c\src}.cc.obj :
+	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+
+
+{$(MATLAB_ROOT)\rtw\c\src}.cxx.obj :
+	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+
+
 {$(MATLAB_ROOT)\simulink\src}.c.obj :
 	$(CC) $(CFLAGS) -Fo"$@" "$<"
 
 
 {$(MATLAB_ROOT)\simulink\src}.cpp.obj :
+	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+
+
+{$(MATLAB_ROOT)\simulink\src}.cc.obj :
+	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+
+
+{$(MATLAB_ROOT)\simulink\src}.cxx.obj :
+	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+
+
+{$(MATLAB_ROOT)\toolbox\simulink\blocks\src}.c.obj :
+	$(CC) $(CFLAGS) -Fo"$@" "$<"
+
+
+{$(MATLAB_ROOT)\toolbox\simulink\blocks\src}.cpp.obj :
+	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+
+
+{$(MATLAB_ROOT)\toolbox\simulink\blocks\src}.cc.obj :
+	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+
+
+{$(MATLAB_ROOT)\toolbox\simulink\blocks\src}.cxx.obj :
 	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
 
 

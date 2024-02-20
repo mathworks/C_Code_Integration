@@ -1,7 +1,7 @@
 classdef IconAlign
     %ICONALIGN Button icon alignment.
     %
-    %   Copyright 2023 The MathWorks, Inc.
+    %   Copyright 2024 The MathWorks, Inc.
 
     enumeration
         left ("left")

@@ -1,4 +1,4 @@
-REM Copyright 2023 The MathWorks, Inc.
+REM Copyright 2024 The MathWorks, Inc.
 @echo ================================================================================
 @echo Move to the C_project folder of the built low-level application
 @cd "..\C_project\ParkingMeterProject\x64\Release

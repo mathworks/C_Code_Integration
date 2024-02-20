@@ -2,7 +2,7 @@
 % Goal  : This script check that the access to the shared memory of the Parking
 %         Meter GUI from the MATLAB API works correctly.
 %
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2024 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear variables; clc;
 
