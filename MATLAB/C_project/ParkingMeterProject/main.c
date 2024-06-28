@@ -1,8 +1,10 @@
 /*
+ * Prerelease License - for engineering feedback and testing purposes
+ * only. Not for sale.
  * File: main.c
  *
- * MATLAB Coder version            : 23.2
- * C/C++ source code generated on  : 16-Feb-2024 17:27:57
+ * MATLAB Coder version            : 24.2
+ * C/C++ source code generated on  : 28-Jun-2024 16:14:48
  */
 
 /*************************************************************************/
@@ -44,12 +46,14 @@ int main(int argc, char **argv)
 {
   (void)argc;
   (void)argv;
-  /* Initialize the application.
-You do not need to do this more than one time. */
-  parkingMeterLowLevel_initialize();
+  /* The initialize function is being called automatically from your entry-point
+   * function. So, a call to initialize is not included here. */
   /* Invoke the entry-point functions.
 You can call entry-point functions multiple times. */
   main_parkingMeterLowLevel();
+  /* Terminate the application.
+You do not need to do this more than one time. */
+  parkingMeterLowLevel_terminate();
   return 0;
 }
 

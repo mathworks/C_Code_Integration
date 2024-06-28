@@ -1,8 +1,10 @@
 /*
+ * Prerelease License - for engineering feedback and testing purposes
+ * only. Not for sale.
  * File: parkingMeterLowLevel.c
  *
- * MATLAB Coder version            : 23.2
- * C/C++ source code generated on  : 16-Feb-2024 17:27:57
+ * MATLAB Coder version            : 24.2
+ * C/C++ source code generated on  : 28-Jun-2024 16:14:48
  */
 
 /* Include Files */
@@ -17,10 +19,12 @@ int TEST_MODE;
 
 static unsigned char pauseState;
 
-/* Function Declarations */
-static void TestMode_display_value(void);
+static bool isInitialized_parkingMeterLowLevel = false;
 
+/* Function Declarations */
 static void TestMode_give_back_coin(void);
+
+static void TestMode_write_register(void);
 
 static void b_display_digit(unsigned char display_ID, int digit_value,
                             double dot_segment);
@@ -36,6 +40,8 @@ static int div_nde_s32_floor(int numerator);
 
 static void give_back_coin(unsigned short amount);
 
+static void pause(void);
+
 static unsigned short return_coin_value(unsigned short amount_to_return,
                                         unsigned short coin_value);
 
@@ -50,134 +56,9 @@ static void standard_operation_mode(void);
  * Arguments    : void
  * Return Type  : void
  */
-static void TestMode_display_value(void)
-{
-  int b_remainder;
-  int data;
-  int digit_value;
-  int exitg1;
-  int exitg2;
-  int nb_input_types;
-  int x;
-  char terminator;
-  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   */
-  /*  Function display_value() */
-  /*  Goal  : Test the 7 segments displays by displaying any value on them */
-  /*  IN    : - const_obj: object containing all needed constants */
-  /*          - f_api    : functions handler struct listing functions to access
-   */
-  /*  IN/OUT: - */
-  /*  OUT   : - */
-  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   */
-  /*  Variables declaration  */
-  /*  Split sections  */
-  printf("%s\n", "-------------------------------------------------------------"
-                 "------------------");
-  fflush(stdout);
-  /*  Get the data to write in the register  */
-  /*  Function that is not translated into C code */
-  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   */
-  /*  Function check_get_data() */
-  /*  Goal  : Test the write access function to any shared memory register */
-  /*  IN    : - promp_text: pointer to a chain char to display in the console */
-  /*          - min_data  : minimum value that is allowed in the range of data
-   */
-  /*          - max_data  : maximum value that is allowed in the range of data
-   */
-  /*  IN/OUT: - */
-  /*  OUT   : - integer value to get from the console interface */
-  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   */
-  /*  Variables declaration */
-  data = 0;
-  /*  Get and check the data from the console */
-  do {
-    exitg1 = 0;
-    do {
-      exitg2 = 0;
-      /*  Get input data using the Windows C API */
-      terminator = ' ';
-      printf("%s", "Enter the hundreds of cents value to print on the 7 "
-                   "segments displays: ");
-      fflush(stdout);
-      /*  Force the string format definition in the generated C code for scanf_s
-       */
-      nb_input_types = scanf_s("%d%c", &data, &terminator, 1);
-      /*  Check if the provided data is an integer number */
-      if ((nb_input_types == 2) && (terminator == '\n')) {
-        exitg2 = 1;
-      } else {
-        printf("The value provided is not of the right data type!\n");
-        fflush(stdout);
-        /*  Force the string regular expression in the generated C code for
-         * scanf_s */
-        /*  Clear the input buffer */
-        scanf_s("%*[^\n]%*1[\n]");
-      }
-    } while (exitg2 == 0);
-    /*  Check if the value is within the allowed range */
-    if ((data >= 0) && (data <= 999)) {
-      exitg1 = 1;
-    } else {
-      printf("The value provided must be between %d and %d!\n", 0, 999);
-      fflush(stdout);
-    }
-  } while (exitg1 == 0);
-  /*  Write the user's data to the 7 segments displays  */
-  /*  Initialization value of the parking meter display */
-  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   */
-  /*  Function display_cents_value() */
-  /*  Goal  : Update the new parking meter cents value */
-  /*  IN    : - const_obj: constants object used in the entire application */
-  /*          - cents_value: base 10 value to display on all 7 segments displays
-   */
-  /*  IN/OUT: - */
-  /*  OUT   : - */
-  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   */
-  if (data == 45) {
-    display_digit(1U, 45U, 0.0);
-    display_digit(2U, 45U, 0.0);
-    display_digit(3U, 45U, 0.0);
-    /*  Compute the right value to display on the parking meter */
-  } else {
-    /*  Compute the cent */
-    digit_value = data - data / 10 * 10;
-    b_display_digit(1U, digit_value, 0.0);
-    /*  Compute the tens of cents */
-    b_remainder = (int)rt_roundd((double)(data - digit_value) / 10.0);
-    digit_value = b_remainder - div_nde_s32_floor(b_remainder) * 10;
-    b_display_digit(2U, digit_value, 0.0);
-    /*  Compute the hundreds of cents */
-    x = (int)rt_roundd((double)(b_remainder - digit_value) / 10.0);
-    b_display_digit(3U, x - div_nde_s32_floor(x) * 10, 1.0);
-  }
-  printf("%s\n\n", "The desired value has been successfully written on the 7 "
-                   "segments displays.");
-  fflush(stdout);
-  printf("%s\n", "-------------------------------------------------------------"
-                 "------------------");
-  fflush(stdout);
-}
-
-/*
- * Text constants declaration
- *
- * Arguments    : void
- * Return Type  : void
- */
 static void TestMode_give_back_coin(void)
 {
   int coin_choice;
-  int exitg1;
-  int exitg2;
-  int exitg3;
-  int nb_input_types;
-  char terminator;
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    */
   /*  Function give_back_coin() */
@@ -196,6 +77,7 @@ static void TestMode_give_back_coin(void)
                  "------------------");
   fflush(stdout);
   /*  Loop over the menu entries */
+  int exitg1;
   do {
     exitg1 = 0;
     if (coin_choice != 0) {
@@ -234,8 +116,12 @@ static void TestMode_give_back_coin(void)
       /*  Variables declaration */
       coin_choice = 0;
       /*  Get and check the data from the console */
+      int exitg2;
       do {
         exitg2 = 0;
+        int exitg3;
+        int nb_input_types;
+        char terminator;
         do {
           exitg3 = 0;
           /*  Get input data using the Windows C API */
@@ -292,6 +178,149 @@ static void TestMode_give_back_coin(void)
       exitg1 = 1;
     }
   } while (exitg1 == 0);
+}
+
+/*
+ * Function that is not translated into C code
+ *
+ * Arguments    : void
+ * Return Type  : void
+ */
+static void TestMode_write_register(void)
+{
+  static const unsigned short uv[7] = {40960U, 40961U, 40962U, 40963U,
+                                       40976U, 40977U, 40978U};
+  int data;
+  int exitg1;
+  int register_text;
+  bool is_right_value;
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   */
+  /*  Function write_register() */
+  /*  Goal  : Test the write access function to any shared memory register */
+  /*  IN    : - const_obj: object containing all needed constants */
+  /*          - f_api    : functions handler struct listing functions to access
+   */
+  /*  IN/OUT: - */
+  /*  OUT   : - */
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   */
+  /*  Text constants declaration */
+  /*  Variables declaration */
+  is_right_value = false;
+  /*  Split sections  */
+  printf("%s\n", "-------------------------------------------------------------"
+                 "------------------");
+  fflush(stdout);
+  /*  Get the address of the register to access  */
+  int i;
+  bool exitg2;
+  do {
+    exitg1 = 0;
+    printf("%s",
+           "Enter the address of the register to access in hexadecimal within "
+           "the following range [0xA000-0xA003] or [0xA010-0xA012]: ");
+    fflush(stdout);
+    /*  Force the string format definition in the generated C code for scanf_s
+     */
+    scanf_s("%x", &register_text);
+    /*  Check if the provided address is pointing to an existing register  */
+    i = 0;
+    exitg2 = false;
+    while ((!exitg2) && (i < 7)) {
+      if ((unsigned short)register_text == uv[i]) {
+        is_right_value = true;
+        exitg2 = true;
+      } else {
+        i++;
+      }
+    }
+    /*  The provided address is not within the right range of addresses  */
+    if (!is_right_value) {
+      printf(
+          "The address provided is not within the right range of addresses!\n");
+      fflush(stdout);
+      /*  Force the string regular expression in the generated C code for
+       * scanf_s */
+      /*  Clear the input buffer */
+      scanf_s("%*[^\n]%*1[\n]");
+    } else {
+      exitg1 = 1;
+    }
+  } while (exitg1 == 0);
+  /*  Get the data to write in the register  */
+  /*  Function that is not translated into C code */
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   */
+  /*  Function check_get_data() */
+  /*  Goal  : Test the write access function to any shared memory register */
+  /*  IN    : - promp_text: pointer to a chain char to display in the console */
+  /*          - min_data  : minimum value that is allowed in the range of data
+   */
+  /*          - max_data  : maximum value that is allowed in the range of data
+   */
+  /*  IN/OUT: - */
+  /*  OUT   : - integer value to get from the console interface */
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   */
+  /*  Variables declaration */
+  data = 0;
+  /*  Get and check the data from the console */
+  do {
+    exitg1 = 0;
+    int exitg3;
+    int nb_input_types;
+    char terminator;
+    do {
+      exitg3 = 0;
+      /*  Get input data using the Windows C API */
+      terminator = ' ';
+      printf("%s",
+             "Enter the integer data to write at the selected register: ");
+      fflush(stdout);
+      /*  Force the string format definition in the generated C code for scanf_s
+       */
+      nb_input_types = scanf_s("%d%c", &data, &terminator, 1);
+      /*  Check if the provided data is an integer number */
+      if ((nb_input_types == 2) && (terminator == '\n')) {
+        exitg3 = 1;
+      } else {
+        printf("The value provided is not of the right data type!\n");
+        fflush(stdout);
+        /*  Force the string regular expression in the generated C code for
+         * scanf_s */
+        /*  Clear the input buffer */
+        scanf_s("%*[^\n]%*1[\n]");
+      }
+    } while (exitg3 == 0);
+    /*  Check if the value is within the allowed range */
+    if ((data >= 0) && (data <= 999)) {
+      exitg1 = 1;
+    } else {
+      printf("The value provided must be between %d and %d!\n", 0, 999);
+      fflush(stdout);
+    }
+  } while (exitg1 == 0);
+  /*  Write the user's data to the selected register  */
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   */
+  /*  Function write_interface() */
+  /*  Goal  : Define the interface layer writing data to external HW registers
+   */
+  /*  IN    : - register_address: address of the register in unsigned 16 bit */
+  /*          - new_value: value to store in the register as an unsigned 8 bit
+   */
+  /*  IN/OUT: - */
+  /*  OUT   : - */
+  /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   */
+  write_register((unsigned short)register_text, data);
+  printf("%s\n\n", "The desired value has been successfully written in the "
+                   "selected register.");
+  fflush(stdout);
+  printf("%s\n", "-------------------------------------------------------------"
+                 "------------------");
+  fflush(stdout);
 }
 
 /*
@@ -434,9 +463,6 @@ static void cpause_init(void)
  */
 static void display_cents_value(unsigned short cents_value)
 {
-  unsigned short b_remainder;
-  unsigned short digit_value;
-  unsigned short x;
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    */
   /*  Function display_cents_value() */
@@ -454,6 +480,9 @@ static void display_cents_value(unsigned short cents_value)
     display_digit(3U, 45U, 0.0);
     /*  Compute the right value to display on the parking meter */
   } else if (cents_value <= 999) {
+    unsigned short b_remainder;
+    unsigned short digit_value;
+    unsigned short x;
     /*  Compute the cent */
     digit_value =
         (unsigned short)(cents_value -
@@ -623,14 +652,6 @@ static int div_nde_s32_floor(int numerator)
  */
 static void give_back_coin(unsigned short amount)
 {
-  unsigned char a;
-  unsigned char b_a;
-  unsigned char b_register_value;
-  unsigned char c_a;
-  unsigned char c_register_value;
-  unsigned char d_a;
-  unsigned char d_register_value;
-  unsigned char register_value;
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    */
   /*  Function give_back_coin() */
@@ -643,7 +664,9 @@ static void give_back_coin(unsigned short amount)
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    */
   switch (amount) {
-  case 10U:
+  case 10U: {
+    unsigned char a;
+    unsigned char register_value;
     /*  Read the current value stored in the register */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      */
@@ -729,8 +752,10 @@ static void give_back_coin(unsigned short amount)
      */
     Sleep(250);
     /*  Sleep asks milliseconds as input */
-    break;
-  case 20U:
+  } break;
+  case 20U: {
+    unsigned char b_a;
+    unsigned char b_register_value;
     /*  Read the current value stored in the register */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      */
@@ -816,8 +841,10 @@ static void give_back_coin(unsigned short amount)
      */
     Sleep(250);
     /*  Sleep asks milliseconds as input */
-    break;
-  case 50U:
+  } break;
+  case 50U: {
+    unsigned char c_a;
+    unsigned char c_register_value;
     /*  Read the current value stored in the register */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      */
@@ -903,8 +930,10 @@ static void give_back_coin(unsigned short amount)
      */
     Sleep(250);
     /*  Sleep asks milliseconds as input */
-    break;
-  case 100U:
+  } break;
+  case 100U: {
+    unsigned char d_a;
+    unsigned char d_register_value;
     /*  Read the current value stored in the register */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      */
@@ -990,12 +1019,23 @@ static void give_back_coin(unsigned short amount)
      */
     Sleep(250);
     /*  Sleep asks milliseconds as input */
-    break;
+  } break;
   default:
     printf("Incorrect coin\'s value provided to the parking meter change "
            "module!\n");
     fflush(stdout);
     break;
+  }
+}
+
+/*
+ * Arguments    : void
+ * Return Type  : void
+ */
+static void pause(void)
+{
+  if (pauseState == 0) {
+    getchar();
   }
 }
 
@@ -1008,9 +1048,7 @@ static unsigned short return_coin_value(unsigned short amount_to_return,
                                         unsigned short coin_value)
 {
   unsigned short remaining_amount;
-  unsigned char register_value;
-  boolean_T available;
-  boolean_T exitg1;
+  bool exitg1;
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    */
   /*  Function return_coin_value() */
@@ -1027,6 +1065,8 @@ static unsigned short return_coin_value(unsigned short amount_to_return,
   /*  Try to return as much coins as possible */
   exitg1 = false;
   while ((!exitg1) && (remaining_amount >= coin_value)) {
+    unsigned char register_value;
+    bool available;
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      */
     /*  Function is_this_coin_available() */
@@ -1060,16 +1100,16 @@ static unsigned short return_coin_value(unsigned short amount_to_return,
     /*  Select the specific coin's quantity to check */
     switch (coin_value) {
     case 10U:
-      available = ((register_value & 1) != 0);
+      available = ((int)(register_value & 1U) != 0);
       break;
     case 20U:
-      available = ((register_value & 2) != 0);
+      available = ((int)(register_value & 2U) != 0);
       break;
     case 50U:
-      available = ((register_value & 4) != 0);
+      available = ((int)(register_value & 4U) != 0);
       break;
     case 100U:
-      available = ((register_value & 8) != 0);
+      available = ((int)(register_value & 8U) != 0);
       break;
     default:
       printf("Incorrect coin\'s value provided to the parking meter cash box "
@@ -1114,30 +1154,7 @@ static double rt_roundd(double u)
  */
 static void standard_operation_mode(void)
 {
-  int exitg1;
-  int exitg2;
-  int exitg3;
-  unsigned short b_remaining_amount;
-  unsigned short inserted_amount;
-  unsigned short remaining_amount;
-  unsigned short temp_amount;
-  unsigned char a;
-  unsigned char b_a;
-  unsigned char b_register_value;
-  unsigned char c_a;
-  unsigned char c_register_value;
-  unsigned char d_a;
-  unsigned char d_register_value;
-  unsigned char e_a;
-  unsigned char f_a;
-  unsigned char g_a;
-  unsigned char h_a;
-  unsigned char i_a;
-  unsigned char j_a;
-  unsigned char k_a;
-  unsigned char new_reg_value;
-  unsigned char register_value;
-  boolean_T master_switch_off;
+  bool master_switch_off;
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    */
   /*  Function standard_operation_mode() */
@@ -1149,6 +1166,8 @@ static void standard_operation_mode(void)
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    */
   master_switch_off = false;
+  int exitg2;
+  unsigned char a;
   do {
     exitg2 = 0;
     /*  Initialization */
@@ -1192,7 +1211,15 @@ static void standard_operation_mode(void)
      */
     write_register(40963, (unsigned char)(a & 127));
     /*  Waiting on user inputs */
+    int exitg3;
+    unsigned char b_a;
+    unsigned char c_a;
+    unsigned char d_a;
+    unsigned char e_a;
+    unsigned char f_a;
+    unsigned char register_value;
     do {
+      unsigned char g_a;
       exitg3 = 0;
       /*  Check if the parking meter can give money back if needed */
       /*  Check if any coin's value is empty */
@@ -1360,8 +1387,8 @@ static void standard_operation_mode(void)
       register_value = (unsigned char)(f_a & 159);
       /*  Set the corresponding bit of the register depending on
        * can_give_coins_back */
-      if (((b_a & 1) != 0) && ((c_a & 2) != 0) && ((d_a & 4) != 0) &&
-          ((e_a & 8) != 0)) {
+      if (((int)(b_a & 1U) != 0) && ((int)(c_a & 2U) != 0) &&
+          ((int)(d_a & 4U) != 0) && ((int)(e_a & 8U) != 0)) {
         /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
          */
         /*  Function write_interface() */
@@ -1434,10 +1461,11 @@ static void standard_operation_mode(void)
       /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
        */
       g_a = read_register(40976);
-      if ((g_a & 4) == 0) {
+      if ((int)(g_a & 4U) == 0) {
         master_switch_off = true;
         exitg3 = 1;
       } else {
+        unsigned char h_a;
         /*  The process of a ticket purchase has been initiated */
         /*  Bit mask to extract green button status */
         /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1464,7 +1492,7 @@ static void standard_operation_mode(void)
         /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
          */
         h_a = read_register(40976);
-        if ((h_a & 1) != 0) {
+        if ((int)(h_a & 1U) != 0) {
           exitg3 = 1;
         }
       }
@@ -1473,6 +1501,9 @@ static void standard_operation_mode(void)
     if (master_switch_off) {
       exitg2 = 1;
     } else {
+      unsigned short inserted_amount;
+      unsigned char b_register_value;
+      unsigned char i_a;
       /*  Open the coin's flap to let the user inserting coins */
       /*  Get the current peripherals register status */
       /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1529,9 +1560,11 @@ static void standard_operation_mode(void)
       b_register_value = 0U;
       /*  Waiting for the full payment of the ticket or cancellation of the
        * purchase */
+      int exitg1;
       do {
         exitg1 = 0;
         if (inserted_amount < 120) {
+          unsigned char k_a;
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
           /*  Interface layer definition for target dependent HW */
@@ -1575,7 +1608,8 @@ static void standard_operation_mode(void)
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
           k_a = read_register(40976);
-          if ((k_a & 2) != 0) {
+          if ((int)(k_a & 2U) != 0) {
+            unsigned short remaining_amount;
             /*  Ticket's purchase process canceled */
             /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
              */
@@ -1596,6 +1630,9 @@ static void standard_operation_mode(void)
             return_coin_value(remaining_amount, 10U);
             exitg1 = 1;
           } else {
+            unsigned short temp_amount;
+            unsigned char d_register_value;
+            unsigned char new_reg_value;
             /*  Update the amount of money to pay if a coin has been inserted */
             d_register_value = b_register_value;
             /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1630,19 +1667,20 @@ static void standard_operation_mode(void)
             /*  A new coin has been inserted into the parking meter */
             if (new_reg_value != b_register_value) {
               /*  Update the amount of coins already inserted */
-              if (((new_reg_value & 1) != 0) && ((b_register_value & 1) == 0)) {
+              if (((int)(new_reg_value & 1U) != 0) &&
+                  ((int)(b_register_value & 1U) == 0)) {
                 temp_amount = 10U;
-              } else if (((new_reg_value & 2) != 0) &&
-                         ((b_register_value & 2) == 0)) {
+              } else if (((int)(new_reg_value & 2U) != 0) &&
+                         ((int)(b_register_value & 2U) == 0)) {
                 temp_amount = 20U;
-              } else if (((new_reg_value & 4) != 0) &&
-                         ((b_register_value & 4) == 0)) {
+              } else if (((int)(new_reg_value & 4U) != 0) &&
+                         ((int)(b_register_value & 4U) == 0)) {
                 temp_amount = 50U;
-              } else if (((new_reg_value & 8) != 0) &&
-                         ((b_register_value & 8) == 0)) {
+              } else if (((int)(new_reg_value & 8U) != 0) &&
+                         ((int)(b_register_value & 8U) == 0)) {
                 temp_amount = 100U;
-              } else if (((new_reg_value & 16) != 0) &&
-                         ((b_register_value & 16) == 0)) {
+              } else if (((int)(new_reg_value & 16U) != 0) &&
+                         ((int)(b_register_value & 16U) == 0)) {
                 temp_amount = 200U;
               }
               /*  Record of the current register value */
@@ -1652,6 +1690,9 @@ static void standard_operation_mode(void)
             inserted_amount += temp_amount;
           }
         } else {
+          unsigned short b_remaining_amount;
+          unsigned char c_register_value;
+          unsigned char j_a;
           /*  Printing of the parking ticket */
           /*  Trigger the printing of the parking receipt */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1786,39 +1827,10 @@ static void standard_operation_mode(void)
  */
 void parkingMeterLowLevel(void)
 {
-  static const unsigned short uv[7] = {40960U, 40961U, 40962U, 40963U,
-                                       40976U, 40977U, 40978U};
-  int b;
-  int b_data;
   int b_i;
-  int b_nb_input_types;
-  int c_i;
-  int c_nb_input_types;
-  int choice;
-  int d_nb_input_types;
-  int data;
-  int e_nb_input_types;
-  int exitg1;
-  int exitg2;
-  int exitg3;
-  int i;
-  int i1;
-  int nb_input_types;
-  int register_text;
-  int state;
-  unsigned char a;
-  unsigned char b_a;
-  unsigned char b_register_value;
-  char b_terminator;
-  unsigned char c_register_value;
-  char c_terminator;
-  char d_terminator;
-  char e_terminator;
-  unsigned char register_value;
-  char terminator;
-  unsigned char validatedHoleFilling_idx_0;
-  boolean_T exitg4;
-  boolean_T is_right_value;
+  if (!isInitialized_parkingMeterLowLevel) {
+    parkingMeterLowLevel_initialize();
+  }
   /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    */
   /*  Function parkingMeterLowLevel() */
@@ -1861,10 +1873,9 @@ void parkingMeterLowLevel(void)
     fflush(stdout);
     printf("Press \'ENTER\' to close the console window...\n");
     fflush(stdout);
-    if (pauseState == 0) {
-      getchar();
-    }
+    pause();
   } else {
+    int choice;
     /*  TEST_MODE == 1 */
     /*  Function handler API to access functions of the test mode */
     /*  Instantiate all properties and methods for the test mode */
@@ -1890,9 +1901,12 @@ void parkingMeterLowLevel(void)
                    "--------------------");
     fflush(stdout);
     /*  Loop over the menu entries */
+    int exitg1;
     do {
       exitg1 = 0;
       if (choice != 0) {
+        int exitg2;
+        int exitg3;
         /*  Menu selection */
         printf("Operations on the parking meter:\n");
         fflush(stdout);
@@ -1938,6 +1952,8 @@ void parkingMeterLowLevel(void)
         /*  Get and check the data from the console */
         do {
           exitg2 = 0;
+          int nb_input_types;
+          char terminator;
           do {
             exitg3 = 0;
             /*  Get input data using the Windows C API */
@@ -1975,12 +1991,16 @@ void parkingMeterLowLevel(void)
           exitg1 = 1;
           break;
         case 1:
-          /*  Function that is not translated into C code */
+          TestMode_write_register();
+          break;
+        case 2: {
+          int data;
+          /*  Text constants declaration  */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
-          /*  Function write_register() */
-          /*  Goal  : Test the write access function to any shared memory
-           * register */
+          /*  Function display_value() */
+          /*  Goal  : Test the 7 segments displays by displaying any value on
+           * them */
           /*  IN    : - const_obj: object containing all needed constants */
           /*          - f_api    : functions handler struct listing functions to
            * access */
@@ -1988,49 +2008,11 @@ void parkingMeterLowLevel(void)
           /*  OUT   : - */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
-          /*  Text constants declaration */
-          /*  Variables declaration */
-          is_right_value = false;
+          /*  Variables declaration  */
           /*  Split sections  */
           printf("%s\n", "-----------------------------------------------------"
                          "--------------------------");
           fflush(stdout);
-          /*  Get the address of the register to access  */
-          do {
-            exitg2 = 0;
-            printf("%s", "Enter the address of the register to access in "
-                         "hexadecimal within the following range "
-                         "[0xA000-0xA003] or [0xA010-0xA012]: ");
-            fflush(stdout);
-            /*  Force the string format definition in the generated C code for
-             * scanf_s */
-            scanf_s("%x", &register_text);
-            /*  Check if the provided address is pointing to an existing
-             * register  */
-            i = 0;
-            exitg4 = false;
-            while ((!exitg4) && (i < 7)) {
-              if ((unsigned short)register_text == uv[i]) {
-                is_right_value = true;
-                exitg4 = true;
-              } else {
-                i++;
-              }
-            }
-            /*  The provided address is not within the right range of addresses
-             */
-            if (!is_right_value) {
-              printf("The address provided is not within the right range of "
-                     "addresses!\n");
-              fflush(stdout);
-              /*  Force the string regular expression in the generated C code
-               * for scanf_s */
-              /*  Clear the input buffer */
-              scanf_s("%*[^\n]%*1[\n]");
-            } else {
-              exitg2 = 1;
-            }
-          } while (exitg2 == 0);
           /*  Get the data to write in the register  */
           /*  Function that is not translated into C code */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2049,23 +2031,24 @@ void parkingMeterLowLevel(void)
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
           /*  Variables declaration */
-          b_data = 0;
+          data = 0;
           /*  Get and check the data from the console */
           do {
             exitg2 = 0;
+            int b_nb_input_types;
+            char b_terminator;
             do {
               exitg3 = 0;
               /*  Get input data using the Windows C API */
-              e_terminator = ' ';
-              printf(
-                  "%s",
-                  "Enter the integer data to write at the selected register: ");
+              b_terminator = ' ';
+              printf("%s", "Enter the hundreds of cents value to print on the "
+                           "7 segments displays: ");
               fflush(stdout);
               /*  Force the string format definition in the generated C code for
                * scanf_s */
-              e_nb_input_types = scanf_s("%d%c", &b_data, &e_terminator, 1);
+              b_nb_input_types = scanf_s("%d%c", &data, &b_terminator, 1);
               /*  Check if the provided data is an integer number */
-              if ((e_nb_input_types == 2) && (e_terminator == '\n')) {
+              if ((b_nb_input_types == 2) && (b_terminator == '\n')) {
                 exitg3 = 1;
               } else {
                 printf("The value provided is not of the right data type!\n");
@@ -2077,39 +2060,57 @@ void parkingMeterLowLevel(void)
               }
             } while (exitg3 == 0);
             /*  Check if the value is within the allowed range */
-            if ((b_data >= 0) && (b_data <= 999)) {
+            if ((data >= 0) && (data <= 999)) {
               exitg2 = 1;
             } else {
               printf("The value provided must be between %d and %d!\n", 0, 999);
               fflush(stdout);
             }
           } while (exitg2 == 0);
-          /*  Write the user's data to the selected register  */
+          /*  Write the user's data to the 7 segments displays  */
+          /*  Initialization value of the parking meter display */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
-          /*  Function write_interface() */
-          /*  Goal  : Define the interface layer writing data to external HW
-           * registers */
-          /*  IN    : - register_address: address of the register in unsigned 16
-           * bit */
-          /*          - new_value: value to store in the register as an unsigned
-           * 8 bit */
+          /*  Function display_cents_value() */
+          /*  Goal  : Update the new parking meter cents value */
+          /*  IN    : - const_obj: constants object used in the entire
+           * application */
+          /*          - cents_value: base 10 value to display on all 7 segments
+           * displays */
           /*  IN/OUT: - */
           /*  OUT   : - */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
-          write_register((unsigned short)register_text, b_data);
-          printf("%s\n\n", "The desired value has been successfully written in "
-                           "the selected register.");
+          if (data == 45) {
+            display_digit(1U, 45U, 0.0);
+            display_digit(2U, 45U, 0.0);
+            display_digit(3U, 45U, 0.0);
+            /*  Compute the right value to display on the parking meter */
+          } else {
+            int b_remainder;
+            int digit_value;
+            int x;
+            /*  Compute the cent */
+            digit_value = data - data / 10 * 10;
+            b_display_digit(1U, digit_value, 0.0);
+            /*  Compute the tens of cents */
+            b_remainder = (int)rt_roundd((double)(data - digit_value) / 10.0);
+            digit_value = b_remainder - div_nde_s32_floor(b_remainder) * 10;
+            b_display_digit(2U, digit_value, 0.0);
+            /*  Compute the hundreds of cents */
+            x = (int)rt_roundd((double)(b_remainder - digit_value) / 10.0);
+            b_display_digit(3U, x - div_nde_s32_floor(x) * 10, 1.0);
+          }
+          printf("%s\n\n", "The desired value has been successfully written on "
+                           "the 7 segments displays.");
           fflush(stdout);
           printf("%s\n", "-----------------------------------------------------"
                          "--------------------------");
           fflush(stdout);
-          break;
-        case 2:
-          TestMode_display_value();
-          break;
-        case 3:
+        } break;
+        case 3: {
+          int state;
+          unsigned char c_register_value;
           /*  Text constants declaration  */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
@@ -2149,17 +2150,19 @@ void parkingMeterLowLevel(void)
           /*  Get and check the data from the console */
           do {
             exitg2 = 0;
+            int c_nb_input_types;
+            char c_terminator;
             do {
               exitg3 = 0;
               /*  Get input data using the Windows C API */
-              b_terminator = ' ';
+              c_terminator = ' ';
               printf("%s", "State value of the give back cash LEDs [0-1]: ");
               fflush(stdout);
               /*  Force the string format definition in the generated C code for
                * scanf_s */
-              b_nb_input_types = scanf_s("%d%c", &state, &b_terminator, 1);
+              c_nb_input_types = scanf_s("%d%c", &state, &c_terminator, 1);
               /*  Check if the provided data is an integer number */
-              if ((b_nb_input_types == 2) && (b_terminator == '\n')) {
+              if ((c_nb_input_types == 2) && (c_terminator == '\n')) {
                 exitg3 = 1;
               } else {
                 printf("The value provided is not of the right data type!\n");
@@ -2178,6 +2181,7 @@ void parkingMeterLowLevel(void)
               fflush(stdout);
             }
           } while (exitg2 == 0);
+          unsigned char b_a;
           /*        f_api.write_interface(const_obj.AVAILABLE_COINS_REGISTER,...
            */
           /*                              bitand(uint8(state),const_obj.BIT_MASK_010_CENTS));
@@ -2249,11 +2253,13 @@ void parkingMeterLowLevel(void)
           printf("%s\n", "-----------------------------------------------------"
                          "--------------------------");
           fflush(stdout);
-          break;
+        } break;
         case 4:
           TestMode_give_back_coin();
           break;
-        case 5:
+        case 5: {
+          unsigned char a;
+          unsigned char register_value;
           /*  Trigger the printing of the parking receipt */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
@@ -2358,8 +2364,11 @@ void parkingMeterLowLevel(void)
           printf("%s\n\n", "---------------------------------------------------"
                            "----------------------------");
           fflush(stdout);
-          break;
-        case 6:
+        } break;
+        case 6: {
+          int b_data;
+          int i1;
+          unsigned char b_register_value;
           /*  Text constants declaration  */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
@@ -2396,22 +2405,24 @@ void parkingMeterLowLevel(void)
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
           /*  Variables declaration */
-          data = 0;
+          b_data = 0;
           /*  Get and check the data from the console */
           do {
             exitg2 = 0;
+            int d_nb_input_types;
+            char d_terminator;
             do {
               exitg3 = 0;
               /*  Get input data using the Windows C API */
-              c_terminator = ' ';
+              d_terminator = ' ';
               printf("%s", "Set the position of the coin\'s flap [open => "
                            "\'1\', close => \'0\']: ");
               fflush(stdout);
               /*  Force the string format definition in the generated C code for
                * scanf_s */
-              c_nb_input_types = scanf_s("%d%c", &data, &c_terminator, 1);
+              d_nb_input_types = scanf_s("%d%c", &b_data, &d_terminator, 1);
               /*  Check if the provided data is an integer number */
-              if ((c_nb_input_types == 2) && (c_terminator == '\n')) {
+              if ((d_nb_input_types == 2) && (d_terminator == '\n')) {
                 exitg3 = 1;
               } else {
                 printf("The value provided is not of the right data type!\n");
@@ -2423,7 +2434,7 @@ void parkingMeterLowLevel(void)
               }
             } while (exitg3 == 0);
             /*  Check if the value is within the allowed range */
-            if ((data >= 0) && (data <= 1)) {
+            if ((b_data >= 0) && (b_data <= 1)) {
               exitg2 = 1;
             } else {
               printf("The value provided must be between %d and %d!\n", 0, 1);
@@ -2470,14 +2481,16 @@ void parkingMeterLowLevel(void)
           /*  OUT   : - */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            */
-          if (data != 0) {
+          if (b_data != 0) {
             i1 = b_register_value | 128;
           } else {
-            i1 = b_register_value & 127;
+            i1 = (int)(b_register_value & 127U);
           }
           write_register(40963, (unsigned char)i1);
-          break;
-        case 7:
+        } break;
+        case 7: {
+          int b;
+          int i;
           /*  Include the header file containing the needed functions
            * declarations */
           /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2519,18 +2532,20 @@ void parkingMeterLowLevel(void)
           /*  Get and check the data from the console */
           do {
             exitg2 = 0;
+            int e_nb_input_types;
+            char e_terminator;
             do {
               exitg3 = 0;
               /*  Get input data using the Windows C API */
-              d_terminator = ' ';
+              e_terminator = ' ';
               printf("%s", "Enter the desired time to read the inputregisters "
                            "in seconds [\'1\'-\'100\']: ");
               fflush(stdout);
               /*  Force the string format definition in the generated C code for
                * scanf_s */
-              d_nb_input_types = scanf_s("%d%c", &b, &d_terminator, 1);
+              e_nb_input_types = scanf_s("%d%c", &b, &e_terminator, 1);
               /*  Check if the provided data is an integer number */
-              if ((d_nb_input_types == 2) && (d_terminator == '\n')) {
+              if ((e_nb_input_types == 2) && (e_terminator == '\n')) {
                 exitg3 = 1;
               } else {
                 printf("The value provided is not of the right data type!\n");
@@ -2550,8 +2565,9 @@ void parkingMeterLowLevel(void)
             }
           } while (exitg2 == 0);
           /*  Read the input registers continuously  */
-          b_i = 10 * b;
-          for (c_i = 0; c_i <= b_i; c_i++) {
+          i = 10 * b;
+          for (b_i = 0; b_i <= i; b_i++) {
+            unsigned char validatedHoleFilling_idx_0;
             printf("%s\n", "---------------------------------------------------"
                            "----------------------------");
             fflush(stdout);
@@ -2602,7 +2618,7 @@ void parkingMeterLowLevel(void)
             printf("Pushed buttons : %x\n", validatedHoleFilling_idx_0);
             fflush(stdout);
             printf("Elapsed time   : %3.1f\n",
-                   (float)rt_roundd(((double)c_i + 1.0) * 100.0 / 1000.0));
+                   (float)rt_roundd(((double)b_i + 1.0) * 100.0 / 1000.0));
             fflush(stdout);
             /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
              */
@@ -2624,7 +2640,7 @@ void parkingMeterLowLevel(void)
           printf("%s\n\n", "---------------------------------------------------"
                            "----------------------------");
           fflush(stdout);
-          break;
+        } break;
         default:
           printf("%s\n", "The normal mode of operation of the parking meter "
                          "has been activated.");
@@ -2647,6 +2663,16 @@ void parkingMeterLowLevel_initialize(void)
 {
   TEST_MODE = 0;
   cpause_init();
+  isInitialized_parkingMeterLowLevel = true;
+}
+
+/*
+ * Arguments    : void
+ * Return Type  : void
+ */
+void parkingMeterLowLevel_terminate(void)
+{
+  isInitialized_parkingMeterLowLevel = false;
 }
 
 /*

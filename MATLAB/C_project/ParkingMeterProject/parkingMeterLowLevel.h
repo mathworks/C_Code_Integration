@@ -1,8 +1,10 @@
 /*
+ * Prerelease License - for engineering feedback and testing purposes
+ * only. Not for sale.
  * File: parkingMeterLowLevel.h
  *
- * MATLAB Coder version            : 23.2
- * C/C++ source code generated on  : 16-Feb-2024 17:27:57
+ * MATLAB Coder version            : 24.2
+ * C/C++ source code generated on  : 28-Jun-2024 16:14:48
  */
 
 #ifndef PARKINGMETERLOWLEVEL_H
@@ -24,6 +26,8 @@ extern "C" {
 extern void parkingMeterLowLevel(void);
 
 extern void parkingMeterLowLevel_initialize(void);
+
+extern void parkingMeterLowLevel_terminate(void);
 
 #ifdef __cplusplus
 }

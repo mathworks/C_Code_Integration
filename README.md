@@ -1,5 +1,5 @@
-# **C Code Integration in MATLAB and Simulink to Control an External Interface**
-This example is focusing on the integration of C code in MATLAB and Simulink.
+# **C Code Integration in MATLAB to Control an External Interface**
+This example is focusing on the integration of C code in MATLAB
 
 ## **Overview**
 
