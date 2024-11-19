@@ -22,7 +22,7 @@ system('start /b taskkill /F /im ParkingMeterProject.exe /im cmd.exe &');
 pause(2);
 % Call the low-level MATLAB code of the application in a separate process
 fprintf('Starting the low-level application instance...\n');
-system('start /b ..\\C_project\\ParkingMeterProject\\x64\\Release\\ParkingMeterProject.exe&');
+system('start /b ..\\C_project\\ParkingMeterProject\\x64\\Release\\ParkingMeterProject.exe &');
 
 %% Call the unit testing framework for automated testing
 

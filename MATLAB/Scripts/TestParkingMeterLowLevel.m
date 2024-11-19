@@ -19,7 +19,7 @@ defineTestMode(1); % '1' => test mode, '0' => normal operation mode
 
 % Text constants declaration
 TEXT_RUN = 'The interface to the parking meter has been activated.';
-CODEGEN_FOLDER = '..\MEX_functions\codegen';
+CODEGEN_FOLDER = '..\Codegen';
 
 %% Start the system to do manual testing
 
@@ -33,7 +33,7 @@ if (APP_DESIGNER) % No MEX of the low-level interface possible here
       delete(allApps);
       clear('allApps');
     end
-    % Instanciate one single app interface
+    % Instantiate one single app interface
     app = ParkingMeterGUI;
     waitfor(app,'Running','on');
   end
@@ -57,14 +57,14 @@ else
     % Generate the MEX function of the main file
     fprintf('Building the MEX file, please wait...\n');
     cfg = coder.config('mex');
-    cfg.CustomSource = '..\Interface_C_files\write_register.c';
-    cfg.CustomInclude = '..\Interface_C_files';
+    cfg.CustomInclude = {'..\\Interface_C_files'};
+    cfg.CustomSource  = {'..\\Interface_C_files\\read_register.c', ...
+                         '..\\Interface_C_files\\write_register.c'};
     cfg.CustomSourceCode = '#include "ParkingMeterMemory.h"';
     codegen('-config','cfg','parkingMeterLowLevel','-d',CODEGEN_FOLDER,'-report');
+    fprintf(repmat('\b',1,1)); % Remove the extra line after the codegen report link
     fprintf('The MEX file has been built successfully.\n');
     movefile('parkingMeterLowLevel_mex.mexw64','..\MEX_functions');
-    rmdir(CODEGEN_FOLDER,'s');
-    fprintf('Cleaning of the C Code Generation folder.\n');
     fprintf('%s\n',TEXT_RUN);
     % Call the MEX function
     parkingMeterLowLevel_mex();
