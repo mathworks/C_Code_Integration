@@ -1,13 +1,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Goal  : Test of the main function of the Parking Meter Low Level module
 %
-% Copyright 2024 The MathWorks, Inc.
+% Copyright 2025 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear variables; clc;
 global TEST_MODE; %#ok<GVMIS,NUSED>
 
 % Initialization
-TEST_MEX = 0; % Generate and test the MEX file if set to '1'
+TEST_MEX = 1; % Generate and test the MEX file if set to '1'
 defineTestMode(1); % '0' => normal mode, '1' => test mode
 % Text constants declaration
 TEXT_RUN = 'The interface to the parking meter has been activated.';

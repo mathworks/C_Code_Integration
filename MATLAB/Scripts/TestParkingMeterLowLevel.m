@@ -10,16 +10,16 @@ global UNIT_TESTING; % To set the automated unit testing of the App to false
 
 %% Initialization
 
-APP_DESIGNER = true;  % 'true' => App Designer implementation, 'false' => C# App
+APP_DESIGNER = false;  % 'true' => App Designer implementation, 'false' => C# App
 UNIT_TESTING = false; % 'false' => Manual testing, 'true' => Automated testing.
                       % Here it MUST always be set to false, otherwise the App
                       % will be locked as no test cases are defined in the script
-TEST_MEX = false;  % 'true' => Generate and test the MEX file, 'false' => No MEX
+TEST_MEX = true;  % 'true' => Generate and test the MEX file, 'false' => No MEX
 defineTestMode(1); % '1' => test mode, '0' => normal operation mode
 
 % Text constants declaration
 TEXT_RUN = 'The interface to the parking meter has been activated.';
-CODEGEN_FOLDER = '..\MEX_functions\codegen';
+CODEGEN_FOLDER = '..\Codegen';
 
 %% Start the system to do manual testing
 

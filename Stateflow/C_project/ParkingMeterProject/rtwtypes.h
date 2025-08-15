@@ -1,8 +1,8 @@
 /*
  * File: rtwtypes.h
  *
- * MATLAB Coder version            : 23.2
- * C/C++ source code generated on  : 19-Feb-2024 20:49:13
+ * MATLAB Coder version            : 24.2
+ * C/C++ source code generated on  : 15-Aug-2025 13:44:29
  */
 
 #ifndef RTWTYPES_H
@@ -62,6 +62,7 @@ typedef char_T byte_T;
  * Complex number type definitions                                           *
  *===========================================================================*/
 #define CREAL_T
+
 typedef struct {
   real32_T re;
   real32_T im;
