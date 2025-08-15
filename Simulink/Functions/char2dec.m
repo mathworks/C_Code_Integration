@@ -7,12 +7,12 @@ function [dec_value] = char2dec(char_sequence)
 % IN/OUT  : -
 % OUT     : - dec_value: decimal representation of the char sequence
 %
-% Copyright 2024 The MathWorks, Inc.
+% Copyright 2025 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %#codegen
   % Local constants declaration
   FORMAT_LENGTH = 2; % Number of chars for the format of the encoded value
-  HEXA_PER_BYTE = 2; % Number of hexa digit per byte
+  HEXA_PER_BYTE = 2; % Number of hex digit per byte
   % Get the input number format of the value to store
   char_format = char_sequence(1:FORMAT_LENGTH);
   % Get the encoded value to store

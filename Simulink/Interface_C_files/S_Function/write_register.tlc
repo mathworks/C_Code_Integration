@@ -1,5 +1,5 @@
 %% File : write_register.tlc
-%% Created : Mon Feb 19 20:10:07 2024
+%% Created : Thu Aug 14 11:09:34 2025
 %%
 %% Description: 
 %%   Simulink Coder wrapper functions interface generated for 
@@ -21,7 +21,7 @@
 %%      Set up external references for wrapper functions in the 
 %%      generated code.
 %%
-%function BlockTypeSetup(block, system) Output
+%function BlockTypeSetup(block, system) void
     %assign uint16Type = LibGetDataTypeNameFromId(::CompiledModel.tSS_UINT16)
     %assign uint8Type = LibGetDataTypeNameFromId(::CompiledModel.tSS_UINT8)
 
@@ -50,7 +50,11 @@
     %closefile hFile
 
     %assign cFileName = "write_register_accel_wrapper"
-    %openfile cFile = "%<cFileName>.c"
+    %if GenCPP
+        %openfile cFile = "%<cFileName>.cpp"
+    %else
+        %openfile cFile = "%<cFileName>.c"
+    %endif
     %selectfile cFile
     #include <string.h>
     #ifdef MATLAB_MEX_FILE
@@ -60,16 +64,22 @@
     #endif
     #include "%<hFileName>.h"
     
+    #ifdef __cplusplus
+    #define SFB_EXTERN_C extern "C"
+    #else
+    #define SFB_EXTERN_C extern
+    #endif
 
-    extern void write_register_Start_wrapper(void);
-    extern void write_register_Outputs_wrapper(const %<uint16Type> *address,
+    SFB_EXTERN_C void write_register_Start_wrapper(void);
+    SFB_EXTERN_C void write_register_Outputs_wrapper(const %<uint16Type> *address,
 			const %<uint8Type> *value);
-    extern void write_register_Terminate_wrapper(void);
+    SFB_EXTERN_C void write_register_Terminate_wrapper(void);
     void write_register_Outputs_wrapper_accel(const %<uint16Type> *address,
 			const %<uint8Type> *value){
     write_register_Outputs_wrapper(address,
 			value);
     }
+#undef SFB_EXTERN_C
 
     %closefile cFile
 

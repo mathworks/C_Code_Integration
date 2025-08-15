@@ -26,7 +26,7 @@
  * | See matlabroot/simulink/src/sfuntmpl_doc.c for a more detailed template |
  *  -------------------------------------------------------------------------
  *
- * Created: Mon Feb 19 20:10:07 2024
+ * Created: Thu Aug 14 11:09:34 2025
  */
 
 #define S_FUNCTION_LEVEL               2
@@ -44,6 +44,7 @@
 #define INPUT_DIMS_0_COL               1
 #define INPUT_0_DTYPE                  uint16_T
 #define INPUT_0_COMPLEX                COMPLEX_NO
+#define INPUT_0_UNIT                   ""
 #define IN_0_BUS_BASED                 0
 #define IN_0_BUS_NAME
 #define IN_0_DIMS                      1-D
@@ -63,6 +64,7 @@
 #define INPUT_DIMS_1_COL               1
 #define INPUT_1_DTYPE                  uint8_T
 #define INPUT_1_COMPLEX                COMPLEX_NO
+#define INPUT_1_UNIT                   ""
 #define IN_1_BUS_BASED                 0
 #define IN_1_BUS_NAME
 #define IN_1_DIMS                      1-D
@@ -130,15 +132,60 @@ static void mdlInitializeSizes(SimStruct *S)
   ssSetInputPortComplexSignal(S, 1, INPUT_1_COMPLEX);
   ssSetInputPortDirectFeedThrough(S, 1, INPUT_1_FEEDTHROUGH);
   ssSetInputPortRequiredContiguous(S, 1, 1);/*direct input signal access*/
+
+  /*
+   * Configure the Units for Input Ports
+   */
+  if (ssGetSimMode(S) != SS_SIMMODE_SIZES_CALL_ONLY) {
+
+#if defined(MATLAB_MEX_FILE)
+
+    UnitId inUnitIdReg;
+    ssRegisterUnitFromExpr(S, INPUT_0_UNIT, &inUnitIdReg);
+    if (inUnitIdReg != INVALID_UNIT_ID) {
+      ssSetInputPortUnit(S, 0, inUnitIdReg);
+    } else {
+      ssSetLocalErrorStatus(S,
+                            "Invalid Unit provided for input port address of S-Function write_register");
+      return;
+    }
+
+    ssRegisterUnitFromExpr(S, INPUT_1_UNIT, &inUnitIdReg);
+    if (inUnitIdReg != INVALID_UNIT_ID) {
+      ssSetInputPortUnit(S, 1, inUnitIdReg);
+    } else {
+      ssSetLocalErrorStatus(S,
+                            "Invalid Unit provided for input port value of S-Function write_register");
+      return;
+    }
+
+#endif
+
+  }
+
   if (!ssSetNumOutputPorts(S, NUM_OUTPUTS))
     return;
+
+  /*
+   * Configure the Units for Output Ports
+   */
+  if (ssGetSimMode(S) != SS_SIMMODE_SIZES_CALL_ONLY) {
+
+#if defined(MATLAB_MEX_FILE)
+
+    UnitId outUnitIdReg;
+
+#endif
+
+  }
+
   ssSetNumPWork(S, 0);
   ssSetNumSampleTimes(S, 1);
   ssSetNumRWork(S, 0);
   ssSetNumIWork(S, 0);
   ssSetNumModes(S, 0);
   ssSetNumNonsampledZCs(S, 0);
-  ssSetSimulinkVersionGeneratedIn(S, "23.2");
+  ssSetSimulinkVersionGeneratedIn(S, "24.2");
 
   /* Take care when specifying exception free code - see sfuntmpl_doc.c */
   ssSetRuntimeThreadSafetyCompliance(S, RUNTIME_THREAD_SAFETY_COMPLIANCE_FALSE);

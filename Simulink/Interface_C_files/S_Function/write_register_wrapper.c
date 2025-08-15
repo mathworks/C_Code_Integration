@@ -32,6 +32,9 @@
  * Output function
  *
  */
+extern void write_register_Outputs_wrapper(const uint16_T *address,
+			const uint8_T *value);
+
 void write_register_Outputs_wrapper(const uint16_T *address,
 			const uint8_T *value)
 {

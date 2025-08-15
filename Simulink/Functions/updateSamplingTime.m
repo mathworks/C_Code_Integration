@@ -1,7 +1,7 @@
 function updateSamplingTime(model,parameter)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Function: updateSamplingTime()
-% Goal    : Change the sampling time value if the rapid accelarator mode is/has
+% Goal    : Change the sampling time value if the rapid accelerator mode is/has
 %           been selected. All other modes remain at the same sampling time of
 %           1 ms.
 % IN      : - model    : name of the Simulink model
@@ -9,7 +9,7 @@ function updateSamplingTime(model,parameter)
 % IN/OUT  : -
 % OUT     : -
 %
-% Copyright 2024 The MathWorks, Inc.
+% Copyright 2025 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   % Set the Data Dictionary parameters
