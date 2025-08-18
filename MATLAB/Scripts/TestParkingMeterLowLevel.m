@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Goal  : Test of the main function of the Parking Meter Low Level module.
 %         Press the "Run" button to execute
-% Copyright 2024 The MathWorks, Inc.
+% Copyright 2025 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %#ok<*GVMIS>
 clearvars -except app; clc;
@@ -10,11 +10,11 @@ global UNIT_TESTING; % To set the automated unit testing of the App to false
 
 %% Initialization
 
-APP_DESIGNER = false;  % 'true' => App Designer implementation, 'false' => C# App
+APP_DESIGNER = true;  % 'true' => App Designer implementation, 'false' => C# App
 UNIT_TESTING = false; % 'false' => Manual testing, 'true' => Automated testing.
                       % Here it MUST always be set to false, otherwise the App
                       % will be locked as no test cases are defined in the script
-TEST_MEX = true;  % 'true' => Generate and test the MEX file, 'false' => No MEX
+TEST_MEX = false;  % 'true' => Generate and test the MEX file, 'false' => No MEX
 defineTestMode(1); % '1' => test mode, '0' => normal operation mode
 
 % Text constants declaration
@@ -57,8 +57,9 @@ else
     % Generate the MEX function of the main file
     fprintf('Building the MEX file, please wait...\n');
     cfg = coder.config('mex');
-    cfg.CustomSource = '..\Interface_C_files\write_register.c';
-    cfg.CustomInclude = '..\Interface_C_files';
+    cfg.CustomSource = {'..\Interface_C_files\write_register.c', ...
+                        '..\Interface_C_files\read_register.c'};
+    cfg.CustomInclude = {'..\Interface_C_files'};
     cfg.CustomSourceCode = '#include "ParkingMeterMemory.h"';
     codegen('-config','cfg','parkingMeterLowLevel','-d',CODEGEN_FOLDER,'-report');
     fprintf('The MEX file has been built successfully.\n');

@@ -1,7 +1,7 @@
 classdef TextAlign
     %TEXTALIGN Button text alignment.
     %
-    %   Copyright 2024 The MathWorks, Inc.
+    %   Copyright 2025 The MathWorks, Inc.
 
     enumeration
         left ("left")

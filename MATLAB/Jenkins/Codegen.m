@@ -6,7 +6,7 @@
 % 
 % See also CODER, CODER.CONFIG, CODER.TYPEOF, CODEGEN.
 %
-% Copyright 2024 The MathWorks, Inc.
+% Copyright 2025 The MathWorks, Inc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear variables; clc;
 
@@ -22,10 +22,10 @@ cfg.EnableStrengthReduction = true;
 cfg.GenerateReport = true;
 cfg.ReportPotentialDifferences = false;
 cfg.SaturateOnIntegerOverflow = false;
-cfg.CustomInclude = sprintf('..\\Interface_C_files\n');
-cfg.CustomSource = sprintf(['..\\Interface_C_files\\read_register.c\n'...
-                            '..\\Interface_C_files\\write_register.c\n'...
-                            '..\\Interface_C_files\\ParkingMeterMemory.h']);
+cfg.CustomSource = {'..\Interface_C_files\write_register.c', ...
+                    '..\Interface_C_files\read_register.c', ...
+                    '..\Interface_C_files\ParkingMeterMemory.h'};
+cfg.CustomInclude = {'..\Interface_C_files'};
 cfg.FilePartitionMethod = 'SingleFile';
 cfg.InitFltsAndDblsToZero = false;
 cfg.PreserveVariableNames = 'All';
@@ -34,7 +34,7 @@ cfg.EnableOpenMP = false;
 cfg.GenCodeOnly = true;
 cfg.PostCodeGenCommand = 'PostCodegen';
 cfg.BuildConfiguration = 'Faster Runs';
-cfg.CodeReplacementLibrary = 'Intel SSE (Windows)';
+cfg.CodeReplacementLibrary = 'DSP Intel AVX2-FMA (Windows)';
 cfg.SupportNonFinite = false;
 cfg.HardwareImplementation.ProdHWDeviceType = 'Intel->x86-64 (Windows64)';
 cfg.HardwareImplementation.TargetHWDeviceType = 'Intel->x86-64 (Windows64)';

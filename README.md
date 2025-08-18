@@ -37,7 +37,7 @@ For the vanilla MATLAB implementation a MATLAB App Designer interface can also b
 
 ### **Requires**
 
-- [MATLAB R2023b](https://www.mathworks.com/products/matlab.html)
+- [MATLAB R2024b](https://www.mathworks.com/products/matlab.html)
 
-Copyright 2023 - 2024 The MathWorks, Inc.
+Copyright 2024 - 2025 The MathWorks, Inc.
 
